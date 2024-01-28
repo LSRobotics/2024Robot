@@ -18,12 +18,12 @@ public final class Constants {
     public static final class Swerve {
         public static final int pigeonID = 1;
 
-        public static final COTSTalonFXSwerveConstants chosenModule =  //TODO: This must be tuned to specific robot
+        public static final COTSTalonFXSwerveConstants chosenModule =  // TODO: This must be tuned to specific robot
         COTSTalonFXSwerveConstants.SDS.MK4i.Falcon500(COTSTalonFXSwerveConstants.SDS.MK4i.driveRatios.L2);
 
         /* Drivetrain Constants */
-        public static final double trackWidth = Units.inchesToMeters(21); //TODO: This must be tuned to specific robot
-        public static final double wheelBase = Units.inchesToMeters(21); //TODO: This must be tuned to specific robot
+        public static final double trackWidth = Units.inchesToMeters(21); // TODO: This must be tuned to specific robot
+        public static final double wheelBase = Units.inchesToMeters(21); // TODO: This must be tuned to specific robot
         public static final double wheelCircumference = chosenModule.wheelCircumference;
 
         /* Swerve Kinematics 
@@ -67,21 +67,21 @@ public final class Constants {
         public static final double angleKD = chosenModule.angleKD;
 
         /* Drive Motor PID Values */
-        public static final double driveKP = 0.12; //TODO: This must be tuned to specific robot
+        public static final double driveKP = 0.12; // TODO: This must be tuned to specific robot
         public static final double driveKI = 0.0;
         public static final double driveKD = 0.0;
         public static final double driveKF = 0.0;
 
         /* Drive Motor Characterization Values From SYSID */
-        public static final double driveKS = 0; //TODO: This must be tuned to specific robot
+        public static final double driveKS = 0; // TODO: This must be tuned to specific robot
         public static final double driveKV = 1.5;
         public static final double driveKA = 0;
 
         /* Swerve Profiling Values */
         /** Meters per Second */
-        public static final double maxSpeed = 4.5; //TODO: This must be tuned to specific robot
+        public static final double maxSpeed = 4.5; // TODO: This must be tuned to specific robot
         /** Radians per Second */
-        public static final double maxAngularVelocity = 10.0; //TODO: This must be tuned to specific robot
+        public static final double maxAngularVelocity = 10.0; // TODO: This must be tuned to specific robot
 
         /* Neutral Modes */
         public static final NeutralModeValue angleNeutralMode = NeutralModeValue.Coast;
@@ -89,7 +89,7 @@ public final class Constants {
 
         /* Module Specific Constants */
         /* Front Left Module - Module 0 */
-        public static final class Mod0 { //TODO: This must be tuned to specific robot
+        public static final class Mod0 { // TODO: This must be tuned to specific robot
             public static final int driveMotorID = 11;
             public static final int angleMotorID = 10;
             public static final int canCoderID = 25;
@@ -99,7 +99,7 @@ public final class Constants {
         }
 
         /* Front Right Module - Module 1 */
-        public static final class Mod1 { //TODO: This must be tuned to specific robot
+        public static final class Mod1 { // TODO: This must be tuned to specific robot
             public static final int driveMotorID = 5;
             public static final int angleMotorID = 4;
             public static final int canCoderID = 27;
@@ -109,7 +109,7 @@ public final class Constants {
         }
         
         /* Back Left Module - Module 2 */
-        public static final class Mod2 { //TODO: This must be tuned to specific robot
+        public static final class Mod2 { // TODO: This must be tuned to specific robot
             public static final int driveMotorID = 19;
             public static final int angleMotorID = 18;
             public static final int canCoderID = 26;
@@ -119,7 +119,7 @@ public final class Constants {
         }
 
         /* Back Right Module - Module 3 */
-        public static final class Mod3 { //TODO: This must be tuned to specific robot
+        public static final class Mod3 { // TODO: This must be tuned to specific robot
             public static final int driveMotorID = 3;
             public static final int angleMotorID = 2;
             public static final int canCoderID = 24;
@@ -129,7 +129,7 @@ public final class Constants {
         }
     }
 
-    public static final class AutoConstants { //TODO: The below constants are used in the example auto, and must be tuned to specific robot
+    public static final class AutoConstants { // TODO: The below constants are used in the example auto, and must be tuned to specific robot
         public static final double kMaxSpeedMetersPerSecond = 3;
         public static final double kMaxAccelerationMetersPerSecondSquared = 3;
         public static final double kMaxAngularSpeedRadiansPerSecond = Math.PI;
@@ -145,7 +145,7 @@ public final class Constants {
                 kMaxAngularSpeedRadiansPerSecond, kMaxAngularSpeedRadiansPerSecondSquared);
     }
 
-    public static final class IntakeConstants { //TODO: Update Intake CAN IDs
+    public static final class IntakeConstants { // TODO: Update Intake CAN IDs
         public static final int intakeMotorOneID = 0;
         public static final int intakeMotorTwoID = 0;
         public static final int intakeDeployID = 0;
@@ -156,7 +156,7 @@ public final class Constants {
         public static final int intakeBeamBreakChannel = 0;
     }
 
-    public static final class ElevatorConstants { //TODO: Update Elevator CAN IDs
+    public static final class ElevatorConstants { // TODO: Update Elevator CAN IDs
         public static final int rightElevatorMotorID = 0;
         public static final int leftElevatorMotorID = 0;
 
@@ -164,7 +164,7 @@ public final class Constants {
         public static final int elevatorBottomLimitChannel = 0;
     }
 
-    public static final class IndexerConstants { //TODO: Update Indexer CAN IDs and Channels
+    public static final class IndexerConstants { // TODO: Update Indexer CAN IDs and Channels
         public static final int indexMotorID = 0;
         public static final int indexBeamBreakChannel = 0;
     }
@@ -175,5 +175,10 @@ public final class Constants {
         public static final int wristMotorID = 0;
         public static final int wristLimitOneChannel = 0;
         public static final int wristLimitTwoChannel = 0;
+        public static final int subwofferAngle = 75;
+        public static final int ampAngle = 85;
+        public static final double wristP = 0;
+        public static final double wristI = 0;
+        public static final double wristD = 0;
     }
 }
