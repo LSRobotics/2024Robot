@@ -31,6 +31,8 @@ public class WristMovementCommand extends PIDCommand {
       output -> shooter.setWrist(output),
       shooter);
     m_shooter = shooter;
+
+    getController().setTolerance(ShooterConstants.wristPosTolerance, ShooterConstants.wristVelTolerance);
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(shooter);
   }
@@ -52,6 +54,6 @@ public class WristMovementCommand extends PIDCommand {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return getController().atSetpoint();
   }
 }

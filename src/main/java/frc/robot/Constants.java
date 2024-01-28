@@ -180,5 +180,7 @@ public final class Constants {
         public static final double wristP = 0;
         public static final double wristI = 0;
         public static final double wristD = 0;
+        public static final double wristPosTolerance = 1;
+        public static final double wristVelTolerance = 1;
     }
 }
