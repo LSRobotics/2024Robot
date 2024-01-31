@@ -64,7 +64,7 @@ public class RobotContainer {
         WPI_PigeonIMU gyro = new WPI_PigeonIMU(0); //TODO figure out arm angle/gyro method
         driverController.y().onTrue(new InstantCommand(() -> s_Swerve.zeroHeading()));
         driverController.a().onTrue(Commands.parallel(new WristMovementCommand(()-> gyro.getAngle(),()->2,m_shooter), new ShooterRampUpCommand(m_shooter, .7)));
-    }
+    }   //TODO connect to april tags
 
     /**
      * Use this to pass the autonomous command to the main {@link Robot} class.
