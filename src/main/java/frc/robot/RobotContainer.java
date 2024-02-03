@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
+import edu.wpi.first.wpilibj.motorcontrol.Spark;
 
 import frc.robot.commands.*;
 import frc.robot.subsystems.*;
@@ -28,6 +29,7 @@ public class RobotContainer {
     /* Subsystems */
     private final Swerve s_Swerve = new Swerve();
     private final ShooterSubsystem m_shooter = new ShooterSubsystem();
+    private final Spark m_Blinkin = new Spark(3);
 
     public static CTREConfigs ctreConfigs = new CTREConfigs();
 
@@ -64,6 +66,7 @@ public class RobotContainer {
         WPI_PigeonIMU gyro = new WPI_PigeonIMU(0); //TODO figure out arm angle/gyro method
         driverController.y().onTrue(new InstantCommand(() -> s_Swerve.zeroHeading()));
         driverController.a().onTrue(Commands.parallel(new WristMovementCommand(()-> gyro.getAngle(),()->2,m_shooter), new ShooterRampUpCommand(m_shooter, .7)));
+        driverController.x().onTrue(new InstantCommand(() -> m_Blinkin.set(-0.87)));
     }   //TODO connect to april tags
 
     /**
