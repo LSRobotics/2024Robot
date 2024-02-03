@@ -7,22 +7,15 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-public class ExampleSubsystem extends SubsystemBase {
-  /** Creates a new ExampleSubsystem. */
-  public ExampleSubsystem() {}
-
-  /**
-   * Example command factory method.
-   *
-   * @return a command
-   */
-  public Command exampleMethodCommand() {
+public class ElevatorSubsystem extends SubsystemBase {
+  /** Creates a new ElevatorSubsystem. */
+  public ElevatorSubsystem() {}
+  
+ 
+  public Command elevatorMove() {
     // Inline construction of command goes here.
     // Subsystem::RunOnce implicitly requires `this` subsystem.
-    return runOnce(
-        () -> {
-          /* one-time action goes here */
-        });
+    
   }
 
   /**
@@ -30,7 +23,7 @@ public class ExampleSubsystem extends SubsystemBase {
    *
    * @return value of some boolean subsystem state, such as a digital sensor.
    */
-  public boolean exampleCondition() {
+  public boolean elevatorCondition() {
     // Query some boolean state, such as a digital sensor.
     return false;
   }
