@@ -161,16 +161,14 @@ public final class Constants {
         public static final int leftElevatorMotorID = 0;
 
         public static final int elevatorTopLimitChannel = 0;
-        public static final int elevatorBottomLimitChannel = 0;
+        public static final int elevatorBottomLimitChannel = 1;
 
         public static final int elevatorPointA = 0;
         public static final int elevatorPointB = 0;
         public static final int elevatorPointC = 0;
         public static final int elevatorPointD = 0;
 
-    }
-    }
-}
+        
 
     }
 

@@ -4,28 +4,49 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants.ElevatorConstants;
+
+
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkLowLevel.MotorType;
 
 public class ElevatorSubsystem extends SubsystemBase {
   /** Creates a new ElevatorSubsystem. */
-  public ElevatorSubsystem() {}
+  public CANSparkMax leftElevatorMotor;
+  public CANSparkMax rightElevatorMotor;
+  public DigitalInput elevatorBottomLimit;
+  public DigitalInput elevatorTopLimit;
+
+  public ElevatorSubsystem() {
+    leftElevatorMotor = new CANSparkMax(ElevatorConstants.leftElevatorMotorID, MotorType.kBrushless);
+    rightElevatorMotor = new CANSparkMax(ElevatorConstants.rightElevatorMotorID, MotorType.kBrushless);
+    
+    elevatorBottomLimit = new DigitalInput(ElevatorConstants.elevatorBottomLimitChannel);
+    elevatorTopLimit = new DigitalInput(ElevatorConstants.elevatorTopLimitChannel);
+  }
   
  
-  public Command elevatorMove() {
-    // Inline construction of command goes here.
-    // Subsystem::RunOnce implicitly requires `this` subsystem.
-    
+  public void runElevator(double speed) {
+    leftElevatorMotor.set(speed);
+    rightElevatorMotor.set(speed);
   }
 
-  /**
-   * An example method querying a boolean state of the subsystem (for example, a digital sensor).
-   *
-   * @return value of some boolean subsystem state, such as a digital sensor.
-   */
-  public boolean elevatorCondition() {
-    // Query some boolean state, such as a digital sensor.
-    return false;
+  public int elevatorPosition() {
+    if (elevatorTopLimit.get() && elevatorBottomLimit.get()){
+      return 2;
+    }
+    else if (elevatorBottomLimit.get()){
+      return -1;
+    }
+    else if (elevatorTopLimit.get()){
+      return 1;
+    }
+    else{
+      return 0;
+    }
   }
 
   @Override

@@ -29,6 +29,7 @@ public class RobotContainer {
     /* Subsystems */
     private final Swerve s_Swerve = new Swerve();
     private final ShooterSubsystem m_shooter = new ShooterSubsystem();
+    private final ElevatorSubsystem m_elevator = new ElevatorSubsystem();
     private final Spark m_Blinkin = new Spark(3);
 
     public static CTREConfigs ctreConfigs = new CTREConfigs();
@@ -67,6 +68,7 @@ public class RobotContainer {
         driverController.y().onTrue(new InstantCommand(() -> s_Swerve.zeroHeading()));
         driverController.a().onTrue(Commands.parallel(new WristMovementCommand(()-> gyro.getAngle(),()->2,m_shooter), new ShooterRampUpCommand(m_shooter, .7)));
         driverController.x().onTrue(new InstantCommand(() -> m_Blinkin.set(-0.87)));
+        driverController.b().onTrue(new ElevatorToSetPointCmd(m_elevator, 1, true)); //TODO figure out numbers
     }   //TODO connect to april tags
 
     /**

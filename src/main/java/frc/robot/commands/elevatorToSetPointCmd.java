@@ -8,24 +8,32 @@ import frc.robot.subsystems.ElevatorSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
 
 /** An example command that uses an example subsystem. */
-public class elevatorToSetPointCmd extends Command {
+public class ElevatorToSetPointCmd extends Command {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
-  private final ElevatorSubsystem m_subsystem;
+  private final ElevatorSubsystem m_elevator;
+  private double speed = 0;
+  private boolean shouldGoToTop = true;
 
-  /**
-   * Creates a new ExampleCommand.
-   *
-   * @param subsystem The subsystem used by this command.
-   */
-  public elevatorToSetPointCmd(ElevatorSubsystem subsystem) {
-    m_subsystem = subsystem;
+
+  public ElevatorToSetPointCmd(ElevatorSubsystem elevator, double speed, boolean shouldGoToTop) {
+    m_elevator = elevator;
+    this.speed = speed;
+    this.shouldGoToTop = shouldGoToTop;
+
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(subsystem);
+    addRequirements(elevator);
   }
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+    if(shouldGoToTop){
+      m_elevator.runElevator(this.speed);
+    }
+    else{
+      m_elevator.runElevator(-this.speed);
+    }
+  }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
@@ -33,11 +41,24 @@ public class elevatorToSetPointCmd extends Command {
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {}
+  public void end(boolean interrupted) {
+    m_elevator.runElevator(0);
+  }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    if(m_elevator.elevatorPosition() == 2){
+      return true;
+    }
+    else if(shouldGoToTop && m_elevator.elevatorPosition() == 1){
+      return true;
+    }
+    else if(!shouldGoToTop && m_elevator.elevatorPosition() == -1){
+      return true;
+   }
+    else{
+      return false;
+   }
   }
 }
