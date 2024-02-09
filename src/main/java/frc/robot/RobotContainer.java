@@ -11,7 +11,8 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj.motorcontrol.Spark;
-
+import frc.robot.Constants;
+import frc.robot.Constants.ElevatorConstants;
 import frc.robot.commands.*;
 import frc.robot.subsystems.*;
 
@@ -68,8 +69,8 @@ public class RobotContainer {
         driverController.y().onTrue(new InstantCommand(() -> s_Swerve.zeroHeading()));
         driverController.a().onTrue(Commands.parallel(new WristMovementCommand(()-> gyro.getAngle(),()->2,m_shooter), new ShooterRampUpCommand(m_shooter, .7)));
         driverController.x().onTrue(new InstantCommand(() -> m_Blinkin.set(-0.87)));
-        driverController.b().onTrue(new ElevatorToSetPointCmd(m_elevator, elevatorSpeed, true));
-        //driverController.
+        driverController.rightBumper().onTrue(new ElevatorToSetPointCmd(m_elevator, ElevatorConstants.elevatorSpeed, true));
+        driverController.leftBumper().onTrue(new ElevatorToSetPointCmd(m_elevator, ElevatorConstants.elevatorSpeed, false));
     }   //TODO connect to april tags
 
     /**
