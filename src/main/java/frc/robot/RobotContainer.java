@@ -68,7 +68,8 @@ public class RobotContainer {
         driverController.y().onTrue(new InstantCommand(() -> s_Swerve.zeroHeading()));
         driverController.a().onTrue(Commands.parallel(new WristMovementCommand(()-> gyro.getAngle(),()->2,m_shooter), new ShooterRampUpCommand(m_shooter, .7)));
         driverController.x().onTrue(new InstantCommand(() -> m_Blinkin.set(-0.87)));
-        driverController.b().onTrue(new ElevatorToSetPointCmd(m_elevator, 1, true)); //TODO figure out numbers
+        driverController.b().onTrue(new ElevatorToSetPointCmd(m_elevator, elevatorSpeed, true));
+        //driverController.
     }   //TODO connect to april tags
 
     /**

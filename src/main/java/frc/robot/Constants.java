@@ -162,14 +162,8 @@ public final class Constants {
 
         public static final int elevatorTopLimitChannel = 0;
         public static final int elevatorBottomLimitChannel = 1;
-
-        public static final int elevatorPointA = 0;
-        public static final int elevatorPointB = 0;
-        public static final int elevatorPointC = 0;
-        public static final int elevatorPointD = 0;
-
         
-
+        public static final double elevatorSpeed = .5;
     }
 
     public static final class IndexerConstants { //TODO: Update Indexer CAN IDs and Channels

@@ -9,7 +9,6 @@ import edu.wpi.first.wpilibj2.command.Command;
 
 /** An example command that uses an example subsystem. */
 public class ElevatorToSetPointCmd extends Command {
-  @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final ElevatorSubsystem m_elevator;
   private double speed = 0;
   private boolean shouldGoToTop = true;
