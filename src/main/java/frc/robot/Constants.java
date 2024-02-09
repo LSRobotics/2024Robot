@@ -147,13 +147,6 @@ public final class Constants {
 
     public static final class IntakeConstants { // TODO: Update Intake CAN IDs
         public static final int intakeMotorOneID = 0;
-        public static final int intakeMotorTwoID = 0;
-        public static final int intakeDeployID = 0;
-
-        public static final int intakeTopLimitChannel = 0;
-        public static final int intakeBottomLimitChannel = 0;
-
-        public static final int intakeBeamBreakChannel = 0;
     }
 
     public static final class ElevatorConstants { // TODO: Update Elevator CAN IDs
