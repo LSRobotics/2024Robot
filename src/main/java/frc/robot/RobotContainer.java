@@ -35,7 +35,7 @@ public class RobotContainer {
     private final IntakeSubsystem m_intake = new IntakeSubsystem();
     private final IndexerSubsystem m_indexer = new IndexerSubsystem();
     private final WristSubsystem m_wrist = new WristSubsystem();
-    private final Spark m_Blinkin = new Spark(3);
+    private final LEDSubsystem m_leds = new LEDSubsystem();
 
     public static CTREConfigs ctreConfigs = new CTREConfigs();
 
@@ -71,12 +71,12 @@ public class RobotContainer {
         /* Driver Buttons */
         WPI_PigeonIMU gyro = new WPI_PigeonIMU(0); //TODO figure out arm angle/gyro method
         driverController.y().onTrue(new InstantCommand(() -> s_Swerve.zeroHeading()));
-        //driverController.a().onTrue(Commands.parallel(new WristMovementCommand(()-> gyro.getAngle(),()->2, m_wrist), new ShooterRampUpCommand(m_shooter, .7)));
+        driverController.a().onTrue(Commands.parallel(new WristMovementCommand(()->gyro.getAngle(),()->2, m_wrist), new ShooterRampUpCommand(m_shooter, m_leds, .7)));
         //driverController.x().onTrue(new InstantCommand(() -> m_Blinkin.set(-0.87)));
-        driverController.b().whileTrue(new runIntakeCommand(m_intake, m_indexer, IntakeConstants.intakeSpeed));
-        driverController.a().whileTrue(new clearIntakeCommand(m_intake, m_indexer, IntakeConstants.intakeSpeed));
-        driverController.rightBumper().onTrue(new ElevatorToSetPointCmd(m_elevator, ElevatorConstants.elevatorSpeed, true));
-        driverController.leftBumper().onTrue(new ElevatorToSetPointCmd(m_elevator, ElevatorConstants.elevatorSpeed, false));
+        driverController.b().whileTrue(new RunIntakeCommand(m_intake, m_indexer, m_leds, IntakeConstants.intakeSpeed));
+        driverController.a().whileTrue(new ClearIntakeCommand(m_intake, m_indexer, IntakeConstants.intakeSpeed));
+        driverController.rightBumper().onTrue(new ElevatorToSetPointCmd(m_elevator, m_leds, ElevatorConstants.elevatorSpeed, true));
+        driverController.leftBumper().onTrue(new ElevatorToSetPointCmd(m_elevator, m_leds, ElevatorConstants.elevatorSpeed, false));
     }   //TODO connect to april tags
 
     /**

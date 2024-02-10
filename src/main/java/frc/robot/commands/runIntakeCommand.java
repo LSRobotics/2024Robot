@@ -6,25 +6,29 @@ package frc.robot.commands;
 
 import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.IndexerSubsystem;
+import frc.robot.subsystems.LEDSubsystem;
 import frc.robot.Constants.IntakeConstants;
 import frc.robot.Constants.IndexerConstants;
+import frc.robot.Constants.LEDConstants;
 
 import java.io.Console;
 
 import edu.wpi.first.wpilibj2.command.Command;
 
 /** An example command that uses an example subsystem. */
-public class runIntakeCommand extends Command {
+public class RunIntakeCommand extends Command {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final IntakeSubsystem m_intake;
   private final IndexerSubsystem m_indexer;
   private double speed;
+  private final LEDSubsystem m_leds;
  
-  public runIntakeCommand(IntakeSubsystem intake, IndexerSubsystem indexer, double speed) {
+  public RunIntakeCommand(IntakeSubsystem intake, IndexerSubsystem indexer, LEDSubsystem leds, double speed) {
     m_intake = intake;
     m_indexer = indexer;
+    m_leds = leds;
     this.speed = speed;
-    addRequirements(intake, indexer);
+    addRequirements(intake, indexer, leds);
   }
 
   // Called when the command is initially scheduled.
@@ -32,6 +36,7 @@ public class runIntakeCommand extends Command {
   public void initialize() {
     m_intake.runIntake(speed);
     m_indexer.runIndexer(speed);
+    m_leds.runLeds(LEDConstants.colorRed);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -50,6 +55,7 @@ public class runIntakeCommand extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
+    m_leds.runLeds(LEDConstants.colorYellow);
     return false; //m_indexer.notePresent();
   }
 }

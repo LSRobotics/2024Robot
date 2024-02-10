@@ -11,14 +11,14 @@ import frc.robot.Constants.IndexerConstants;
 import edu.wpi.first.wpilibj2.command.Command;
 
 /** An example command that uses an example subsystem. */
-public class clearIntakeCommand extends Command {
+public class ClearIntakeCommand extends Command {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final IntakeSubsystem m_intake;
   private final IndexerSubsystem m_indexer;
   private double speed = 0;
 
  
-  public clearIntakeCommand(IntakeSubsystem intake, IndexerSubsystem indexer, double speed) {
+  public ClearIntakeCommand(IntakeSubsystem intake, IndexerSubsystem indexer, double speed) {
     m_intake = intake;
     m_indexer = indexer;
     this.speed = speed;

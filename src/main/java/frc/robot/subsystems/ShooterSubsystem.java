@@ -8,8 +8,8 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.ShooterConstants;
 
 public class ShooterSubsystem extends SubsystemBase{
-    public CANSparkMax shooterMotorOne;
-    public CANSparkMax shooterMotorTwo;
+    private CANSparkMax shooterMotorOne;
+    private CANSparkMax shooterMotorTwo;
 
     public ShooterSubsystem() {
         shooterMotorOne = new CANSparkMax(ShooterConstants.shooterMotorOneID, MotorType.kBrushless);
