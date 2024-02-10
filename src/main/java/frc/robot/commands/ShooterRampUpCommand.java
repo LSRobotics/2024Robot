@@ -12,7 +12,6 @@ import frc.robot.subsystems.LEDSubsystem;
 
 /** An example command that uses an example subsystem. */
 public class ShooterRampUpCommand extends Command {
-  @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final ShooterSubsystem m_shooter;
   private double speed = 0;
   private final LEDSubsystem m_leds;
