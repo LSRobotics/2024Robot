@@ -36,7 +36,7 @@ public class RobotContainer {
     /* Subsystems */
     private final Swerve s_Swerve = new Swerve();
     private final ShooterSubsystem m_shooter = new ShooterSubsystem();
-    private final Spark m_Blinkin = new Spark(3);
+    private final Spark m_Blinkin = new Spark(Constants.GeneralIDs.blinkinChannel);
 
     public static CTREConfigs ctreConfigs = new CTREConfigs();
 
