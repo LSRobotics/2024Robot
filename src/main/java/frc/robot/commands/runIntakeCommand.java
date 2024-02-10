@@ -7,11 +7,10 @@ package frc.robot.commands;
 import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.IndexerSubsystem;
 import frc.robot.subsystems.LEDSubsystem;
-import frc.robot.Constants.IntakeConstants;
-import frc.robot.Constants.IndexerConstants;
+
 import frc.robot.Constants.LEDConstants;
 
-import java.io.Console;
+
 
 import edu.wpi.first.wpilibj2.command.Command;
 

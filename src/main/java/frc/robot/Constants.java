@@ -202,5 +202,7 @@ public final class Constants {
         public static final double colorTwoAllianceTwo = 0.95;
         public static final double colorBlue = 0.87;
         public static final double colorGold = 0.67;
+        public static final double blinkSpeedDuringClimbUp = 0.8;
+        public static final double blinkSpeedAtTop = 1;
     }
 }

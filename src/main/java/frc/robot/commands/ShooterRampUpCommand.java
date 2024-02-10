@@ -45,12 +45,12 @@ public class ShooterRampUpCommand extends Command {
   @Override
   public void end(boolean interrupted) {
     m_shooter.runShooter(0);
+    m_leds.runLeds(LEDConstants.colorLimeGreen);
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    m_leds.runLeds(LEDConstants.colorLimeGreen);
     return false; //TODO Determine when shooter finished
   }
 }

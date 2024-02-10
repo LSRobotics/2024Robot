@@ -73,14 +73,14 @@ public class RobotContainer {
     private void configureButtonBindings() {
         /* Driver Buttons */
         driverController.y().onTrue(new InstantCommand(() -> s_Swerve.zeroHeading()));
-        driverController.a().onTrue(Commands.parallel(new WristMovementCommand(()->gyro.getAngle(),()->2, m_wrist), new ShooterRampUpCommand(m_shooter, m_leds, .7)));
+        driverController.a().onTrue(Commands.parallel(new WristMovementCommand(()->2, m_wrist), new ShooterRampUpCommand(m_shooter, m_leds, .7)));
         //driverController.x().onTrue(new InstantCommand(() -> m_Blinkin.set(-0.87)));
-        driverController.b().whileTrue(new runIntakeCommand(m_intake, m_indexer, IntakeConstants.intakeSpeed));
-        driverController.a().whileTrue(new clearIntakeCommand(m_intake, m_indexer, IntakeConstants.intakeSpeed));
-        operatorController.povUp().onTrue(new ElevatorToSetPointCmd(m_elevator, ElevatorConstants.elevatorSpeed, true));
-        operatorController.povDown().onTrue(new ElevatorToSetPointCmd(m_elevator, ElevatorConstants.elevatorSpeed, false));
-        operatorController.a().onTrue(Commands.parallel(new ShooterRampUpCommand(m_shooter, ShooterConstants.distanceShotSpeed),
-                                                        new ElevatorToSetPointCmd(m_elevator, ElevatorConstants.elevatorSpeed, true),
+        driverController.b().whileTrue(new RunIntakeCommand(m_intake, m_indexer, m_leds, IntakeConstants.intakeSpeed));
+        driverController.a().whileTrue(new ClearIntakeCommand(m_intake, m_indexer, IntakeConstants.intakeSpeed));
+        operatorController.povUp().onTrue(new ElevatorToSetPointCmd(m_elevator, m_leds, ElevatorConstants.elevatorSpeed, true));
+        operatorController.povDown().onTrue(new ElevatorToSetPointCmd(m_elevator, m_leds, ElevatorConstants.elevatorSpeed, false));
+        operatorController.a().onTrue(Commands.parallel(new ShooterRampUpCommand(m_shooter, m_leds, ShooterConstants.distanceShotSpeed),
+                                                        new ElevatorToSetPointCmd(m_elevator, m_leds, ElevatorConstants.elevatorSpeed, true),
                                                         new WristMovementCommand(()->WristConstants.distanceAngle, m_wrist)));
 
 
