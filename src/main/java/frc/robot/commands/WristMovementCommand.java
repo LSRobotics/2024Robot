@@ -5,7 +5,7 @@
 package frc.robot.commands;
 
 import frc.robot.Constants.ShooterConstants;
-import frc.robot.subsystems.ShooterSubsystem;
+import frc.robot.subsystems.WristSubsystem;
 
 import java.util.function.DoubleSupplier;
 
@@ -16,25 +16,25 @@ import edu.wpi.first.math.controller.PIDController;
 /** An example command that uses an example subsystem. */
 public class WristMovementCommand extends PIDCommand {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
-  private final ShooterSubsystem m_shooter;
+  private final WristSubsystem m_wrist;
 
   /**
    * Creates a new ExampleCommand.
    *
    * @param subsystem The subsystem used by this command.
    */
-  public WristMovementCommand(DoubleSupplier currentAngle, DoubleSupplier targetAngle, ShooterSubsystem shooter) {
+  public WristMovementCommand(DoubleSupplier currentAngle, DoubleSupplier targetAngle, WristSubsystem wrist) {
     super(
       new PIDController(ShooterConstants.wristP, ShooterConstants.wristI, ShooterConstants.wristD),
       currentAngle,
       targetAngle,
-      output -> shooter.setWrist(output),
-      shooter);
-    m_shooter = shooter;
+      output -> wrist.setWrist(output),
+      wrist);
+    m_wrist = wrist;
 
     getController().setTolerance(ShooterConstants.wristPosTolerance, ShooterConstants.wristVelTolerance);
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(shooter);
+    addRequirements(wrist);
   }
 
   // Called when the command is initially scheduled.
