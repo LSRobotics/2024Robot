@@ -15,7 +15,7 @@ import frc.lib.util.SwerveModuleConstants;
 public final class Constants {
     public static final double stickDeadband = 0.1;
 
-    public static final class Swerve {
+    public static final class SwerveConstants {
         public static final int pigeonID = 1;
 
         public static final COTSTalonFXSwerveConstants chosenModule =  // TODO: This must be tuned to specific robot
@@ -146,28 +146,29 @@ public final class Constants {
     }
 
     public static final class IntakeConstants { // TODO: Update Intake CAN IDs
-        public static final int intakeMotorOneID = 0;
+        public static final int intakeMotorOneID = 13;
+        public static final double intakeSpeed = 0.8;
     }
 
     public static final class ElevatorConstants { // TODO: Update Elevator CAN IDs
-        public static final int rightElevatorMotorID = 0;
-        public static final int leftElevatorMotorID = 0;
+        public static final int rightElevatorMotorID = 95;
+        public static final int leftElevatorMotorID = 96;
 
-        public static final int elevatorTopLimitChannel = 0;
-        public static final int elevatorBottomLimitChannel = 0;
+        public static final int elevatorTopLimitChannel = 5;
+        public static final int elevatorBottomLimitChannel = 6;
     }
 
     public static final class IndexerConstants { // TODO: Update Indexer CAN IDs and Channels
-        public static final int indexMotorID = 0;
-        public static final int indexBeamBreakChannel = 0;
+        public static final int indexMotorID = 11;
+        public static final int indexBeamBreakChannel = 7;
     }
 
     public static final class ShooterConstants {
-        public static final int shooterMotorOneID = 0;
-        public static final int shooterMotorTwoID = 0;
-        public static final int wristMotorID = 0;
-        public static final int wristLimitOneChannel = 0;
-        public static final int wristLimitTwoChannel = 0;
+        public static final int shooterMotorOneID = 99;
+        public static final int shooterMotorTwoID = 98;
+        public static final int wristMotorID = 97;
+        public static final int wristLimitOneChannel = 9;
+        public static final int wristLimitTwoChannel = 8;
         public static final int subwofferAngle = 75;
         public static final int ampAngle = 85;
         public static final double wristP = 0;

@@ -18,6 +18,6 @@ public class IntakeSubsystem extends SubsystemBase {
   }
   
   public void runIntake(double speed) {
-    intakeMotorOne.set(speed);
+    intakeMotorOne.set(-speed);
   }
 }

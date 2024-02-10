@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.motorcontrol.Spark;
 
 import frc.robot.commands.*;
 import frc.robot.subsystems.*;
+import frc.robot.Constants.*;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -29,6 +30,9 @@ public class RobotContainer {
     /* Subsystems */
     private final Swerve s_Swerve = new Swerve();
     private final ShooterSubsystem m_shooter = new ShooterSubsystem();
+    private final IntakeSubsystem m_intake = new IntakeSubsystem();
+    private final IndexerSubsystem m_indexer = new IndexerSubsystem();
+    private final WristSubsystem m_wrist = new WristSubsystem();
     private final Spark m_Blinkin = new Spark(3);
 
     public static CTREConfigs ctreConfigs = new CTREConfigs();
@@ -65,8 +69,10 @@ public class RobotContainer {
         /* Driver Buttons */
         WPI_PigeonIMU gyro = new WPI_PigeonIMU(0); //TODO figure out arm angle/gyro method
         driverController.y().onTrue(new InstantCommand(() -> s_Swerve.zeroHeading()));
-        driverController.a().onTrue(Commands.parallel(new WristMovementCommand(()-> gyro.getAngle(),()->2,m_shooter), new ShooterRampUpCommand(m_shooter, .7)));
-        driverController.x().onTrue(new InstantCommand(() -> m_Blinkin.set(-0.87)));
+        //driverController.a().onTrue(Commands.parallel(new WristMovementCommand(()-> gyro.getAngle(),()->2, m_wrist), new ShooterRampUpCommand(m_shooter, .7)));
+        //driverController.x().onTrue(new InstantCommand(() -> m_Blinkin.set(-0.87)));
+        driverController.b().whileTrue(new runIntakeCommand(m_intake, m_indexer, IntakeConstants.intakeSpeed));
+        driverController.a().whileTrue(new clearIntakeCommand(m_intake, m_indexer, IntakeConstants.intakeSpeed));
     }   //TODO connect to april tags
 
     /**

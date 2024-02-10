@@ -8,6 +8,9 @@ import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.IndexerSubsystem;
 import frc.robot.Constants.IntakeConstants;
 import frc.robot.Constants.IndexerConstants;
+
+import java.io.Console;
+
 import edu.wpi.first.wpilibj2.command.Command;
 
 /** An example command that uses an example subsystem. */
@@ -15,8 +18,7 @@ public class runIntakeCommand extends Command {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final IntakeSubsystem m_intake;
   private final IndexerSubsystem m_indexer;
-  private double speed = 0;
-
+  private double speed;
  
   public runIntakeCommand(IntakeSubsystem intake, IndexerSubsystem indexer, double speed) {
     m_intake = intake;
@@ -42,12 +44,12 @@ public class runIntakeCommand extends Command {
   @Override
   public void end(boolean interrupted) {
      m_intake.runIntake(0);
-    m_indexer.runIndexer(0);
+     m_indexer.runIndexer(0);
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return m_indexer.notePresent();
+    return false; //m_indexer.notePresent();
   }
 }
