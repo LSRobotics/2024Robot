@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj.motorcontrol.Spark;
+import frc.lib.util.COTSTalonFXSwerveConstants.WCP.SwerveXStandard.driveRatios;
 import frc.robot.Constants;
 import frc.robot.Constants.ElevatorConstants;
 import frc.robot.commands.*;
@@ -26,7 +27,9 @@ import frc.robot.Constants.*;
 public class RobotContainer {
     /* Controllers */
     private final CommandXboxController driverController = new CommandXboxController(0);
+    private final CommandXboxController operatorController = new CommandXboxController(1);
     private final SendableChooser<Command> autoChooser;
+    
 
     /* Subsystems */
     private final Swerve s_Swerve = new Swerve();
@@ -69,14 +72,18 @@ public class RobotContainer {
      */
     private void configureButtonBindings() {
         /* Driver Buttons */
-        WPI_PigeonIMU gyro = new WPI_PigeonIMU(0); //TODO figure out arm angle/gyro method
         driverController.y().onTrue(new InstantCommand(() -> s_Swerve.zeroHeading()));
         //driverController.a().onTrue(Commands.parallel(new WristMovementCommand(()-> gyro.getAngle(),()->2, m_wrist), new ShooterRampUpCommand(m_shooter, .7)));
         //driverController.x().onTrue(new InstantCommand(() -> m_Blinkin.set(-0.87)));
         driverController.b().whileTrue(new runIntakeCommand(m_intake, m_indexer, IntakeConstants.intakeSpeed));
         driverController.a().whileTrue(new clearIntakeCommand(m_intake, m_indexer, IntakeConstants.intakeSpeed));
-        driverController.rightBumper().onTrue(new ElevatorToSetPointCmd(m_elevator, ElevatorConstants.elevatorSpeed, true));
-        driverController.leftBumper().onTrue(new ElevatorToSetPointCmd(m_elevator, ElevatorConstants.elevatorSpeed, false));
+        operatorController.povUp().onTrue(new ElevatorToSetPointCmd(m_elevator, ElevatorConstants.elevatorSpeed, true));
+        operatorController.povDown().onTrue(new ElevatorToSetPointCmd(m_elevator, ElevatorConstants.elevatorSpeed, false));
+        operatorController.a().onTrue(Commands.parallel(new ShooterRampUpCommand(m_shooter, ShooterConstants.distanceShotSpeed),
+                                                        new ElevatorToSetPointCmd(m_elevator, ElevatorConstants.elevatorSpeed, true),
+                                                        new WristMovementCommand(()->WristConstants.distanceAngle, m_wrist)));
+
+
     }   //TODO connect to april tags
 
     /**

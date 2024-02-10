@@ -168,11 +168,18 @@ public final class Constants {
     public static final class ShooterConstants {
         public static final int shooterMotorOneID = 99;
         public static final int shooterMotorTwoID = 98;
+        public static final double distanceShotSpeed = .9;
+        public static final double ampShotSpeed = .4;
+        public static final double subwofferShotSpeed = .4;
+    }
+
+    public static final class WristConstants {
         public static final int wristMotorID = 97;
         public static final int wristLimitOneChannel = 9;
         public static final int wristLimitTwoChannel = 8;
         public static final int subwofferAngle = 75;
         public static final int ampAngle = 85;
+        public static final int distanceAngle = 60;
         public static final double wristP = 0;
         public static final double wristI = 0;
         public static final double wristD = 0;
