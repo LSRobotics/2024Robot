@@ -4,6 +4,7 @@ import com.ctre.phoenix.sensors.WPI_PigeonIMU;
 import com.pathplanner.lib.auto.AutoBuilder;
 
 import edu.wpi.first.wpilibj.GenericHID;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -11,6 +12,8 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj.motorcontrol.Spark;
+
+
 
 import frc.robot.commands.*;
 import frc.robot.subsystems.*;
@@ -25,6 +28,10 @@ public class RobotContainer {
     /* Controllers */
     private final CommandXboxController driverController = new CommandXboxController(0);
     private final SendableChooser<Command> autoChooser;
+
+    private final VisionSubsystem m_vision = new VisionSubsystem();
+
+    private final IntakeSubsystem m_IntakeSubsystem = new IntakeSubsystem();
 
     /* Subsystems */
     private final Swerve s_Swerve = new Swerve();
@@ -63,10 +70,11 @@ public class RobotContainer {
      */
     private void configureButtonBindings() {
         /* Driver Buttons */
-        WPI_PigeonIMU gyro = new WPI_PigeonIMU(0); //TODO figure out arm angle/gyro method
+        WPI_PigeonIMU gyro = new WPI_PigeonIMU(0); //TODO figure out arm angle/gyro method                       
         driverController.y().onTrue(new InstantCommand(() -> s_Swerve.zeroHeading()));
-        driverController.a().onTrue(Commands.parallel(new WristMovementCommand(()-> gyro.getAngle(),()->2,m_shooter), new ShooterRampUpCommand(m_shooter, .7)));
+        driverController.a().onTrue(Commands.parallel(new WristMovementCommand(()-> gyro.getAngle(),()->(m_vision.getTy()),m_shooter), new ShooterRampUpCommand(m_shooter, .7)));
         driverController.x().onTrue(new InstantCommand(() -> m_Blinkin.set(-0.87)));
+        driverController.b().onTrue(Commands.runOnce(() -> m_IntakeSubsystem.setPower(0.5)));
     }   //TODO connect to april tags
 
     /**
