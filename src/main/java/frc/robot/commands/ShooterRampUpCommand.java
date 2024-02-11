@@ -39,13 +39,23 @@ public class ShooterRampUpCommand extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    /*if () {
+      if ((int) (System.currentTimeMillis()/1000/LEDConstants.blinkSpeedShooterRampedUp) % 2 == 0) {
+        m_leds.runLeds(LEDConstants.colorLimeGreen);
+      }
+      else {
+        m_leds.runLeds(LEDConstants.colorDarkGreen);
+      }
+    }
+    else {
+      m_leds.runLeds(LEDConstants.colorSkyBlue);
+    }*/
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
     m_shooter.runShooter(0);
-    m_leds.runLeds(LEDConstants.colorLimeGreen);
   }
 
   // Returns true when the command should end.

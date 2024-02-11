@@ -196,6 +196,8 @@ public final class Constants {
         public static final double colorWhite = 0.93;
         public static final double colorLimeGreen = 0.73;
         public static final double colorOrange = 0.65;
+        public static final double colorDarkGreen = 0.75;
+        public static final double colorLawnGreen = 0.71;
         public static final double colorOneAllianceOne = 0.99;
         public static final double colorTwoAllianceOne = 0.95;
         public static final double colorOneAllianceTwo = 0.99;
@@ -204,5 +206,9 @@ public final class Constants {
         public static final double colorGold = 0.67;
         public static final double blinkSpeedDuringClimbUp = 0.8;
         public static final double blinkSpeedAtTop = 1;
+        public static final double blinkSpeedShooterRampedUp = 0.4;
+        public static final double rpmFarShot = 0;
+        public static final double rpmCloseShot = 0;
+        public static final double rpmAmpShot = 0;
     }
 }
