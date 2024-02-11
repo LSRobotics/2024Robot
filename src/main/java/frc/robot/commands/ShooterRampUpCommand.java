@@ -44,7 +44,7 @@ public class ShooterRampUpCommand extends Command {
         m_leds.runLeds(LEDConstants.colorLimeGreen);
       }
       else {
-        m_leds.runLeds(LEDConstants.colorDarkGreen);
+        m_leds.runLeds(LEDConstants.colorDarkGreen)
       }
     }
     else {
