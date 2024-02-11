@@ -55,8 +55,8 @@ public class RobotContainer {
             )
         );
 
-        autoChooser = AutoBuilder.buildAutoChooser();
-        SmartDashboard.putData("AutoChooser", autoChooser);
+    autoChooser = AutoBuilder.buildAutoChooser();
+    SmartDashboard.putData("AutoChooser", autoChooser);
 
         //NamedCommands.registerCommand("autoBalance", swerve.autoBalanceCommand());
 
@@ -94,7 +94,7 @@ public class RobotContainer {
      * @return the command to run in autonomous
      */
     public Command getAutonomousCommand() {
-        // An ExampleCommand will run in autonomous
+        //An ExampleCommand will run in autonomous
         return autoChooser.getSelected();
     }
 }
