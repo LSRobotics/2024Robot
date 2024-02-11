@@ -73,7 +73,7 @@ public class RobotContainer {
     private void configureButtonBindings() {
         /* Driver Buttons */
         driverController.y().onTrue(new InstantCommand(() -> s_Swerve.zeroHeading()));
-        driverController.a().onTrue(Commands.parallel(new WristMovementCommand(()->2, m_wrist), new ShooterRampUpCommand(m_shooter, m_leds, .7)));
+        //driverController.a().onTrue(Commands.parallel(new WristMovementCommand(()->2, m_wrist), new ShooterRampUpCommand(m_shooter, m_leds, .7)));
         //driverController.x().onTrue(new InstantCommand(() -> m_Blinkin.set(-0.87)));
         driverController.b().whileTrue(new RunIntakeCommand(m_intake, m_indexer, m_leds, IntakeConstants.intakeSpeed));
         driverController.a().whileTrue(new ClearIntakeCommand(m_intake, m_indexer, IntakeConstants.intakeSpeed));
@@ -81,7 +81,9 @@ public class RobotContainer {
         operatorController.povDown().onTrue(new ElevatorToSetPointCmd(m_elevator, m_leds, ElevatorConstants.elevatorSpeed, false));
         operatorController.a().onTrue(Commands.parallel(new ShooterRampUpCommand(m_shooter, m_leds, ShooterConstants.distanceShotSpeed),
                                                         new ElevatorToSetPointCmd(m_elevator, m_leds, ElevatorConstants.elevatorSpeed, true),
-                                                        new WristMovementCommand(()->WristConstants.distanceAngle, m_wrist)));
+                                                        new WristMovementCommand(()-> WristConstants.distanceAngle, m_wrist)));
+        operatorController.rightTrigger().onTrue(new PassToShooterCmd(m_indexer, m_leds, 0.6));
+        
 
 
     }   //TODO connect to april tags

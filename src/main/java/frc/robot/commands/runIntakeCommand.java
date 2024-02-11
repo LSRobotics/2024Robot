@@ -55,6 +55,6 @@ public class RunIntakeCommand extends Command {
   @Override
   public boolean isFinished() {
     m_leds.runLeds(LEDConstants.colorYellow);
-    return false; //m_indexer.notePresent();
+    return m_indexer.notePresent();
   }
 }

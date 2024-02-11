@@ -4,7 +4,6 @@
 
 package frc.robot.commands;
 
-import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.IndexerSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.LEDSubsystem;
@@ -12,25 +11,28 @@ import frc.robot.Constants.LEDConstants;
 
 /** An example command that uses an example subsystem. */
 public class PassToShooterCmd extends Command {
-  private final IndexerSubsystem m_index;
+  private final IndexerSubsystem m_indexer;
   private final LEDSubsystem m_leds;
+  double speed = 0;
 
   /**
    * Creates a new ExampleCommand.
    *
    * @param subsystem The subsystem used by this command.
    */
-  public PassToShooterCmd(IndexerSubsystem indexsubsystem, LEDSubsystem leds) {
-    m_index = indexsubsystem;
+  public PassToShooterCmd(IndexerSubsystem indexer, LEDSubsystem leds, double speed) {
+    m_indexer = indexer;
     m_leds = leds;
+    this.speed = speed;
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(indexsubsystem, leds);
+    addRequirements(indexer, leds);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
     m_leds.runLeds(LEDConstants.colorBlueViolet);
+    m_indexer.runIndexer(this.speed);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -41,6 +43,7 @@ public class PassToShooterCmd extends Command {
   @Override
   public void end(boolean interrupted) {
     m_leds.runLeds(LEDConstants.colorWhite);
+    m_indexer.indexMotor.set(0);
   }
 
   // Returns true when the command should end.
