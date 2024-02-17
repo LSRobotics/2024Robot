@@ -163,13 +163,13 @@ public final class Constants {
     }
 
     public static final class IndexerConstants { // TODO: Update Indexer CAN IDs and Channels
-        public static final int indexMotorID = 11;
+        public static final int indexMotorID = 32;
         public static final int indexBeamBreakChannel = 7;
     }
 
     public static final class ShooterConstants {
-        public static final int shooterMotorOneID = 99;
-        public static final int shooterMotorTwoID = 98;
+        public static final int shooterMotorOneID = 21;
+        public static final int shooterMotorTwoID = 33;
         public static final double distanceShotSpeed = .9;
         public static final double ampShotSpeed = .4;
         public static final double subwofferShotSpeed = .4;
