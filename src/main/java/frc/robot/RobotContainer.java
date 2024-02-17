@@ -2,8 +2,11 @@ package frc.robot;
 
 import com.ctre.phoenix.sensors.WPI_PigeonIMU;
 import com.pathplanner.lib.auto.AutoBuilder;
+import com.pathplanner.lib.auto.NamedCommands;
+import com.pathplanner.lib.commands.PathPlannerAuto;
 
 import edu.wpi.first.wpilibj.GenericHID;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -13,7 +16,6 @@ import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj.motorcontrol.Spark;
 import frc.lib.util.COTSTalonFXSwerveConstants.WCP.SwerveXStandard.driveRatios;
 import frc.robot.Constants;
-import frc.robot.Constants.ElevatorConstants;
 import frc.robot.commands.*;
 import frc.robot.subsystems.*;
 import frc.robot.Constants.*;
@@ -55,8 +57,11 @@ public class RobotContainer {
             )
         );
 
-    autoChooser = AutoBuilder.buildAutoChooser();
-    SmartDashboard.putData("AutoChooser", autoChooser);
+        NamedCommands.registerCommand("ShooterRampUp", new ShooterRampUpCommand(m_shooter, m_leds, ShooterConstants.distanceShotSpeed));
+        NamedCommands.registerCommand("Intake", new RunIntakeCommand(m_intake, m_indexer, m_leds, IntakeConstants.intakeSpeed));
+
+        autoChooser = AutoBuilder.buildAutoChooser();
+        SmartDashboard.putData("AutoChooser", autoChooser);
 
         //NamedCommands.registerCommand("autoBalance", swerve.autoBalanceCommand());
 
@@ -93,8 +98,35 @@ public class RobotContainer {
      *
      * @return the command to run in autonomous
      */
-    public Command getAutonomousCommand() {
-        //An ExampleCommand will run in autonomous
+    public Command getBlue1AutonomousCommand() {
+        return new PathPlannerAuto("Blue 1");
+    }
+
+    public Command getBlue2AutonomousCommand() {
+        return new PathPlannerAuto("Blue 2");
+    }
+
+    public Command getBlue3AutonomousCommand() {
+        return new PathPlannerAuto("Blue 3");
+    }
+
+    public Command getRed1AutonomousCommand() {
+        return new PathPlannerAuto("Red 1");
+    }
+
+    public Command getRed2AutonomousCommand() {
+        return new PathPlannerAuto("Red 2");
+    }
+
+    public Command getRed3AutonomousCommand() {
+        return new PathPlannerAuto("Red 3");
+    }
+
+    public Command getChosenAutonomousCommand() {
         return autoChooser.getSelected();
     }
 }
+
+
+   
+

@@ -15,7 +15,12 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
  * project.
  */
 public class Robot extends TimedRobot {
-  private Command m_autonomousCommand;
+  private Command m_Blue1Command;
+  private Command m_Blue2Command;
+  private Command m_Blue3Command;
+  private Command m_Red1Command;
+  private Command m_Red2Command;
+  private Command m_Red3Command;
 
   private RobotContainer m_robotContainer;
 
@@ -57,13 +62,37 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousInit() {
     
-    m_autonomousCommand = m_robotContainer.getAutonomousCommand();
+    m_Blue1Command = m_robotContainer.getBlue1AutonomousCommand();
+    m_Blue2Command = m_robotContainer.getBlue2AutonomousCommand();
+    m_Blue3Command = m_robotContainer.getBlue3AutonomousCommand();
+    m_Red1Command = m_robotContainer.getRed1AutonomousCommand();
+    m_Red2Command = m_robotContainer.getRed2AutonomousCommand();
+    m_Red3Command = m_robotContainer.getRed3AutonomousCommand();
 
     // schedule the autonomous command (example)
-    if (m_autonomousCommand != null) {
-      m_autonomousCommand.schedule();
+    if (m_Blue1Command != null) {
+      m_Blue1Command.schedule();
+    }
+
+    if (m_Blue2Command != null) {
+      m_Blue2Command.schedule();
     }
     
+    if (m_Blue3Command != null) {
+      m_Blue3Command.schedule();
+    }
+
+    if (m_Red1Command != null) {
+      m_Red1Command.schedule();
+    }
+
+    if (m_Red2Command != null) {
+      m_Red2Command.schedule();
+    }
+
+    if (m_Red3Command != null) {
+      m_Red3Command.schedule();
+    }
   }
 
   /** This function is called periodically during autonomous. */
@@ -76,8 +105,28 @@ public class Robot extends TimedRobot {
     // teleop starts running. If you want the autonomous to
     // continue until interrupted by another command, remove
     // this line or comment it out.
-    if (m_autonomousCommand != null) {
-      m_autonomousCommand.cancel();
+   if (m_Blue1Command != null) {
+      m_Blue1Command.cancel();
+    }
+
+    if (m_Blue2Command != null) {
+      m_Blue2Command.cancel();
+    }
+    
+    if (m_Blue3Command != null) {
+      m_Blue3Command.cancel();
+    }
+
+    if (m_Red1Command != null) {
+      m_Red1Command.cancel();
+    }
+
+    if (m_Red2Command != null) {
+      m_Red2Command.cancel();
+    }
+
+    if (m_Red3Command != null) {
+      m_Red3Command.cancel();
     }
   }
 

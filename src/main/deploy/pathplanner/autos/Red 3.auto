@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 2,
-      "y": 2
+      "x": 15.062107239955221,
+      "y": 1.9829631511114874
     },
-    "rotation": 0
+    "rotation": -179.82352938065196
   },
   "command": {
     "type": "sequential",
@@ -14,7 +14,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Example Path"
+            "pathName": "2-Note Speaker (R3)"
           }
         }
       ]
