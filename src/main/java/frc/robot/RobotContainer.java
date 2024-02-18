@@ -59,6 +59,7 @@ public class RobotContainer {
 
         NamedCommands.registerCommand("ShooterRampUp", new ShooterRampUpCommand(m_shooter, m_leds, ShooterConstants.distanceShotSpeed));
         NamedCommands.registerCommand("Intake", new RunIntakeCommand(m_intake, m_indexer, m_leds, IntakeConstants.intakeSpeed));
+        NamedCommands.registerCommand("PassToShooter", new PassToShooterCmd(m_indexer, m_leds, IndexerConstants.indexSpeed));
 
         autoChooser = AutoBuilder.buildAutoChooser();
         SmartDashboard.putData("AutoChooser", autoChooser);
@@ -87,7 +88,7 @@ public class RobotContainer {
         operatorController.a().onTrue(Commands.parallel(new ShooterRampUpCommand(m_shooter, m_leds, ShooterConstants.distanceShotSpeed),
                                                         new ElevatorToSetPointCmd(m_elevator, m_leds, ElevatorConstants.elevatorSpeed, true),
                                                         new WristMovementCommand(()-> WristConstants.distanceAngle, m_wrist)));
-        operatorController.rightTrigger().onTrue(new PassToShooterCmd(m_indexer, m_leds, 0.6));
+        operatorController.rightTrigger().onTrue(new PassToShooterCmd(m_indexer, m_leds, IndexerConstants.indexSpeed));
         
 
 

@@ -151,8 +151,8 @@ public final class Constants {
     }
 
     public static final class ElevatorConstants { // TODO: Update Elevator CAN IDs
-        public static final int rightElevatorMotorID = 95;
-        public static final int leftElevatorMotorID = 96;
+        public static final int rightElevatorMotorID = 52;
+        public static final int leftElevatorMotorID = 53;
 
         public static final int elevatorTopLimitChannel = 5;
         public static final int elevatorBottomLimitChannel = 6;
@@ -163,6 +163,7 @@ public final class Constants {
     public static final class IndexerConstants { // TODO: Update Indexer CAN IDs and Channels
         public static final int indexMotorID = 11;
         public static final int indexBeamBreakChannel = 7;
+        public static final double indexSpeed = 0.25;
     }
 
     public static final class ShooterConstants {

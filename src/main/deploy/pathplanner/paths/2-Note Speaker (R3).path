@@ -16,32 +16,16 @@
     },
     {
       "anchor": {
-        "x": 14.0,
-        "y": 4.205661036322073
-      },
-      "prevControl": {
-        "x": 14.422128375796103,
-        "y": 3.458565873150265
-      },
-      "nextControl": {
-        "x": 13.577871624203897,
-        "y": 4.952756199493882
-      },
-      "isLocked": false,
-      "linkedName": null
-    },
-    {
-      "anchor": {
         "x": 14.657521472450352,
-        "y": 5.1952423117809206
+        "y": 4.3004978880328135
       },
       "prevControl": {
-        "x": 14.71310635501407,
-        "y": 4.980124809352629
+        "x": 15.079649848246454,
+        "y": 3.553402724861005
       },
       "nextControl": {
-        "x": 14.601936589886634,
-        "y": 5.410359814209212
+        "x": 14.23539309665425,
+        "y": 5.047593051204622
       },
       "isLocked": false,
       "linkedName": null
@@ -79,22 +63,81 @@
   "rotationTargets": [
     {
       "waypointRelativePos": 1,
-      "rotationDegrees": -163.71380181477244,
+      "rotationDegrees": -141.5217833827146,
       "rotateFast": false
     },
     {
-      "waypointRelativePos": 2,
-      "rotationDegrees": 5.751655281767849,
-      "rotateFast": false
-    },
-    {
-      "waypointRelativePos": 3,
+      "waypointRelativePos": 2.0,
       "rotationDegrees": 171.64689058647832,
       "rotateFast": false
     }
   ],
   "constraintZones": [],
-  "eventMarkers": [],
+  "eventMarkers": [
+    {
+      "name": "First Shot",
+      "waypointRelativePos": 1.0,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "wait",
+              "data": {
+                "waitTime": 2.0
+              }
+            },
+            {
+              "type": "named",
+              "data": {
+                "name": "ShooterRampUp"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Second Note",
+      "waypointRelativePos": 2.0,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "wait",
+              "data": {
+                "waitTime": 2.0
+              }
+            },
+            {
+              "type": "named",
+              "data": {
+                "name": "Intake"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Second Shot",
+      "waypointRelativePos": 3.0,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "ShooterRampUp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
   "globalConstraints": {
     "maxVelocity": 3.0,
     "maxAcceleration": 3.0,
@@ -103,7 +146,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -23.6644750950033,
+    "rotation": 155.47840413538003,
     "rotateFast": false
   },
   "reversed": false,
