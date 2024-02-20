@@ -44,6 +44,8 @@ public class RobotContainer {
 
     public static CTREConfigs ctreConfigs = new CTREConfigs();
 
+    public static SendableChooser<Command> autoChooser = new SendableChooser<Command>();
+
 
     /** The container for the robot. Contains subsystems, OI devices, and commands. */
     public RobotContainer() {
@@ -57,8 +59,8 @@ public class RobotContainer {
             )
         );
 
-        NamedCommands.registerCommand("ShooterRampUp", new ShooterRampUpCommand(m_shooter, m_leds, ShooterConstants.distanceShotSpeed));
-        NamedCommands.registerCommand("Intake", new RunIntakeCommand(m_intake, m_indexer, m_leds, IntakeConstants.intakeSpeed));
+        NamedCommands.registerCommand("ShooterRampUp", new ShooterRampUpCommand(m_shooter, m_indexer, m_leds, ShooterConstants.distanceShotSpeed));
+        NamedCommands.registerCommand("Intake", new RunIntakeCommand(m_intake, m_indexer, m_leds, IntakeConstants.intakeSpeed, IndexerConstants.indexSpeed));
         NamedCommands.registerCommand("PassToShooter", new PassToShooterCmd(m_indexer, m_leds, IndexerConstants.indexSpeed));
 
         autoChooser = AutoBuilder.buildAutoChooser();
@@ -129,7 +131,6 @@ public class RobotContainer {
     public Command getChosenAutonomousCommand() {
         return autoChooser.getSelected();
     }
-    */
 }
 
 
