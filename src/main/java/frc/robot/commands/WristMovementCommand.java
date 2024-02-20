@@ -6,17 +6,19 @@ package frc.robot.commands;
 
 import frc.robot.Constants.WristConstants;
 import frc.robot.subsystems.WristSubsystem;
+import frc.robot.subsystems.VisionSubsystem;
 
 import java.util.function.DoubleSupplier;
 
 import edu.wpi.first.wpilibj2.command.PIDCommand;
 import edu.wpi.first.math.controller.PIDController;
 
+
 /** An example command that uses an example subsystem. */
 public class WristMovementCommand extends PIDCommand {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final WristSubsystem m_wrist;
-
+  
   /**
    * Creates a new ExampleCommand.
    *
@@ -30,10 +32,12 @@ public class WristMovementCommand extends PIDCommand {
       output -> wrist.setWrist(output),
       wrist);
     m_wrist = wrist;
+   
 
     getController().setTolerance(WristConstants.wristPosTolerance, WristConstants.wristVelTolerance);
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(wrist);
+    
   }
 
   // Called when the command is initially scheduled.

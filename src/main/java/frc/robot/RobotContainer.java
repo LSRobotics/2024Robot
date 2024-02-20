@@ -79,10 +79,10 @@ public class RobotContainer {
         driverController.a().whileTrue(new ClearIntakeCommand(m_intake, m_indexer, IntakeConstants.intakeSpeed));
         //operatorController.povUp().onTrue(new ElevatorToSetPointCmd(m_elevator, m_leds, ElevatorConstants.elevatorSpeed, true));
         //operatorController.povDown().onTrue(new ElevatorToSetPointCmd(m_elevator, m_leds, ElevatorConstants.elevatorSpeed, false));
-        operatorController.b().onTrue(Commands.parallel(new ShooterRampUpCommand(m_shooter, m_leds, 0.6),
+        operatorController.b().onTrue(Commands.parallel(new ShooterRampUpCommand(m_shooter, m_indexer, m_leds, 0.6),
                                                         //new ElevatorToSetPointCmd(m_elevator, m_leds, ElevatorConstants.elevatorSpeed, true),
                                                         new WristMovementCommand(()-> WristConstants.distanceAngle, m_wrist)));
-        operatorController.a().onTrue(Commands.parallel(new ShooterRampUpCommand(m_shooter, m_leds, ShooterConstants.distanceShotSpeed),
+        operatorController.a().onTrue(Commands.parallel(new ShooterRampUpCommand(m_shooter, m_indexer, m_leds, ShooterConstants.distanceShotSpeed),
                                                         //new ElevatorToSetPointCmd(m_elevator, m_leds, ElevatorConstants.elevatorSpeed, true),
                                                         new WristMovementCommand(()-> WristConstants.distanceAngle, m_wrist)));
         operatorController.rightTrigger().onTrue(new PassToShooterCmd(m_indexer, m_leds, 0.6));

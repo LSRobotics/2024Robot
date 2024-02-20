@@ -7,19 +7,23 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.ShooterConstants;
 
 
-import com.ctre.phoenix.motorcontrol.NeutralMode;
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+//import com.ctre.phoenix.motorcontrol.NeutralMode;
+//import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+//import com.ctre.phoenix.motorcontrol.can.TalonFX;
+
+//import com.ctre.phoenix6.hardware.core.CoreTalonFX;
+import com.ctre.phoenix6.hardware.TalonFX;
 
 public class ShooterSubsystem extends SubsystemBase{
-    private WPI_TalonSRX shooterMotorOne;
-    private WPI_TalonSRX shooterMotorTwo;
+    private TalonFX shooterMotorOne;
+    private TalonFX shooterMotorTwo;
 
     public ShooterSubsystem() {
         //shooterMotorOne = new CANSparkMax(ShooterConstants.shooterMotorOneID, MotorType.kBrushless);
         //shooterMotorTwo = new CANSparkMax(ShooterConstants.shooterMotorTwoID, MotorType.kBrushless);
 
-        shooterMotorOne = new WPI_TalonSRX(ShooterConstants.shooterMotorOneID);
-        shooterMotorOne = new WPI_TalonSRX(ShooterConstants.shooterMotorTwoID);
+        shooterMotorOne = new TalonFX(ShooterConstants.shooterMotorOneID);
+        shooterMotorTwo = new TalonFX(ShooterConstants.shooterMotorTwoID);
 
 
     }
