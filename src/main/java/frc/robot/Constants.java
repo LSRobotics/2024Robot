@@ -154,8 +154,8 @@ public final class Constants {
 
     public static final class ElevatorConstants { // TODO: Update Elevator CAN IDs
         public static final int 
-        rightElevatorMotorID = 95;
-        public static final int leftElevatorMotorID = 96;
+        rightElevatorMotorID = 16;
+        public static final int leftElevatorMotorID = 17;
 
         public static final int elevatorTopLimitChannel = 5;
         public static final int elevatorBottomLimitChannel = 6;
@@ -178,7 +178,7 @@ public final class Constants {
     }
 
     public static final class WristConstants {
-        public static final int wristMotorID = 97;
+        public static final int wristMotorID = 15;
         public static final int wristLimitOneChannel = 9;
         public static final int wristLimitTwoChannel = 8;
         public static final int subwofferAngle = 75;
