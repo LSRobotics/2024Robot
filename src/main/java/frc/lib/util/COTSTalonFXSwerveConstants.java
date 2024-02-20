@@ -307,5 +307,3 @@ public class COTSTalonFXSwerveConstants {
         }
     }
 }
-
-  

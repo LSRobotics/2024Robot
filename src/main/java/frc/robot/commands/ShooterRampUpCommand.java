@@ -9,10 +9,12 @@ import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants.LEDConstants;
 import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.LEDSubsystem;
+import frc.robot.subsystems.IndexerSubsystem;
 
 /** An example command that uses an example subsystem. */
 public class ShooterRampUpCommand extends Command {
   private final ShooterSubsystem m_shooter;
+  private final IndexerSubsystem m_index;
   private double speed = 0;
   private final LEDSubsystem m_leds;
 
@@ -21,8 +23,9 @@ public class ShooterRampUpCommand extends Command {
    *
    * @param subsystem The subsystem used by this command.
    */
-  public ShooterRampUpCommand(ShooterSubsystem shooter, LEDSubsystem leds, double speed) {
+  public ShooterRampUpCommand(ShooterSubsystem shooter, IndexerSubsystem index, LEDSubsystem leds, double speed) {
     m_shooter = shooter;
+    m_index = index;
     m_leds = leds;
     this.speed = speed;
     // Use addRequirements() here to declare subsystem dependencies.
@@ -61,6 +64,7 @@ public class ShooterRampUpCommand extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false; //TODO Determine when shooter finished
+    //return false; //TODO Determine when shooter finished
+    return !m_index.notePresent();
   }
 }

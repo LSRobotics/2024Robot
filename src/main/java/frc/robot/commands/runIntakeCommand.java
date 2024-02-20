@@ -16,17 +16,19 @@ import edu.wpi.first.wpilibj2.command.Command;
 
 /** An example command that uses an example subsystem. */
 public class RunIntakeCommand extends Command {
-  @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final IntakeSubsystem m_intake;
   private final IndexerSubsystem m_indexer;
   private double speed;
+  private double indexSpeed;
   private final LEDSubsystem m_leds;
  
-  public RunIntakeCommand(IntakeSubsystem intake, IndexerSubsystem indexer, LEDSubsystem leds, double speed) {
+  public RunIntakeCommand(IntakeSubsystem intake, IndexerSubsystem indexer, LEDSubsystem leds, double speed, double indexSpeed) {
     m_intake = intake;
     m_indexer = indexer;
     m_leds = leds;
     this.speed = speed;
+    this.indexSpeed = indexSpeed;
+
     addRequirements(intake, indexer, leds);
   }
 
@@ -34,14 +36,14 @@ public class RunIntakeCommand extends Command {
   @Override
   public void initialize() {
     m_intake.runIntake(speed);
-    m_indexer.runIndexer(speed);
+    m_indexer.runIndexer(indexSpeed);
     m_leds.runLeds(LEDConstants.colorRed);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-
+    System.out.println(m_indexer.indexBeamBreak.getRange());
   }
 
   // Called once the command ends or is interrupted.
@@ -49,12 +51,14 @@ public class RunIntakeCommand extends Command {
   public void end(boolean interrupted) {
      m_intake.runIntake(0);
      m_indexer.runIndexer(0);
+     m_leds.runLeds(LEDConstants.colorYellow);
+
+     
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    m_leds.runLeds(LEDConstants.colorYellow);
     return m_indexer.notePresent();
   }
 }

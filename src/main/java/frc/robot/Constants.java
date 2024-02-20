@@ -145,6 +145,8 @@ public final class Constants {
                 kMaxAngularSpeedRadiansPerSecond, kMaxAngularSpeedRadiansPerSecondSquared);
     }
 
+
+
     public static final class IntakeConstants { // TODO: Update Intake CAN IDs
         public static final int intakeMotorOneID = 13;
         public static final double intakeSpeed = 0.8;
@@ -167,9 +169,9 @@ public final class Constants {
     }
 
     public static final class ShooterConstants {
-        public static final int shooterMotorOneID = 99;
-        public static final int shooterMotorTwoID = 98;
-        public static final double distanceShotSpeed = .9;
+        public static final int shooterMotorOneID = 21;
+        public static final int shooterMotorTwoID = 33;
+        public static final double distanceShotSpeed = 1.0;
         public static final double ampShotSpeed = .4;
         public static final double subwofferShotSpeed = .4;
     }
