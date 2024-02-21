@@ -17,16 +17,17 @@ public class WristSubsystem extends SubsystemBase{
     private WPI_PigeonIMU gyro;
 
     public WristSubsystem() {
-        wristMotor = new CANSparkMax(WristConstants.wristMotorID, MotorType.kBrushless);
-
+        //wristMotor = new CANSparkMax(WristConstants.wristMotorID, MotorType.kBrushless);
+        /* 
         wristLimitOne = new DigitalInput(WristConstants.wristLimitOneChannel);
         wristLimitTwo = new DigitalInput(WristConstants.wristLimitTwoChannel);
-
+        */
         gyro = new WPI_PigeonIMU(0);
+        
     }
     
     public void setWrist(double speed) {
-        wristMotor.set(speed);
+        //wristMotor.set(speed);
     }
 
     public double getAngle() {

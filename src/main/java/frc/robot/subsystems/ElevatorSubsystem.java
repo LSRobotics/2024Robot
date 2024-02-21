@@ -21,20 +21,21 @@ public class ElevatorSubsystem extends SubsystemBase {
   public DigitalInput elevatorTopLimit;
 
   public ElevatorSubsystem() {
-    leftElevatorMotor = new CANSparkMax(ElevatorConstants.leftElevatorMotorID, MotorType.kBrushless);
-    rightElevatorMotor = new CANSparkMax(ElevatorConstants.rightElevatorMotorID, MotorType.kBrushless);
+    //leftElevatorMotor = new CANSparkMax(ElevatorConstants.leftElevatorMotorID, MotorType.kBrushless);
+    //rightElevatorMotor = new CANSparkMax(ElevatorConstants.rightElevatorMotorID, MotorType.kBrushless);
     
-    elevatorBottomLimit = new DigitalInput(ElevatorConstants.elevatorBottomLimitChannel);
-    elevatorTopLimit = new DigitalInput(ElevatorConstants.elevatorTopLimitChannel);
+    //elevatorBottomLimit = new DigitalInput(ElevatorConstants.elevatorBottomLimitChannel);
+    ///elevatorTopLimit = new DigitalInput(ElevatorConstants.elevatorTopLimitChannel);
   }
   
  
   public void runElevator(double speed) {
-    leftElevatorMotor.set(speed);
-    rightElevatorMotor.set(speed);
+    //leftElevatorMotor.set(speed);
+    //rightElevatorMotor.set(speed);
   }
 
   public int elevatorPosition() {
+    /* 
     if (elevatorTopLimit.get() && elevatorBottomLimit.get()){
       return 2;
     }
@@ -47,6 +48,8 @@ public class ElevatorSubsystem extends SubsystemBase {
     else{
       return 0;
     }
+    */
+    return 2;
   }
 
   @Override
