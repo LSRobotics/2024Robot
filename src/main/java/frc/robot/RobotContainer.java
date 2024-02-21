@@ -30,7 +30,6 @@ public class RobotContainer {
     /* Controllers */
     private final CommandXboxController driverController = new CommandXboxController(0);
     private final CommandXboxController operatorController = new CommandXboxController(1);
-   // private final SendableChooser<Command> autoChooser;
     
 
     /* Subsystems */
@@ -66,8 +65,6 @@ public class RobotContainer {
         autoChooser = AutoBuilder.buildAutoChooser();
         SmartDashboard.putData("AutoChooser", autoChooser);
 
-        //NamedCommands.registerCommand("autoBalance", swerve.autoBalanceCommand());
-
         // Configure the button bindings
         configureButtonBindings();
     }
@@ -98,35 +95,6 @@ public class RobotContainer {
 
 
     }   //TODO connect to april tags
-
-    /**
-     * Use this to pass the autonomous command to the main {@link Robot} class.
-     *
-     * @return the command to run in autonomous
-     */
-    public Command getBlue1AutonomousCommand() {
-        return new PathPlannerAuto("Blue 1");
-    }
-
-    public Command getBlue2AutonomousCommand() {
-        return new PathPlannerAuto("Blue 2");
-    }
-
-    public Command getBlue3AutonomousCommand() {
-        return new PathPlannerAuto("Blue 3");
-    }
-
-    public Command getRed1AutonomousCommand() {
-        return new PathPlannerAuto("Red 1");
-    }
-
-    public Command getRed2AutonomousCommand() {
-        return new PathPlannerAuto("Red 2");
-    }
-
-    public Command getRed3AutonomousCommand() {
-        return new PathPlannerAuto("Red 3");
-    }
 
     public Command getChosenAutonomousCommand() {
         return autoChooser.getSelected();

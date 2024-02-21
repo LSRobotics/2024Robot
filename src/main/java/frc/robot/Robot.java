@@ -61,38 +61,6 @@ public class Robot extends TimedRobot {
   /** This autonomous runs the autonomous command selected by your {@link RobotContainer} class. */
   @Override
   public void autonomousInit() {
-    
-    m_Blue1Command = m_robotContainer.getBlue1AutonomousCommand();
-    m_Blue2Command = m_robotContainer.getBlue2AutonomousCommand();
-    m_Blue3Command = m_robotContainer.getBlue3AutonomousCommand();
-    m_Red1Command = m_robotContainer.getRed1AutonomousCommand();
-    m_Red2Command = m_robotContainer.getRed2AutonomousCommand();
-    m_Red3Command = m_robotContainer.getRed3AutonomousCommand();
-
-    // schedule the autonomous command (example)
-    if (m_Blue1Command != null) {
-      m_Blue1Command.schedule();
-    }
-
-    if (m_Blue2Command != null) {
-      m_Blue2Command.schedule();
-    }
-    
-    if (m_Blue3Command != null) {
-      m_Blue3Command.schedule();
-    }
-
-    if (m_Red1Command != null) {
-      m_Red1Command.schedule();
-    }
-
-    if (m_Red2Command != null) {
-      m_Red2Command.schedule();
-    }
-
-    if (m_Red3Command != null) {
-      m_Red3Command.schedule();
-    }
   }
 
   /** This function is called periodically during autonomous. */
@@ -101,33 +69,6 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopInit() {
-    // This makes sure that the autonomous stops running when
-    // teleop starts running. If you want the autonomous to
-    // continue until interrupted by another command, remove
-    // this line or comment it out.
-   if (m_Blue1Command != null) {
-      m_Blue1Command.cancel();
-    }
-
-    if (m_Blue2Command != null) {
-      m_Blue2Command.cancel();
-    }
-    
-    if (m_Blue3Command != null) {
-      m_Blue3Command.cancel();
-    }
-
-    if (m_Red1Command != null) {
-      m_Red1Command.cancel();
-    }
-
-    if (m_Red2Command != null) {
-      m_Red2Command.cancel();
-    }
-
-    if (m_Red3Command != null) {
-      m_Red3Command.cancel();
-    }
   }
 
   /** This function is called periodically during operator control. */
