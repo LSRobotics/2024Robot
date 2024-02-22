@@ -149,7 +149,7 @@ public final class Constants {
 
     public static final class IntakeConstants { // TODO: Update Intake CAN IDs
         public static final int intakeMotorOneID = 13;
-        public static final double intakeSpeed = 0.8;
+        public static final double intakeSpeed = 0.9;
     }
 
     public static final class ElevatorConstants { // TODO: Update Elevator CAN IDs
@@ -164,7 +164,7 @@ public final class Constants {
 
     public static final class IndexerConstants { // TODO: Update Indexer CAN IDs and Channels
         public static final int indexMotorID = 32;
-        public static final int indexBeamBreakChannel = 7;
+        public static final int indexBeamBreakChannel = 62;
         public static final double indexSpeed = 0.25;
     }
 
