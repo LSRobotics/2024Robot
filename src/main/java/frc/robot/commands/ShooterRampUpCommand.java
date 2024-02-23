@@ -29,14 +29,14 @@ public class ShooterRampUpCommand extends Command {
     m_leds = leds;
     this.speed = speed;
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(shooter, leds);
+    addRequirements(shooter);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
     m_shooter.runShooter(this.speed);
-    m_leds.runLeds(LEDConstants.colorSkyBlue);
+    //m_leds.runLeds(LEDConstants.colorSkyBlue);
   }
 
   // Called every time the scheduler runs while the command is scheduled.

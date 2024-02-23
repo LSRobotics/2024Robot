@@ -34,7 +34,7 @@ public class RunIntakeCommand extends Command {
   public void initialize() {
     m_intake.runIntake(speed);
     m_indexer.runIndexer(indexSpeed);
-    m_leds.runLeds(LEDConstants.colorRed);
+    //m_leds.runLeds(LEDConstants.colorRed);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -48,7 +48,7 @@ public class RunIntakeCommand extends Command {
   public void end(boolean interrupted) {
      m_intake.runIntake(0);
      m_indexer.runIndexer(0);
-     m_leds.runLeds(LEDConstants.colorYellow);
+     //m_leds.runLeds(LEDConstants.colorYellow);
 
      
   }

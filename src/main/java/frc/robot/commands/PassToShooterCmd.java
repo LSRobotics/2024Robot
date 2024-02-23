@@ -26,24 +26,25 @@ public class PassToShooterCmd extends Command {
     m_leds = leds;
     this.speed = speed;
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(indexer, leds);
+    addRequirements(indexer);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    m_leds.runLeds(LEDConstants.colorBlueViolet);
+    //m_leds.runLeds(LEDConstants.colorBlueViolet);
     m_indexer.runIndexer(this.speed);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {}
+  public void execute() {
+  }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    m_leds.runLeds(LEDConstants.colorWhite);
+    //m_leds.runLeds(LEDConstants.colorWhite);
     m_indexer.indexMotor.set(0);
   }
 
