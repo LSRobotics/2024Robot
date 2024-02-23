@@ -19,18 +19,11 @@ public class ShooterSubsystem extends SubsystemBase{
     private TalonFX shooterMotorTwo;
 
     public ShooterSubsystem() {
-        //shooterMotorOne = new CANSparkMax(ShooterConstants.shooterMotorOneID, MotorType.kBrushless);
-        //shooterMotorTwo = new CANSparkMax(ShooterConstants.shooterMotorTwoID, MotorType.kBrushless);
-
         shooterMotorOne = new TalonFX(ShooterConstants.shooterMotorOneID);
         shooterMotorTwo = new TalonFX(ShooterConstants.shooterMotorTwoID);
-
-
     }
-
     public void runShooter(double speed) {
         shooterMotorOne.set(speed);
         shooterMotorTwo.set(speed);
     }
-    
 }

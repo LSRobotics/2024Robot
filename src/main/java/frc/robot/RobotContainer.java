@@ -17,6 +17,7 @@ import frc.robot.Constants.ElevatorConstants;
 import frc.robot.commands.*;
 import frc.robot.subsystems.*;
 import frc.robot.Constants.*;
+import com.playingwithfusion.*;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -39,7 +40,7 @@ public class RobotContainer {
     private final IndexerSubsystem m_indexer = new IndexerSubsystem();
     private final WristSubsystem m_wrist = new WristSubsystem();
     private final LEDSubsystem m_leds = new LEDSubsystem();
-
+    public TimeOfFlight indexBeamBreak;
     public static CTREConfigs ctreConfigs = new CTREConfigs();
 
 
@@ -54,6 +55,10 @@ public class RobotContainer {
                 () -> driverController.leftBumper().getAsBoolean()
             )
         );
+        
+
+        indexBeamBreak = new TimeOfFlight(IndexerConstants.indexBeamBreakChannel);
+
 
     //autoChooser = AutoBuilder.buildAutoChooser();
     //SmartDashboard.putData("AutoChooser", autoChooser);
@@ -75,21 +80,25 @@ public class RobotContainer {
         driverController.y().onTrue(new InstantCommand(() -> s_Swerve.zeroHeading()));
         //driverController.a().onTrue(Commands.parallel(new WristMovementCommand(()->2, m_wrist), new ShooterRampUpCommand(m_shooter, m_leds, .7)));
         //driverController.x().onTrue(new InstantCommand(() -> m_Blinkin.set(-0.87)));
-        driverController.b().onTrue(new RunIntakeCommand(m_intake, m_indexer, m_leds, IntakeConstants.intakeSpeed, IndexerConstants.indexSpeed));
+        driverController.b().onTrue(new RunIntakeCommand(m_intake, m_indexer, m_leds, ()->notePresent(), IntakeConstants.intakeSpeed, IndexerConstants.indexSpeed));
         driverController.a().whileTrue(new ClearIntakeCommand(m_intake, m_indexer, IntakeConstants.intakeSpeed));
         //operatorController.povUp().onTrue(new ElevatorToSetPointCmd(m_elevator, m_leds, ElevatorConstants.elevatorSpeed, true));
         //operatorController.povDown().onTrue(new ElevatorToSetPointCmd(m_elevator, m_leds, ElevatorConstants.elevatorSpeed, false));
-        operatorController.b().onTrue(Commands.parallel(new ShooterRampUpCommand(m_shooter, m_indexer, m_leds, 0.6),
+        operatorController.b().onTrue(Commands.parallel(new ShooterRampUpCommand(m_shooter, m_indexer, m_leds, ()->notePresent(), 0.6),
                                                         //new ElevatorToSetPointCmd(m_elevator, m_leds, ElevatorConstants.elevatorSpeed, true),
                                                         new WristMovementCommand(()-> WristConstants.distanceAngle, m_wrist)));
-        operatorController.a().onTrue(Commands.parallel(new ShooterRampUpCommand(m_shooter, m_indexer, m_leds, ShooterConstants.distanceShotSpeed),
+        operatorController.a().onTrue(Commands.parallel(new ShooterRampUpCommand(m_shooter, m_indexer, m_leds, ()->notePresent(), ShooterConstants.distanceShotSpeed),
                                                         //new ElevatorToSetPointCmd(m_elevator, m_leds, ElevatorConstants.elevatorSpeed, true),
                                                         new WristMovementCommand(()-> WristConstants.distanceAngle, m_wrist)));
-        operatorController.rightTrigger().onTrue(new PassToShooterCmd(m_indexer, m_leds, 0.6));
+        operatorController.rightTrigger().onTrue(new PassToShooterCmd(m_indexer, ()->notePresent(), 0.6));
         
 
 
     }   //TODO connect to april tags
+
+    public boolean notePresent() {
+        return indexBeamBreak.getRange() <= 150;
+    }
 
     /**
      * Use this to pass the autonomous command to the main {@link Robot} class.

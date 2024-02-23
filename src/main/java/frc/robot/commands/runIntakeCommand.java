@@ -10,6 +10,8 @@ import frc.robot.subsystems.LEDSubsystem;
 
 import frc.robot.Constants.LEDConstants;
 
+import java.util.function.BooleanSupplier;
+
 
 
 import edu.wpi.first.wpilibj2.command.Command;
@@ -18,14 +20,17 @@ import edu.wpi.first.wpilibj2.command.Command;
 public class RunIntakeCommand extends Command {
   private final IntakeSubsystem m_intake;
   private final IndexerSubsystem m_indexer;
+  private BooleanSupplier notePresent;
   private double speed;
   private double indexSpeed;
   private final LEDSubsystem m_leds;
  
-  public RunIntakeCommand(IntakeSubsystem intake, IndexerSubsystem indexer, LEDSubsystem leds, double speed, double indexSpeed) {
+  public RunIntakeCommand(IntakeSubsystem intake, IndexerSubsystem indexer, LEDSubsystem leds, BooleanSupplier notePresent, double speed, double indexSpeed) {
     m_intake = intake;
     m_indexer = indexer;
     m_leds = leds;
+
+    this.notePresent = notePresent;
     this.speed = speed;
     this.indexSpeed = indexSpeed;
 
@@ -43,7 +48,7 @@ public class RunIntakeCommand extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    System.out.println(m_indexer.indexBeamBreak.getRange());
+    //System.out.println(m_indexer.indexBeamBreak.getRange());
   }
 
   // Called once the command ends or is interrupted.
@@ -59,6 +64,6 @@ public class RunIntakeCommand extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return m_indexer.notePresent();
+    return !notePresent.getAsBoolean();
   }
 }
