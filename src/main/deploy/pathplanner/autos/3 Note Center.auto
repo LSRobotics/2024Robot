@@ -46,7 +46,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Go forward"
+            "pathName": "get note 2"
           }
         },
         {
@@ -58,7 +58,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Go back"
+            "pathName": "Go back from note 2"
           }
         },
         {
@@ -128,7 +128,13 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Go to and Shoot Note 3"
+            "pathName": "get note 3"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "go back from Note 3"
           }
         },
         {
@@ -166,7 +172,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "To Middle"
+            "pathName": "get note 4"
           }
         }
       ]
