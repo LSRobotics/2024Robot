@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.148516485067158,
-        "y": 5.5430292057165325
+        "x": 1.36,
+        "y": 6.24
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.148516485067157,
-        "y": 5.5430292057165325
+        "x": 1.9622697532432103,
+        "y": 6.188149112409336
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 3.1373139289488456,
-        "y": 5.5430292057165325
+        "x": 8.658511604060244,
+        "y": 7.484925775407106
       },
       "prevControl": {
-        "x": 2.1373139289488456,
-        "y": 5.5430292057165325
+        "x": 7.658511604060244,
+        "y": 7.484925775407106
       },
       "nextControl": null,
       "isLocked": false,
@@ -33,7 +33,7 @@
   "eventMarkers": [
     {
       "name": "New Event Marker",
-      "waypointRelativePos": 0.75,
+      "waypointRelativePos": 0.8,
       "command": {
         "type": "sequential",
         "data": {
@@ -61,7 +61,7 @@
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "3 Note Center",
+  "folder": "2 Note Left",
   "previewStartingState": {
     "rotation": 0,
     "velocity": 0
