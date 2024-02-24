@@ -34,7 +34,7 @@ public class RobotContainer {
     /* Subsystems */
     private final Swerve s_Swerve = new Swerve();
     private final ShooterSubsystem m_shooter = new ShooterSubsystem();
-    //private final ElevatorSubsystem m_elevator = new ElevatorSubsystem();
+    private final ElevatorSubsystem m_elevator = new ElevatorSubsystem();
     private final IntakeSubsystem m_intake = new IntakeSubsystem();
     private final IndexerSubsystem m_indexer = new IndexerSubsystem();
     private final WristSubsystem m_wrist = new WristSubsystem();
@@ -77,8 +77,8 @@ public class RobotContainer {
         //driverController.x().onTrue(new InstantCommand(() -> m_Blinkin.set(-0.87)));
         //driverController.b().onTrue(new RunIntakeCommand(m_intake, m_indexer, m_leds, IntakeConstants.intakeSpeed, IndexerConstants.indexSpeed));
         //driverController.a().whileTrue(new ClearIntakeCommand(m_intake, m_indexer, IntakeConstants.intakeSpeed));
-        //operatorController.povUp().onTrue(new ElevatorToSetPointCmd(m_elevator, m_leds, ElevatorConstants.elevatorSpeed, true));
-        //operatorController.povDown().onTrue(new ElevatorToSetPointCmd(m_elevator, m_leds, ElevatorConstants.elevatorSpeed, false));
+        operatorController.povUp().onTrue(new ElevatorToSetPointCmd(m_elevator, ElevatorConstants.elevatorSpeed, true));
+        operatorController.povDown().onTrue(new ElevatorToSetPointCmd(m_elevator, ElevatorConstants.elevatorSpeed, false));
         //operatorController.b().onTrue(Commands.parallel(new ShooterRampUpCommand(m_shooter, m_leds, 0.6),
         //                                                //new ElevatorToSetPointCmd(m_elevator, m_leds, ElevatorConstants.elevatorSpeed, true),
         //                                                new WristMovementCommand(()-> WristConstants.distanceAngle, m_wrist)));

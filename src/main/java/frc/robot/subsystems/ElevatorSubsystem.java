@@ -30,9 +30,19 @@ public class ElevatorSubsystem extends SubsystemBase {
   
  
   public void runElevator(double speed) {
-    leftElevatorMotor.set(speed);
+    leftElevatorMotor.set(-speed);
     rightElevatorMotor.set(speed);
   }
+
+  public boolean getBottomLimit(){
+    return elevatorBottomLimit.get();
+    
+  }
+
+  public boolean getTopLimit(){
+    return elevatorTopLimit.get();
+  }
+
 
   public int elevatorPosition() {
     if (elevatorTopLimit.get() && elevatorBottomLimit.get()){
