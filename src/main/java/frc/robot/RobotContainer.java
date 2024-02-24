@@ -39,10 +39,10 @@ public class RobotContainer {
     // private final ElevatorSubsystem m_elevator = new ElevatorSubsystem();
     private final IntakeSubsystem m_intake = new IntakeSubsystem();
     private final IndexerSubsystem m_indexer = new IndexerSubsystem();
-    private final WristSubsystem m_wrist = new WristSubsystem();
+    // private final WristSubsystem m_wrist = new WristSubsystem();
     private final LEDSubsystem m_leds = new LEDSubsystem();
 
-    public static CTREConfigs ctreConfigs = new CTREConfigs();
+    public static CTREConfigs ctreConfigs = new CTREConfigs(); //TODO do we need this?
 
     public static SendableChooser<Command> autoChooser;
 
@@ -63,10 +63,8 @@ public class RobotContainer {
         NamedCommands.registerCommand("PassToShooter", new PassToShooterCmd(m_indexer, IndexerConstants.indexSpeed));
 
         //autoChooser = AutoBuilder.buildAutoChooser();
-        
         //SmartDashboard.putData("AutoChooser", autoChooser);
 
-        // Configure the button bindings
         configureButtonBindings();
     }
 
@@ -81,31 +79,23 @@ public class RobotContainer {
     private void configureButtonBindings() {
         /* Driver Buttons */
         driverController.y().onTrue(new InstantCommand(() -> s_Swerve.zeroHeading()));
-        // driverController.a().onTrue(Commands.parallel(new WristMovementCommand(()->2,
-        // m_wrist), new ShooterRampUpCommand(m_shooter, m_leds, .7)));
-        // driverController.x().onTrue(new InstantCommand(() -> m_Blinkin.set(-0.87)));
-        driverController.b().onTrue(new RunIntakeCommand(m_intake, m_indexer, m_leds, IntakeConstants.intakeSpeed,
-                IndexerConstants.indexSpeed));
+        driverController.b().onTrue(new RunIntakeCommand(m_intake, m_indexer, m_leds, IntakeConstants.intakeSpeed, IndexerConstants.indexSpeed));
         driverController.a().whileTrue(new ClearIntakeCommand(m_intake, m_indexer, IntakeConstants.intakeSpeed));
         // operatorController.povUp().onTrue(new ElevatorToSetPointCmd(m_elevator,
         // m_leds, ElevatorConstants.elevatorSpeed, true));
         // operatorController.povDown().onTrue(new ElevatorToSetPointCmd(m_elevator,
         // m_leds, ElevatorConstants.elevatorSpeed, false));
-        operatorController.b().onTrue(Commands.parallel(new ShooterRampUpCommand(m_shooter, m_indexer, m_leds, 0.6),
-                // new ElevatorToSetPointCmd(m_elevator, m_leds,
-                // ElevatorConstants.elevatorSpeed, true),
-                new WristMovementCommand(() -> WristConstants.distanceAngle, m_wrist)));
-        operatorController.a()
-                .onTrue(Commands.parallel(
-                        new ShooterRampUpCommand(m_shooter, m_indexer, m_leds, ShooterConstants.distanceShotSpeed),
-                        // new ElevatorToSetPointCmd(m_elevator, m_leds,
-                        // ElevatorConstants.elevatorSpeed, true),
-                        new WristMovementCommand(() -> WristConstants.distanceAngle, m_wrist)));
+        operatorController.b().onTrue(Commands.parallel(
+                new ShooterRampUpCommand(m_shooter, m_indexer, m_leds, ShooterConstants.shortShotSpeed)));
+                //new WristMovementCommand(() -> WristConstants.distanceAngle, m_wrist)));
+        operatorController.a().onTrue(Commands.parallel(
+                new ShooterRampUpCommand(m_shooter, m_indexer, m_leds, ShooterConstants.distanceShotSpeed)));
+                //new WristMovementCommand(() -> WristConstants.distanceAngle, m_wrist)));
         operatorController.rightTrigger().onTrue(new PassToShooterCmd(m_indexer, IndexerConstants.indexSpeed));
 
     } // TODO connect to april tags
 
     public Command getAutonomousCommand() {
-        return new PathPlannerAuto("Example Auto");
+        return new PathPlannerAuto("3 Note Center");
     }
 }

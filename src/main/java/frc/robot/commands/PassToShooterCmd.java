@@ -6,24 +6,16 @@ package frc.robot.commands;
 
 import frc.robot.subsystems.IndexerSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.subsystems.LEDSubsystem;
 import frc.robot.Constants.IndexerConstants;
-import frc.robot.Constants.LEDConstants;
 
 /** An example command that uses an example subsystem. */
 public class PassToShooterCmd extends Command {
   private final IndexerSubsystem m_indexer;
   double speed = IndexerConstants.indexSpeed;
 
-  /**
-   * Creates a new ExampleCommand.
-   *
-   * @param subsystem The subsystem used by this command.
-   */
   public PassToShooterCmd(IndexerSubsystem indexer, double speed) {
     m_indexer = indexer;
     this.speed = speed;
-    // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(indexer);
   }
 

@@ -6,13 +6,9 @@ package frc.robot.commands;
 
 import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.IndexerSubsystem;
-import frc.robot.Constants.IntakeConstants;
-import frc.robot.Constants.IndexerConstants;
 import edu.wpi.first.wpilibj2.command.Command;
 
-/** An example command that uses an example subsystem. */
 public class ClearIntakeCommand extends Command {
-  @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final IntakeSubsystem m_intake;
   private final IndexerSubsystem m_indexer;
   private double speed = 0;
