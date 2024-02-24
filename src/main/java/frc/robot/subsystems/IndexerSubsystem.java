@@ -30,6 +30,6 @@ public class IndexerSubsystem extends SubsystemBase {
 
   public boolean notePresent() {
     System.out.println(" " + indexBeamBreak.getRange());
-    return indexBeamBreak.getRange() <= 150;
+    return indexBeamBreak.getRange() <= IndexerConstants.beamBreakRange;
   }
 }

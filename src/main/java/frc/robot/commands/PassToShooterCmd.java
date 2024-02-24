@@ -13,7 +13,6 @@ import frc.robot.Constants.LEDConstants;
 /** An example command that uses an example subsystem. */
 public class PassToShooterCmd extends Command {
   private final IndexerSubsystem m_indexer;
-  private final LEDSubsystem m_leds;
   double speed = IndexerConstants.indexSpeed;
 
   /**
@@ -21,9 +20,8 @@ public class PassToShooterCmd extends Command {
    *
    * @param subsystem The subsystem used by this command.
    */
-  public PassToShooterCmd(IndexerSubsystem indexer, LEDSubsystem leds, double speed) {
+  public PassToShooterCmd(IndexerSubsystem indexer, double speed) {
     m_indexer = indexer;
-    m_leds = leds;
     this.speed = speed;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(indexer);
@@ -32,7 +30,6 @@ public class PassToShooterCmd extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    //m_leds.runLeds(LEDConstants.colorBlueViolet);
     m_indexer.runIndexer(this.speed);
   }
 
@@ -44,7 +41,6 @@ public class PassToShooterCmd extends Command {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    //m_leds.runLeds(LEDConstants.colorWhite);
     m_indexer.indexMotor.set(0);
   }
 

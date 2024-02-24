@@ -60,7 +60,7 @@ public class RobotContainer {
 
         NamedCommands.registerCommand("ShooterRampUp", new ShooterRampUpCommand(m_shooter, m_indexer, m_leds, ShooterConstants.distanceShotSpeed));
         NamedCommands.registerCommand("Intake", new RunIntakeCommand(m_intake, m_indexer, m_leds, IntakeConstants.intakeSpeed, IndexerConstants.indexSpeed));
-        NamedCommands.registerCommand("PassToShooter", new PassToShooterCmd(m_indexer, m_leds, IndexerConstants.indexSpeed));
+        NamedCommands.registerCommand("PassToShooter", new PassToShooterCmd(m_indexer, IndexerConstants.indexSpeed));
 
         //autoChooser = AutoBuilder.buildAutoChooser();
         
@@ -101,7 +101,7 @@ public class RobotContainer {
                         // new ElevatorToSetPointCmd(m_elevator, m_leds,
                         // ElevatorConstants.elevatorSpeed, true),
                         new WristMovementCommand(() -> WristConstants.distanceAngle, m_wrist)));
-        operatorController.rightTrigger().onTrue(new PassToShooterCmd(m_indexer, m_leds, IndexerConstants.indexSpeed));
+        operatorController.rightTrigger().onTrue(new PassToShooterCmd(m_indexer, IndexerConstants.indexSpeed));
 
     } // TODO connect to april tags
 
