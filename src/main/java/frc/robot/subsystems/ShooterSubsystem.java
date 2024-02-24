@@ -13,10 +13,8 @@ public class ShooterSubsystem extends SubsystemBase{
         shooterMotorOne = new TalonFX(ShooterConstants.shooterMotorOneID);
         shooterMotorTwo = new TalonFX(ShooterConstants.shooterMotorTwoID);
     }
-
     public void runShooter(double speed) {
         shooterMotorOne.set(speed);
         shooterMotorTwo.set(speed);
     }
-    
 }
