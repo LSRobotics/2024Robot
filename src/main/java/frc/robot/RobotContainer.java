@@ -4,6 +4,7 @@ import com.ctre.phoenix.sensors.WPI_PigeonIMU;
 import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.auto.NamedCommands;
 import com.pathplanner.lib.commands.PathPlannerAuto;
+import com.playingwithfusion.TimeOfFlight;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
@@ -41,6 +42,8 @@ public class RobotContainer {
     private final IndexerSubsystem m_indexer = new IndexerSubsystem();
     // private final WristSubsystem m_wrist = new WristSubsystem();
     private final LEDSubsystem m_leds = new LEDSubsystem();
+    
+    private TimeOfFlight indexBeamBreak = new TimeOfFlight(IndexerConstants.indexBeamBreakChannel);
 
     public static CTREConfigs ctreConfigs = new CTREConfigs(); //TODO do we need this?
 
@@ -58,9 +61,9 @@ public class RobotContainer {
                         () -> -driverController.getRightX(),
                         () -> driverController.leftBumper().getAsBoolean()));
 
-        NamedCommands.registerCommand("ShooterRampUp", new ShooterRampUpCommand(m_shooter, m_indexer, m_leds, ShooterConstants.distanceShotSpeed));
-        NamedCommands.registerCommand("Intake", new RunIntakeCommand(m_intake, m_indexer, m_leds, IntakeConstants.intakeSpeed, IndexerConstants.indexSpeed));
-        NamedCommands.registerCommand("PassToShooter", new PassToShooterCmd(m_indexer, IndexerConstants.indexSpeed));
+        NamedCommands.registerCommand("ShooterRampUp", new ShooterRampUpCommand(m_shooter, m_leds, () -> notePresent(), ShooterConstants.distanceShotSpeed));
+        NamedCommands.registerCommand("Intake", new IntakeCommand(m_intake, m_indexer, m_leds, () -> notePresent(), IntakeConstants.intakeSpeed, IndexerConstants.indexSpeed));
+        NamedCommands.registerCommand("PassToShooter", new PassToShooterCmd(m_indexer, () -> notePresent(), IndexerConstants.indexSpeed));
 
         //autoChooser = AutoBuilder.buildAutoChooser();
         //SmartDashboard.putData("AutoChooser", autoChooser);
@@ -79,21 +82,26 @@ public class RobotContainer {
     private void configureButtonBindings() {
         /* Driver Buttons */
         driverController.y().onTrue(new InstantCommand(() -> s_Swerve.zeroHeading()));
-        driverController.b().onTrue(new RunIntakeCommand(m_intake, m_indexer, m_leds, IntakeConstants.intakeSpeed, IndexerConstants.indexSpeed));
+        driverController.b().onTrue(new IntakeCommand(m_intake, m_indexer, m_leds, () -> notePresent(), IntakeConstants.intakeSpeed, IndexerConstants.indexSpeed));
         driverController.a().whileTrue(new ClearIntakeCommand(m_intake, m_indexer, IntakeConstants.intakeSpeed));
         // operatorController.povUp().onTrue(new ElevatorToSetPointCmd(m_elevator,
         // m_leds, ElevatorConstants.elevatorSpeed, true));
         // operatorController.povDown().onTrue(new ElevatorToSetPointCmd(m_elevator,
         // m_leds, ElevatorConstants.elevatorSpeed, false));
         operatorController.b().onTrue(Commands.parallel(
-                new ShooterRampUpCommand(m_shooter, m_indexer, m_leds, ShooterConstants.shortShotSpeed)));
+                new ShooterRampUpCommand(m_shooter, m_leds, () -> notePresent(), ShooterConstants.shortShotSpeed)));
                 //new WristMovementCommand(() -> WristConstants.distanceAngle, m_wrist)));
         operatorController.a().onTrue(Commands.parallel(
-                new ShooterRampUpCommand(m_shooter, m_indexer, m_leds, ShooterConstants.distanceShotSpeed)));
+                new ShooterRampUpCommand(m_shooter, m_leds, () -> notePresent(), ShooterConstants.distanceShotSpeed)));
                 //new WristMovementCommand(() -> WristConstants.distanceAngle, m_wrist)));
-        operatorController.rightTrigger().onTrue(new PassToShooterCmd(m_indexer, IndexerConstants.indexSpeed));
+        operatorController.rightTrigger().onTrue(new PassToShooterCmd(m_indexer, () -> notePresent(), IndexerConstants.indexSpeed));
 
     } // TODO connect to april tags
+
+    public boolean notePresent() {
+        System.out.println(" " + indexBeamBreak.getRange()); //TODO: delete after testing
+        return indexBeamBreak.getRange() <= IndexerConstants.beamBreakRange;
+      }
 
     public Command getAutonomousCommand() {
         return new PathPlannerAuto("3 Note Center");
