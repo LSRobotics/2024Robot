@@ -44,6 +44,7 @@ public class PassToShooterCmd extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
+    if (notePresent == null) return false;
     return !notePresent.getAsBoolean();
   }
 }

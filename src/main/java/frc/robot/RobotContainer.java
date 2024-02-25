@@ -45,7 +45,7 @@ public class RobotContainer {
     
     private TimeOfFlight indexBeamBreak = new TimeOfFlight(IndexerConstants.indexBeamBreakChannel);
 
-    public static CTREConfigs ctreConfigs = new CTREConfigs(); //TODO do we need this?
+    public static CTREConfigs ctreConfigs = new CTREConfigs();
 
     public static SendableChooser<Command> autoChooser;
 
@@ -95,6 +95,10 @@ public class RobotContainer {
                 new ShooterRampUpCommand(m_shooter, m_leds, () -> notePresent(), ShooterConstants.distanceShotSpeed)));
                 //new WristMovementCommand(() -> WristConstants.distanceAngle, m_wrist)));
         operatorController.rightTrigger().onTrue(new PassToShooterCmd(m_indexer, () -> notePresent(), IndexerConstants.shooterIndexSpeed));
+        operatorController.rightBumper().and(operatorController.rightTrigger().whileTrue(new PassToShooterCmd(m_indexer, null, IndexerConstants.shooterIndexSpeed)));
+        driverController.rightBumper().and(driverController.a().whileTrue(new IntakeCommand(m_intake, m_indexer, m_leds, null, IntakeConstants.intakeSpeed, IndexerConstants.intakeIndexSpeed)));
+        operatorController.rightBumper().and(operatorController.b().whileTrue(new ShooterRampUpCommand(m_shooter, m_leds, null, ShooterConstants.shortShotSpeed)));
+        operatorController.rightBumper().and(operatorController.a().whileTrue(new ShooterRampUpCommand(m_shooter, m_leds, null, ShooterConstants.distanceShotSpeed)));
 
     } // TODO connect to april tags
 
