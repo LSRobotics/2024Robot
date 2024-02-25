@@ -1,11 +1,12 @@
 {
-  "robotWidth": 0.53,
-  "robotLength": 0.53,
+  "robotWidth": 0.8,
+  "robotLength": 0.99,
   "holonomicMode": true,
   "pathFolders": [
     "2 Note Left",
-    "3 Note Center",
-    "2 Note Right"
+    "2 Note Right",
+    "3 Note Center(Standard)",
+    "3 Note Center(Middle)"
   ],
   "autoFolders": [],
   "defaultMaxVel": 3.0,
