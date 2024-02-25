@@ -153,8 +153,7 @@ public final class Constants {
     }
 
     public static final class ElevatorConstants { // TODO: Update Elevator CAN IDs
-        public static final int rightElevatorMotorID = 16;
-        public static final int leftElevatorMotorID = 17;
+        public static final int elevatorMotorID = 16;
 
         public static final int elevatorTopLimitChannel = 5;
         public static final int elevatorBottomLimitChannel = 6;
