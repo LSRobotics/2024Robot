@@ -36,12 +36,13 @@ public class ElevatorToSetPointCmd extends Command {
     else{
       m_elevator.runElevator(-this.speed);
     }
+    m_leds.runLeds(LEDConstants.colorWhite);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if (shouldGoToTop == true) {
+   /* if (shouldGoToTop == true) {
       if ((int) (System.currentTimeMillis()/1000/LEDConstants.blinkSpeedDuringClimbUp) % 2 == 0) {
         m_leds.runLeds(LEDConstants.colorOneAllianceOne);
       }
@@ -51,19 +52,14 @@ public class ElevatorToSetPointCmd extends Command {
     }
     else{
         m_leds.runLeds(LEDConstants.colorOrange);
-    }
+    } */
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
     m_elevator.runElevator(0);
-    if ((int) (System.currentTimeMillis()/1000/LEDConstants.blinkSpeedAtTop) % 2 == 0) {
-      m_leds.runLeds(LEDConstants.colorBlue);
-    }
-    else {
-      m_leds.runLeds(LEDConstants.colorGold);
-    }
+    m_leds.runLeds(LEDConstants.twinklesColorOneAndTwo);
   }
 
   // Returns true when the command should end.
