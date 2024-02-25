@@ -94,7 +94,7 @@ public class RobotContainer {
         operatorController.a().onTrue(Commands.parallel(
                 new ShooterRampUpCommand(m_shooter, m_leds, () -> notePresent(), ShooterConstants.distanceShotSpeed)));
                 //new WristMovementCommand(() -> WristConstants.distanceAngle, m_wrist)));
-        operatorController.rightTrigger().onTrue(new PassToShooterCmd(m_indexer, () -> notePresent(), IndexerConstants.indexSpeed));
+        operatorController.rightTrigger().onTrue(new PassToShooterCmd(m_indexer, () -> notePresent(), IndexerConstants.indexSpeed + 0.05));
 
     } // TODO connect to april tags
 
@@ -104,6 +104,6 @@ public class RobotContainer {
       }
 
     public Command getAutonomousCommand() {
-        return new PathPlannerAuto("3 Note Center");
+        return new PathPlannerAuto("4 Note Center");
     }
 }
