@@ -24,7 +24,7 @@ public class ElevatorToSetPointCmd extends Command {
     this.shouldGoToTop = shouldGoToTop;
 
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(elevator);
+    addRequirements(elevator, leds);
   }
 
   // Called when the command is initially scheduled.
@@ -43,14 +43,14 @@ public class ElevatorToSetPointCmd extends Command {
   public void execute() {
     if (shouldGoToTop == true) {
       if ((int) (System.currentTimeMillis()/1000/LEDConstants.blinkSpeedDuringClimbUp) % 2 == 0) {
-        //m_leds.runLeds(LEDConstants.colorOneAllianceOne);
+        m_leds.runLeds(LEDConstants.colorOneAllianceOne);
       }
       else {
-        //m_leds.runLeds(LEDConstants.colorTwoAllianceOne);
+        m_leds.runLeds(LEDConstants.colorTwoAllianceOne);
       }
     }
     else{
-       //m_leds.runLeds(LEDConstants.colorOrange);
+        m_leds.runLeds(LEDConstants.colorOrange);
     }
   }
 
@@ -59,10 +59,10 @@ public class ElevatorToSetPointCmd extends Command {
   public void end(boolean interrupted) {
     m_elevator.runElevator(0);
     if ((int) (System.currentTimeMillis()/1000/LEDConstants.blinkSpeedAtTop) % 2 == 0) {
-      //m_leds.runLeds(LEDConstants.colorBlue);
+      m_leds.runLeds(LEDConstants.colorBlue);
     }
     else {
-      //m_leds.runLeds(LEDConstants.colorGold);
+      m_leds.runLeds(LEDConstants.colorGold);
     }
   }
 
