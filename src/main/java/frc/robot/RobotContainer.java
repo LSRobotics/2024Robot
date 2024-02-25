@@ -62,11 +62,11 @@ public class RobotContainer {
                         () -> driverController.leftBumper().getAsBoolean()));
 
         NamedCommands.registerCommand("ShooterRampUp", new ShooterRampUpCommand(m_shooter, m_leds, () -> notePresent(), ShooterConstants.distanceShotSpeed));
-        NamedCommands.registerCommand("Intake", new IntakeCommand(m_intake, m_indexer, m_leds, () -> notePresent(), IntakeConstants.intakeSpeed, IndexerConstants.indexSpeed));
-        NamedCommands.registerCommand("PassToShooter", new PassToShooterCmd(m_indexer, () -> notePresent(), IndexerConstants.indexSpeed));
+        NamedCommands.registerCommand("Intake", new IntakeCommand(m_intake, m_indexer, m_leds, () -> notePresent(), IntakeConstants.intakeSpeed, IndexerConstants.intakeIndexSpeed));
+        NamedCommands.registerCommand("PassToShooter", new PassToShooterCmd(m_indexer, () -> notePresent(), IndexerConstants.shooterIndexSpeed));
 
-        //autoChooser = AutoBuilder.buildAutoChooser();
-        //SmartDashboard.putData("AutoChooser", autoChooser);
+        autoChooser = AutoBuilder.buildAutoChooser();
+        SmartDashboard.putData("AutoChooser", autoChooser);
 
         configureButtonBindings();
     }
@@ -82,8 +82,8 @@ public class RobotContainer {
     private void configureButtonBindings() {
         /* Driver Buttons */
         driverController.y().onTrue(new InstantCommand(() -> s_Swerve.zeroHeading()));
-        driverController.b().onTrue(new IntakeCommand(m_intake, m_indexer, m_leds, () -> notePresent(), IntakeConstants.intakeSpeed, IndexerConstants.indexSpeed));
-        driverController.a().whileTrue(new ClearIntakeCommand(m_intake, m_indexer, IntakeConstants.intakeSpeed));
+        driverController.b().onTrue(new IntakeCommand(m_intake, m_indexer, m_leds, () -> notePresent(), IntakeConstants.intakeSpeed, IndexerConstants.intakeIndexSpeed));
+        driverController.a().whileTrue(new ClearIntakeCommand(m_intake, m_indexer, IntakeConstants.intakeSpeed, IndexerConstants.intakeIndexSpeed));
         // operatorController.povUp().onTrue(new ElevatorToSetPointCmd(m_elevator,
         // m_leds, ElevatorConstants.elevatorSpeed, true));
         // operatorController.povDown().onTrue(new ElevatorToSetPointCmd(m_elevator,
@@ -94,7 +94,7 @@ public class RobotContainer {
         operatorController.a().onTrue(Commands.parallel(
                 new ShooterRampUpCommand(m_shooter, m_leds, () -> notePresent(), ShooterConstants.distanceShotSpeed)));
                 //new WristMovementCommand(() -> WristConstants.distanceAngle, m_wrist)));
-        operatorController.rightTrigger().onTrue(new PassToShooterCmd(m_indexer, () -> notePresent(), IndexerConstants.indexSpeed + 0.05));
+        operatorController.rightTrigger().onTrue(new PassToShooterCmd(m_indexer, () -> notePresent(), IndexerConstants.shooterIndexSpeed));
 
     } // TODO connect to april tags
 
@@ -104,6 +104,6 @@ public class RobotContainer {
       }
 
     public Command getAutonomousCommand() {
-        return new PathPlannerAuto("4 Note Center");
+        return autoChooser.getSelected();
     }
 }
