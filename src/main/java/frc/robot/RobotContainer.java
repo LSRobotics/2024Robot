@@ -88,10 +88,10 @@ public class RobotContainer {
         // m_leds, ElevatorConstants.elevatorSpeed, true));
         // operatorController.povDown().onTrue(new ElevatorToSetPointCmd(m_elevator,
         // m_leds, ElevatorConstants.elevatorSpeed, false));
-        operatorController.b().onTrue(Commands.parallel(
+        operatorController.b().toggleOnTrue(Commands.parallel(
                 new ShooterRampUpCommand(m_shooter, m_leds, () -> notePresent(), ShooterConstants.shortShotSpeed)));
                 //new WristMovementCommand(() -> WristConstants.distanceAngle, m_wrist)));
-        operatorController.a().onTrue(Commands.parallel(
+        operatorController.a().toggleOnTrue(Commands.parallel(
                 new ShooterRampUpCommand(m_shooter, m_leds, () -> notePresent(), ShooterConstants.distanceShotSpeed)));
                 //new WristMovementCommand(() -> WristConstants.distanceAngle, m_wrist)));
         operatorController.rightTrigger().onTrue(new PassToShooterCmd(m_indexer, () -> notePresent(), IndexerConstants.shooterIndexSpeed));
