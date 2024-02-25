@@ -19,28 +19,25 @@ import com.revrobotics.CANSparkLowLevel.MotorType;
 
 public class ElevatorSubsystem extends SubsystemBase {
   /** Creates a new ElevatorSubsystem. */
-  public CANSparkMax leftElevatorMotor;
-  public CANSparkMax rightElevatorMotor;
+  public CANSparkMax elevatorMotor;
   public DigitalInput elevatorBottomLimit;
   public DigitalInput elevatorTopLimit;
 
 
   public ElevatorSubsystem() {
-    leftElevatorMotor = new CANSparkMax(ElevatorConstants.leftElevatorMotorID, MotorType.kBrushless);
-    rightElevatorMotor = new CANSparkMax(ElevatorConstants.rightElevatorMotorID, MotorType.kBrushless);
+    elevatorMotor = new CANSparkMax(ElevatorConstants.elevatorMotorID, MotorType.kBrushless);
     
-    //elevatorBottomLimit = new DigitalInput(ElevatorConstants.elevatorBottomLimitChannel);
-    ///elevatorTopLimit = new DigitalInput(ElevatorConstants.elevatorTopLimitChannel);
+    elevatorBottomLimit = new DigitalInput(ElevatorConstants.elevatorBottomLimitChannel);
+    elevatorTopLimit = new DigitalInput(ElevatorConstants.elevatorTopLimitChannel);
   }
   
  
   public void runElevator(double speed) {
-    //leftElevatorMotor.set(speed);
-    //rightElevatorMotor.set(speed);
+    elevatorMotor.set(speed);
   }
 
   public int elevatorPosition() {
-    /* 
+     
     if (elevatorTopLimit.get() && elevatorBottomLimit.get()){
       return 2;
     }
@@ -53,17 +50,10 @@ public class ElevatorSubsystem extends SubsystemBase {
     else{
       return 0;
     }
-    */
-    return 2;
   }
 
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
-  }
-
-  @Override
-  public void simulationPeriodic() {
-    // This method will be called once per scheduler run during simulation
   }
 }

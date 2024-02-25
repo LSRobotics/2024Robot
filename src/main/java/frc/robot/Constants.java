@@ -129,43 +129,23 @@ public final class Constants {
         }
     }
 
-    public static final class AutoConstants { //TODO: The below constants are used in the example auto, and must be tuned to specific robot
-        public static final double kMaxSpeedMetersPerSecond = 3;
-        public static final double kMaxAccelerationMetersPerSecondSquared = 3;
-        public static final double kMaxAngularSpeedRadiansPerSecond = Math.PI;
-        public static final double kMaxAngularSpeedRadiansPerSecondSquared = Math.PI;
-    
-        public static final double kPXController = 1;
-        public static final double kPYController = 1;
-        public static final double kPThetaController = 1;
-    
-        /* Constraint for the motion profilied robot angle controller */
-        public static final TrapezoidProfile.Constraints kThetaControllerConstraints =
-            new TrapezoidProfile.Constraints(
-                kMaxAngularSpeedRadiansPerSecond, kMaxAngularSpeedRadiansPerSecondSquared);
-    }
-
-
-
     public static final class IntakeConstants { // TODO: Update Intake CAN IDs
         public static final int intakeMotorOneID = 13;
         public static final double intakeSpeed = 0.9;
     }
 
     public static final class ElevatorConstants { // TODO: Update Elevator CAN IDs
-        public static final int rightElevatorMotorID = 16;
-        public static final int leftElevatorMotorID = 17;
-
+        public static final int elevatorMotorID = 16;
         public static final int elevatorTopLimitChannel = 5;
         public static final int elevatorBottomLimitChannel = 6;
-
         public static final double elevatorSpeed = .5;
     }
 
     public static final class IndexerConstants { // TODO: Update Indexer CAN IDs and Channels
         public static final int indexMotorID = 32;
         public static final int indexBeamBreakChannel = 62;
-        public static final double indexSpeed = 0.325;
+        public static final double intakeIndexSpeed = 0.375;
+        public static final double shooterIndexSpeed = 0.325;
         public static final double beamBreakRange = 200;
     }
 
@@ -202,17 +182,8 @@ public final class Constants {
         public static final double colorOrange = 0.65;
         public static final double colorDarkGreen = 0.75;
         public static final double colorLawnGreen = 0.71;
-        public static final double colorOneAllianceOne = 0.99;
-        public static final double colorTwoAllianceOne = 0.95;
-        public static final double colorOneAllianceTwo = 0.99;
-        public static final double colorTwoAllianceTwo = 0.95;
         public static final double colorBlue = 0.87;
         public static final double colorGold = 0.67;
-        public static final double blinkSpeedDuringClimbUp = 0.8;
-        public static final double blinkSpeedAtTop = 1;
-        public static final double blinkSpeedShooterRampedUp = 0.4;
-        public static final double rpmFarShot = 0;
-        public static final double rpmCloseShot = 0;
-        public static final double rpmAmpShot = 0;
+        public static final double twinklesColorOneAndTwo = 0.51;
     }
 }

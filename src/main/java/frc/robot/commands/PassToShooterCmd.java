@@ -15,7 +15,7 @@ import frc.robot.Constants.IndexerConstants;
 public class PassToShooterCmd extends Command {
   private final IndexerSubsystem m_indexer;
   private BooleanSupplier notePresent;
-  double speed = IndexerConstants.indexSpeed;
+  double speed;
 
   public PassToShooterCmd(IndexerSubsystem indexer, BooleanSupplier notePresent, double speed) {
     m_indexer = indexer;
@@ -44,6 +44,7 @@ public class PassToShooterCmd extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
+    if (notePresent == null) return false;
     return !notePresent.getAsBoolean();
   }
 }

@@ -11,21 +11,23 @@ import edu.wpi.first.wpilibj2.command.Command;
 public class ClearIntakeCommand extends Command {
   private final IntakeSubsystem m_intake;
   private final IndexerSubsystem m_indexer;
-  private double speed = 0;
+  private double intakeSpeed;
+  private double indexSpeed;
 
  
-  public ClearIntakeCommand(IntakeSubsystem intake, IndexerSubsystem indexer, double speed) {
+  public ClearIntakeCommand(IntakeSubsystem intake, IndexerSubsystem indexer, double intakeSpeed, double indexSpeed) {
     m_intake = intake;
     m_indexer = indexer;
-    this.speed = speed;
+    this.intakeSpeed = intakeSpeed;
+    this.indexSpeed = indexSpeed;
     addRequirements(intake, indexer);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    m_intake.runIntake(-speed);
-    m_indexer.runIndexer(-speed);
+    m_intake.runIntake(-intakeSpeed);
+    m_indexer.runIndexer(-indexSpeed);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
