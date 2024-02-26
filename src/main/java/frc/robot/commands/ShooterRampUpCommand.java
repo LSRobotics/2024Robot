@@ -23,6 +23,7 @@ public class ShooterRampUpCommand extends Command {
     m_shooter = shooter;
     m_leds = leds;
     this.speed = speed;
+    System.out.println("Shooter ramp speed is equal to " + this.speed + ".");
     this.notePresent = notePresent;
     addRequirements(shooter, leds);
   }
