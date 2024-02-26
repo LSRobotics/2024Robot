@@ -68,9 +68,19 @@ public class VisionSubsystem extends SubsystemBase {
         angleToGoalDegrees = limelightMountAngleDegrees + getTy();
         angleToGoalRadians = angleToGoalDegrees * (3.14159 / 180.0);
         distanceFromLimelightToGoalInches = (goalHeightInches - limelightLensHeightInches) / Math.tan(angleToGoalRadians);
-        //double distanceFromLimelightToGoalInches = (goalHeightInches - limelightLensHeightInches) / Math.tan(angleToGoalRadians);
         return distanceFromLimelightToGoalInches;
 
+    }
+
+
+
+    public boolean far(){
+        if(getDistance() <= 118.11){
+            return false;
+        }
+        else{
+            return true;
+        }
     }
         
     
