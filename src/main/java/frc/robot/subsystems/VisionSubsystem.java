@@ -11,6 +11,22 @@ import frc.robot.subsystems.Swerve;
 public class VisionSubsystem extends SubsystemBase {
     private double tx, ty, ta, tv,tid;
     private final NetworkTable m_limelightTable;
+
+
+    double limelightMountAngleDegrees = 0; 
+    //double targetOffsetAngle_Vertical = ty.getDouble(0.0);
+
+    // distance from the center of the Limelight lens to the floor
+    double limelightLensHeightInches = 18.0; 
+
+    // distance from the target to the floor
+    double goalHeightInches = 56.49; 
+
+    double angleToGoalDegrees;
+    double angleToGoalRadians;
+
+    //calculate distance
+    double distanceFromLimelightToGoalInches;
     
     
     public VisionSubsystem() {
@@ -44,6 +60,17 @@ public class VisionSubsystem extends SubsystemBase {
         else{
             return false;
         }
+    }
+
+
+    public double getDistance(){
+
+        angleToGoalDegrees = limelightMountAngleDegrees + getTy();
+        angleToGoalRadians = angleToGoalDegrees * (3.14159 / 180.0);
+        distanceFromLimelightToGoalInches = (goalHeightInches - limelightLensHeightInches) / Math.tan(angleToGoalRadians);
+        //double distanceFromLimelightToGoalInches = (goalHeightInches - limelightLensHeightInches) / Math.tan(angleToGoalRadians);
+        return distanceFromLimelightToGoalInches;
+
     }
         
     
