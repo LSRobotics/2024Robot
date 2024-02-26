@@ -33,12 +33,12 @@ public class RobotContainer {
 
     /* Subsystems */
     private final Swerve s_Swerve = new Swerve();
-    private final ShooterSubsystem m_shooter = new ShooterSubsystem();
+    //private final ShooterSubsystem m_shooter = new ShooterSubsystem();
     private final ElevatorSubsystem m_elevator = new ElevatorSubsystem();
-    private final IntakeSubsystem m_intake = new IntakeSubsystem();
-    private final IndexerSubsystem m_indexer = new IndexerSubsystem();
-    private final WristSubsystem m_wrist = new WristSubsystem();
-    private final LEDSubsystem m_leds = new LEDSubsystem();
+    //private final IntakeSubsystem m_intake = new IntakeSubsystem();
+    //private final IndexerSubsystem m_indexer = new IndexerSubsystem();
+    //private final WristSubsystem m_wrist = new WristSubsystem();
+    //private final LEDSubsystem m_leds = new LEDSubsystem();
 
     public static CTREConfigs ctreConfigs = new CTREConfigs();
 
@@ -48,9 +48,9 @@ public class RobotContainer {
         s_Swerve.setDefaultCommand(
             new TeleopSwerve(
                 s_Swerve, 
-                () -> -driverController.getLeftY(), 
-                () -> -driverController.getLeftX(), 
-                () -> -driverController.getRightX(), 
+                () -> driverController.getLeftY(), 
+                () -> driverController.getLeftX(), 
+                () -> driverController.getRightX(), 
                 () -> driverController.leftBumper().getAsBoolean()
             )
         );
