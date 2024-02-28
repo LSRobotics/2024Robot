@@ -23,7 +23,6 @@ public class ShooterRampUpCommand extends Command {
     m_shooter = shooter;
     m_leds = leds;
     this.speed = speed;
-    System.out.println("Shooter ramp speed is equal to " + this.speed + ".");
     this.notePresent = notePresent;
     addRequirements(shooter, leds);
   }
@@ -38,6 +37,7 @@ public class ShooterRampUpCommand extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    System.out.println("Shooter ramp speed is equal to " + this.speed + ".");
   }
 
   // Called once the command ends or is interrupted.
@@ -50,6 +50,7 @@ public class ShooterRampUpCommand extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
+    if (notePresent == null) return false;
     return !notePresent.getAsBoolean();
   }
 }

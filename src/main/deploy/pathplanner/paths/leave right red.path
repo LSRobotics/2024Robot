@@ -1,0 +1,52 @@
+{
+  "version": 1.0,
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 15.675605811840157,
+        "y": 6.4345819987543935
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 15.612500206285725,
+        "y": 6.556640924899082
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 11.412349891258291,
+        "y": 7.275031853204936
+      },
+      "prevControl": {
+        "x": 13.16465977564501,
+        "y": 8.472943250616709
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": null
+    }
+  ],
+  "rotationTargets": [],
+  "constraintZones": [],
+  "eventMarkers": [],
+  "globalConstraints": {
+    "maxVelocity": 3.0,
+    "maxAcceleration": 3.0,
+    "maxAngularVelocity": 573.0,
+    "maxAngularAcceleration": 720.0
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": 179.26203896577854,
+    "rotateFast": false
+  },
+  "reversed": false,
+  "folder": "1 Note Getaway",
+  "previewStartingState": {
+    "rotation": 120.82519167697647,
+    "velocity": 0
+  },
+  "useDefaultConstraints": true
+}

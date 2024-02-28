@@ -1,14 +1,17 @@
 {
-  "robotWidth": 0.8,
-  "robotLength": 0.99,
+  "robotWidth": 0.53,
+  "robotLength": 0.53,
   "holonomicMode": true,
   "pathFolders": [
+    "1 Note Getaway",
     "2 Note Left",
     "2 Note Right",
-    "3 Note Center(Standard)",
-    "3 Note Center(Middle)"
+    "Center Paths"
   ],
-  "autoFolders": [],
+  "autoFolders": [
+    "Blue Autos",
+    "Red Autos"
+  ],
   "defaultMaxVel": 3.0,
   "defaultMaxAccel": 3.0,
   "defaultMaxAngVel": 573.0,
