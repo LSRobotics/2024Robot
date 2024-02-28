@@ -17,10 +17,11 @@ public class PassToShooterCmd extends Command {
   private BooleanSupplier notePresent;
   double speed;
 
-  public PassToShooterCmd(IndexerSubsystem indexer, BooleanSupplier notePresent, double speed) {
+  public PassToShooterCmd(IndexerSubsystem indexer,  double speed, BooleanSupplier notePresent) {
     m_indexer = indexer;
-    this.notePresent = notePresent;
+    //this.notePresent = notePresent;
     this.speed = speed;
+    this.notePresent = notePresent;
     addRequirements(indexer);
   }
 
