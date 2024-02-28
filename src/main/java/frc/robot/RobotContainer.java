@@ -54,12 +54,14 @@ public class RobotContainer {
      */
     public RobotContainer() {
         s_Swerve.setDefaultCommand(
-                new TeleopSwerve(
-                        s_Swerve,
-                        () -> -driverController.getLeftY(),
-                        () -> -driverController.getLeftX(),
-                        () -> -driverController.getRightX(),
-                        () -> driverController.leftBumper().getAsBoolean()));
+            new TeleopSwerve(
+                s_Swerve, 
+                () -> driverController.getLeftY(), 
+                () -> driverController.getLeftX(), 
+                () -> driverController.getRightX(), 
+                () -> driverController.leftBumper().getAsBoolean()
+            )
+        );
 
         NamedCommands.registerCommand("ShooterRampUp", new ShooterRampUpCommand(m_shooter, m_leds, () -> notePresent(), ShooterConstants.distanceShotSpeed));
         NamedCommands.registerCommand("Intake", new IntakeCommand(m_intake, m_indexer, m_leds, () -> notePresent(), IntakeConstants.intakeSpeed, IndexerConstants.intakeIndexSpeed));
@@ -82,23 +84,28 @@ public class RobotContainer {
     private void configureButtonBindings() {
         /* Driver Buttons */
         driverController.y().onTrue(new InstantCommand(() -> s_Swerve.zeroHeading()));
-        driverController.b().onTrue(new IntakeCommand(m_intake, m_indexer, m_leds, () -> notePresent(), IntakeConstants.intakeSpeed, IndexerConstants.intakeIndexSpeed));
-        driverController.a().whileTrue(new ClearIntakeCommand(m_intake, m_indexer, IntakeConstants.intakeSpeed, IndexerConstants.intakeIndexSpeed));
-        // operatorController.povUp().onTrue(new ElevatorToSetPointCmd(m_elevator,
-        // m_leds, ElevatorConstants.elevatorSpeed, true));
-        // operatorController.povDown().onTrue(new ElevatorToSetPointCmd(m_elevator,
-        // m_leds, ElevatorConstants.elevatorSpeed, false));
-        operatorController.b().toggleOnTrue(Commands.parallel(
-                new ShooterRampUpCommand(m_shooter, m_leds, () -> notePresent(), ShooterConstants.shortShotSpeed)));
-                //new WristMovementCommand(() -> WristConstants.distanceAngle, m_wrist)));
-        operatorController.a().toggleOnTrue(Commands.parallel(
-                new ShooterRampUpCommand(m_shooter, m_leds, () -> notePresent(), ShooterConstants.distanceShotSpeed)));
-                //new WristMovementCommand(() -> WristConstants.distanceAngle, m_wrist)));
-        operatorController.rightTrigger().onTrue(new PassToShooterCmd(m_indexer, () -> notePresent(), IndexerConstants.shooterIndexSpeed));
-        operatorController.rightBumper().and(operatorController.rightTrigger().whileTrue(new PassToShooterCmd(m_indexer, null, IndexerConstants.shooterIndexSpeed)));
-        driverController.rightBumper().and(driverController.a().whileTrue(new IntakeCommand(m_intake, m_indexer, m_leds, null, IntakeConstants.intakeSpeed, IndexerConstants.intakeIndexSpeed)));
-        operatorController.rightBumper().and(operatorController.b().whileTrue(new ShooterRampUpCommand(m_shooter, m_leds, null, ShooterConstants.shortShotSpeed)));
-        operatorController.rightBumper().and(operatorController.a().whileTrue(new ShooterRampUpCommand(m_shooter, m_leds, null, ShooterConstants.distanceShotSpeed)));
+        //driverController.a().onTrue(Commands.parallel(new WristMovementCommand(()->2, m_wrist), new ShooterRampUpCommand(m_shooter, m_leds, .7)));
+        //driverController.x().onTrue(new InstantCommand(() -> m_Blinkin.set(-0.87)));
+        driverController.b().onTrue(new RunIntakeCommand(m_intake, m_indexer, m_leds, IntakeConstants.intakeSpeed, IndexerConstants.indexSpeed));
+        driverController.a().whileTrue(new ClearIntakeCommand(m_intake, m_indexer, IntakeConstants.intakeSpeed));
+
+
+        //operatorController.leftTrigger().whileTrue(m_indexer, IntakeConstants.intakeSpeed);
+        operatorController.rightTrigger().whileTrue(new RunIndexCommand(m_indexer, IndexerConstants.indexSpeed));
+        operatorController.leftTrigger().whileTrue(new RunIndexCommand(m_indexer, -IndexerConstants.indexSpeed));
+        
+
+
+        //operatorController.povUp().onTrue(new ElevatorToSetPointCmd(m_elevator, m_leds, ElevatorConstants.elevatorSpeed, true));
+        //operatorController.povDown().onTrue(new ElevatorToSetPointCmd(m_elevator, m_leds, ElevatorConstants.elevatorSpeed, false));
+        //operatorController.b().onTrue(Commands.parallel(new ShooterRampUpCommand(m_shooter, m_indexer, m_leds, 0.6),
+        //                                                //new ElevatorToSetPointCmd(m_elevator, m_leds, ElevatorConstants.elevatorSpeed, true),
+            //                                            new WristMovementCommand(()-> WristConstants.distanceAngle, m_wrist)));
+        operatorController.a().whileTrue(Commands.parallel(new ShooterRampUpCommand(m_shooter, m_indexer, m_leds, ShooterConstants.distanceShotSpeed),
+                                                        //new ElevatorToSetPointCmd(m_elevator, m_leds, ElevatorConstants.elevatorSpeed, true),
+                                                        new WristMovementCommand(()-> WristConstants.distanceAngle, m_wrist)));
+        //operatorController.rightTrigger().onTrue(new PassToShooterCmd(m_indexer, m_leds, 0.6));
+        
 
     } // TODO connect to april tags
 

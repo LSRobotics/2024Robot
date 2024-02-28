@@ -31,7 +31,7 @@ public class ShooterRampUpCommand extends Command {
   @Override
   public void initialize() {
     m_shooter.runShooter(this.speed);
-    m_leds.runLeds(LEDConstants.colorSkyBlue);
+    //m_leds.runLeds(LEDConstants.colorSkyBlue);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -50,7 +50,7 @@ public class ShooterRampUpCommand extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if (notePresent == null) return false;
-    return !notePresent.getAsBoolean();
+    //return false; //TODO Determine when shooter finished
+    return false;
   }
 }
