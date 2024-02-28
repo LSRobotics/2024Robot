@@ -18,8 +18,10 @@ public class IntakeCommand extends Command {
   private final LEDSubsystem m_leds;
   private double intakeSpeed;
   private double indexSpeed;
+
+
  
-  public IntakeCommand(IntakeSubsystem intake, IndexerSubsystem indexer, LEDSubsystem leds, BooleanSupplier notePresent, double intakeSpeed, double indexSpeed) {
+  public IntakeCommand(IntakeSubsystem intake, IndexerSubsystem indexer, LEDSubsystem leds, double intakeSpeed, double indexSpeed, BooleanSupplier notePresent) {
     m_intake = intake;
     m_indexer = indexer;
     m_leds = leds;
