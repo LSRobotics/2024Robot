@@ -48,9 +48,9 @@ public class RobotContainer {
         s_Swerve.setDefaultCommand(
             new TeleopSwerve(
                 s_Swerve, 
-                () -> -driverController.getLeftY(), 
-                () -> -driverController.getLeftX(), 
-                () -> -driverController.getRightX(), 
+                () -> driverController.getLeftY(), 
+                () -> driverController.getLeftX(), 
+                () -> driverController.getRightX(), 
                 () -> driverController.leftBumper().getAsBoolean()
             )
         );
@@ -77,15 +77,23 @@ public class RobotContainer {
         //driverController.x().onTrue(new InstantCommand(() -> m_Blinkin.set(-0.87)));
         driverController.b().onTrue(new RunIntakeCommand(m_intake, m_indexer, m_leds, IntakeConstants.intakeSpeed, IndexerConstants.indexSpeed));
         driverController.a().whileTrue(new ClearIntakeCommand(m_intake, m_indexer, IntakeConstants.intakeSpeed));
+
+
+        //operatorController.leftTrigger().whileTrue(m_indexer, IntakeConstants.intakeSpeed);
+        operatorController.rightTrigger().whileTrue(new RunIndexCommand(m_indexer, IndexerConstants.indexSpeed));
+        operatorController.leftTrigger().whileTrue(new RunIndexCommand(m_indexer, -IndexerConstants.indexSpeed));
+        
+
+
         //operatorController.povUp().onTrue(new ElevatorToSetPointCmd(m_elevator, m_leds, ElevatorConstants.elevatorSpeed, true));
         //operatorController.povDown().onTrue(new ElevatorToSetPointCmd(m_elevator, m_leds, ElevatorConstants.elevatorSpeed, false));
-        operatorController.b().onTrue(Commands.parallel(new ShooterRampUpCommand(m_shooter, m_indexer, m_leds, 0.6),
+        //operatorController.b().onTrue(Commands.parallel(new ShooterRampUpCommand(m_shooter, m_indexer, m_leds, 0.6),
+        //                                                //new ElevatorToSetPointCmd(m_elevator, m_leds, ElevatorConstants.elevatorSpeed, true),
+            //                                            new WristMovementCommand(()-> WristConstants.distanceAngle, m_wrist)));
+        operatorController.a().whileTrue(Commands.parallel(new ShooterRampUpCommand(m_shooter, m_indexer, m_leds, ShooterConstants.distanceShotSpeed),
                                                         //new ElevatorToSetPointCmd(m_elevator, m_leds, ElevatorConstants.elevatorSpeed, true),
                                                         new WristMovementCommand(()-> WristConstants.distanceAngle, m_wrist)));
-        operatorController.a().onTrue(Commands.parallel(new ShooterRampUpCommand(m_shooter, m_indexer, m_leds, ShooterConstants.distanceShotSpeed),
-                                                        //new ElevatorToSetPointCmd(m_elevator, m_leds, ElevatorConstants.elevatorSpeed, true),
-                                                        new WristMovementCommand(()-> WristConstants.distanceAngle, m_wrist)));
-        operatorController.rightTrigger().onTrue(new PassToShooterCmd(m_indexer, m_leds, 0.6));
+        //operatorController.rightTrigger().onTrue(new PassToShooterCmd(m_indexer, m_leds, 0.6));
         
 
 
