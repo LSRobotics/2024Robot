@@ -5,7 +5,7 @@
       "x": 15.644549219653996,
       "y": 4.653894321677533
     },
-    "rotation": -114.73820488349574
+    "rotation": 118.00713056255552
   },
   "command": {
     "type": "sequential",
@@ -46,13 +46,13 @@
         {
           "type": "path",
           "data": {
-            "pathName": "get note red"
+            "pathName": "get first note red"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "shoot note red"
+            "pathName": "shoot first note red"
           }
         },
         {
@@ -90,7 +90,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "get far note red"
+            "pathName": "go far note red"
           }
         }
       ]

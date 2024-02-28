@@ -46,7 +46,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Get Note"
+            "pathName": "Get Note blue"
           }
         },
         {
@@ -84,7 +84,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Grab far note"
+            "pathName": "Grab far note blue"
           }
         }
       ]

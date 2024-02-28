@@ -2,8 +2,8 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.7960199531510176,
-      "y": 4.5921345685283965
+      "x": 11.762473659206577,
+      "y": 6.445461622405699
     },
     "rotation": -67.21775578300701
   },
@@ -46,13 +46,13 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Get First Note"
+            "pathName": "Get First Note blue"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "Shoot first note"
+            "pathName": "Shoot first note blue"
           }
         },
         {
@@ -90,7 +90,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "go to far note"
+            "pathName": "go to far note blue"
           }
         }
       ]
