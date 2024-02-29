@@ -2,8 +2,8 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 13.201119601313277,
-      "y": 6.757942219588143
+      "x": 1.148516485067158,
+      "y": 5.5430292057165325
     },
     "rotation": 0
   },
@@ -128,13 +128,13 @@
         {
           "type": "path",
           "data": {
-            "pathName": "get note 3"
+            "pathName": "get note 3 (right)"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "go back from Note 3"
+            "pathName": "go back from Note 3 (right)"
           }
         },
         {
@@ -173,6 +173,44 @@
           "type": "path",
           "data": {
             "pathName": "get note 4"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "go back from note 4"
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "ShooterRampUp"
+                }
+              },
+              {
+                "type": "sequential",
+                "data": {
+                  "commands": [
+                    {
+                      "type": "wait",
+                      "data": {
+                        "waitTime": 1.0
+                      }
+                    },
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "PassToShooter"
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
           }
         }
       ]

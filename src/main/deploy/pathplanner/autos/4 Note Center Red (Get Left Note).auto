@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 13.201119601313277,
-      "y": 6.757942219588143
+      "x": 15.299763520823339,
+      "y": 5.540740623147914
     },
-    "rotation": 0
+    "rotation": 178.9181339184596
   },
   "command": {
     "type": "sequential",
@@ -46,7 +46,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "get note 2"
+            "pathName": "red get note 2"
           }
         },
         {
@@ -58,7 +58,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Go back from note 2"
+            "pathName": "go back from red note 2"
           }
         },
         {
@@ -128,13 +128,13 @@
         {
           "type": "path",
           "data": {
-            "pathName": "get note 3"
+            "pathName": "get note 3 (left) red"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "go back from Note 3"
+            "pathName": "go back from Note 3 (left) red"
           }
         },
         {
@@ -172,12 +172,50 @@
         {
           "type": "path",
           "data": {
-            "pathName": "get note 4"
+            "pathName": "get note 4 red"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "go back from note 4 red"
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "ShooterRampUp"
+                }
+              },
+              {
+                "type": "sequential",
+                "data": {
+                  "commands": [
+                    {
+                      "type": "wait",
+                      "data": {
+                        "waitTime": 1.0
+                      }
+                    },
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "PassToShooter"
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
           }
         }
       ]
     }
   },
-  "folder": "Blue Autos",
+  "folder": "Red Autos",
   "choreoAuto": false
 }
