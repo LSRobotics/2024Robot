@@ -10,20 +10,31 @@ import java.util.function.BooleanSupplier;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants.LEDConstants;
+import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.LEDSubsystem;
+import frc.robot.subsystems.IndexerSubsystem;
 
 /** An example command that uses an example subsystem. */
 public class ShooterRampUpCommand extends Command {
   private final ShooterSubsystem m_shooter;
-  private final BooleanSupplier notePresent;
+  
   private double speed = 0;
   private final LEDSubsystem m_leds;
+  private final BooleanSupplier notePresent;
 
-  public ShooterRampUpCommand(ShooterSubsystem shooter, LEDSubsystem leds, BooleanSupplier notePresent, double speed) {
+  /**
+   * Creates a new ExampleCommand.
+   *
+   * @param subsystem The subsystem used by this command.
+   */
+  public ShooterRampUpCommand(ShooterSubsystem shooter, LEDSubsystem leds, double speed, BooleanSupplier notePresent) {
     m_shooter = shooter;
+    
     m_leds = leds;
     this.speed = speed;
     this.notePresent = notePresent;
+
+    // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(shooter, leds);
   }
 
@@ -37,20 +48,35 @@ public class ShooterRampUpCommand extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    System.out.println("Shooter ramp speed is equal to " + this.speed + ".");
+    /*if () {
+      if ((int) (System.currentTimeMillis()/1000/LEDConstants.blinkSpeedShooterRampedUp) % 2 == 0) {
+        m_leds.runLeds(LEDConstants.colorLimeGreen);
+      }
+      else {
+        m_leds.runLeds(LEDConstants.colorDarkGreen)
+      }
+    }
+    else {
+      m_leds.runLeds(LEDConstants.colorSkyBlue);
+    }*/
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
     m_shooter.runShooter(0);
-    m_leds.runLeds(LEDConstants.colorLimeGreen);
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    //return false; //TODO Determine when shooter finished
-    return false;
+    
+    if(notePresent == null){
+      return false;
+    }
+    return !notePresent.getAsBoolean();
+    
+      
+    
   }
 }
