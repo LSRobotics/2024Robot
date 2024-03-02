@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.15,
-        "y": 5.54
+        "x": 0.79,
+        "y": 6.51
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.6063197913432867,
-        "y": 7.32625071731625
+        "x": 1.9080339887498972,
+        "y": 6.51
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 3.14,
-        "y": 7.01
+        "x": 3.787701626394754,
+        "y": 7.052320506907303
       },
       "prevControl": {
-        "x": 2.14,
-        "y": 7.01
+        "x": 2.2670109938201985,
+        "y": 7.052320506907303
       },
       "nextControl": null,
       "isLocked": false,
@@ -33,15 +33,22 @@
   "eventMarkers": [
     {
       "name": "New Event Marker",
-      "waypointRelativePos": 0.65,
+      "waypointRelativePos": 0.3,
       "command": {
-        "type": "sequential",
+        "type": "parallel",
         "data": {
           "commands": [
             {
-              "type": "named",
+              "type": "sequential",
               "data": {
-                "name": "Intake"
+                "commands": [
+                  {
+                    "type": "named",
+                    "data": {
+                      "name": "Intake"
+                    }
+                  }
+                ]
               }
             }
           ]
@@ -61,10 +68,7 @@
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "Center Paths",
-  "previewStartingState": {
-    "rotation": 0,
-    "velocity": 0
-  },
-  "useDefaultConstraints": true
+  "folder": "BL RR Two Note",
+  "previewStartingState": null,
+  "useDefaultConstraints": false
 }

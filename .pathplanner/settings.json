@@ -3,13 +3,12 @@
   "robotLength": 0.53,
   "holonomicMode": true,
   "pathFolders": [
-    "1 Note Getaway",
-    "2 Note Left",
-    "2 Note Right",
-    "Center Paths"
+    "Center Two Note",
+    "BL RR Two Note"
   ],
   "autoFolders": [
     "Blue Autos",
+    "Mutual",
     "Red Autos"
   ],
   "defaultMaxVel": 3.0,
