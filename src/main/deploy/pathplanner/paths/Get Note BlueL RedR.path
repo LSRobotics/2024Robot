@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.2063081349958737,
-        "y": 5.593019231364241
+        "x": 0.79,
+        "y": 6.51
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.324342123745767,
-        "y": 5.593019231364241
+        "x": 1.9080339887498972,
+        "y": 6.51
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 3.6597947416858014,
-        "y": 5.593019231364241
+        "x": 3.787701626394754,
+        "y": 7.052320506907303
       },
       "prevControl": {
-        "x": 2.139104109111244,
-        "y": 5.593019231364241
+        "x": 2.2670109938201985,
+        "y": 7.052320506907303
       },
       "nextControl": null,
       "isLocked": false,
@@ -33,7 +33,7 @@
   "eventMarkers": [
     {
       "name": "New Event Marker",
-      "waypointRelativePos": 0.4,
+      "waypointRelativePos": 0.3,
       "command": {
         "type": "sequential",
         "data": {
@@ -61,7 +61,7 @@
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "Center Two Note",
+  "folder": "BL RR Two Note",
   "previewStartingState": null,
   "useDefaultConstraints": false
 }

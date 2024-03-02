@@ -46,13 +46,13 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Get Note BL RR"
+            "pathName": "Get Note BlueL RedR"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "Go Shoot BL RR"
+            "pathName": "Go Shoot BlueL RedR"
           }
         },
         {

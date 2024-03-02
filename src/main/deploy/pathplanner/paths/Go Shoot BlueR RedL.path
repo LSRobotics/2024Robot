@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 0.62,
-        "y": 4.53
+        "x": 2.79,
+        "y": 4.08
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.7380339887498932,
-        "y": 4.53
+        "x": 1.6719660112501051,
+        "y": 4.08
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 2.7935162952478887,
-        "y": 4.075578462771657
+        "x": 0.6423550524154875,
+        "y": 4.499996762033184
       },
       "prevControl": {
-        "x": 1.272825662673334,
-        "y": 4.075578462771657
+        "x": 1.9588262744032656,
+        "y": 4.499996762033184
       },
       "nextControl": null,
       "isLocked": false,
@@ -30,18 +30,7 @@
   ],
   "rotationTargets": [],
   "constraintZones": [],
-  "eventMarkers": [
-    {
-      "name": "New Event Marker",
-      "waypointRelativePos": 0,
-      "command": {
-        "type": "parallel",
-        "data": {
-          "commands": []
-        }
-      }
-    }
-  ],
+  "eventMarkers": [],
   "globalConstraints": {
     "maxVelocity": 3.0,
     "maxAcceleration": 3.0,
@@ -50,11 +39,11 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0,
+    "rotation": -60.0,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": null,
+  "folder": "BR RL Two Note",
   "previewStartingState": null,
   "useDefaultConstraints": false
 }
