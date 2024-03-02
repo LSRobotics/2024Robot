@@ -3,7 +3,7 @@
     "type": "java",
     "name": "frcJava",
     "port": 8349,
-    "target": "roborio-5181-FRC",
+    "target": "169.254.54.230",
     "project": "2024Robot"
   }
 ]
