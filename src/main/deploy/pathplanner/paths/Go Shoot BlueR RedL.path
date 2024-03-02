@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 15.55,
-        "y": 4.72
+        "x": 2.79,
+        "y": 4.08
       },
       "prevControl": null,
       "nextControl": {
-        "x": 15.797879683722332,
-        "y": 5.481771935766094
+        "x": 1.6719660112501051,
+        "y": 4.08
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 8.123220820515714,
-        "y": 4.094255943141516
+        "x": 0.6423550524154875,
+        "y": 4.499996762033184
       },
       "prevControl": {
-        "x": 8.683334274075955,
-        "y": 4.241410431894938
+        "x": 1.9588262744032656,
+        "y": 4.499996762033184
       },
       "nextControl": null,
       "isLocked": false,
@@ -39,14 +39,11 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -178.77774846672818,
+    "rotation": -60.0,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "2 Note Left",
-  "previewStartingState": {
-    "rotation": -121.45155901003693,
-    "velocity": 0
-  },
-  "useDefaultConstraints": true
+  "folder": "BR RL Two Note",
+  "previewStartingState": null,
+  "useDefaultConstraints": false
 }

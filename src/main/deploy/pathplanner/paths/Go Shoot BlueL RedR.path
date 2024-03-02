@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.81,
-        "y": 4.1
+        "x": 3.79,
+        "y": 7.05
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.647446706930451,
-        "y": 4.016284254790732
+        "x": 2.903150585099918,
+        "y": 7.05
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 1.15,
-        "y": 5.54
+        "x": 0.7644479878194886,
+        "y": 6.523251120156631
       },
       "prevControl": {
-        "x": 1.8371468687381822,
-        "y": 5.542047079464529
+        "x": 2.285138620394042,
+        "y": 6.523251120156631
       },
       "nextControl": null,
       "isLocked": false,
@@ -39,14 +39,11 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0,
+    "rotation": 60.0,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "Center Paths",
-  "previewStartingState": {
-    "rotation": 0,
-    "velocity": 0
-  },
-  "useDefaultConstraints": true
+  "folder": "BL RR Two Note",
+  "previewStartingState": null,
+  "useDefaultConstraints": false
 }

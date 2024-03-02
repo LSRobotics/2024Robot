@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.15,
-        "y": 5.54
+        "x": 0.62,
+        "y": 4.53
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.6063197913432867,
-        "y": 7.32625071731625
+        "x": 1.7380339887498932,
+        "y": 4.53
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 3.14,
-        "y": 7.01
+        "x": 2.7935162952478887,
+        "y": 4.075578462771657
       },
       "prevControl": {
-        "x": 2.14,
-        "y": 7.01
+        "x": 1.272825662673334,
+        "y": 4.075578462771657
       },
       "nextControl": null,
       "isLocked": false,
@@ -61,10 +61,7 @@
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "Center Paths",
-  "previewStartingState": {
-    "rotation": 0,
-    "velocity": 0
-  },
-  "useDefaultConstraints": true
+  "folder": "BR RL Two Note",
+  "previewStartingState": null,
+  "useDefaultConstraints": false
 }

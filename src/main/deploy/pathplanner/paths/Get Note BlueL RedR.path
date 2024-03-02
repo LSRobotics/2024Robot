@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 15.644549219653996,
-        "y": 4.653894321677533
+        "x": 0.79,
+        "y": 6.51
       },
       "prevControl": null,
       "nextControl": {
-        "x": 15.87032862491651,
-        "y": 4.016581176680873
+        "x": 1.9080339887498972,
+        "y": 6.51
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 13.83807644004177,
-        "y": 4.099897459054178
+        "x": 3.787701626394754,
+        "y": 7.052320506907303
       },
       "prevControl": {
-        "x": 14.2557267707128,
-        "y": 4.498841710646385
+        "x": 2.2670109938201985,
+        "y": 7.052320506907303
       },
       "nextControl": null,
       "isLocked": false,
@@ -33,7 +33,7 @@
   "eventMarkers": [
     {
       "name": "New Event Marker",
-      "waypointRelativePos": 0.8,
+      "waypointRelativePos": 0.3,
       "command": {
         "type": "sequential",
         "data": {
@@ -57,14 +57,11 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -178.7569059249436,
+    "rotation": 0,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "2 Note Left",
-  "previewStartingState": {
-    "rotation": -119.75609879572451,
-    "velocity": 0
-  },
-  "useDefaultConstraints": true
+  "folder": "BL RR Two Note",
+  "previewStartingState": null,
+  "useDefaultConstraints": false
 }
