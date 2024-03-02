@@ -58,5 +58,6 @@ public class IntakeCommand extends Command {
   public boolean isFinished() {
     if(notePresent == null) return false;
     return notePresent.getAsBoolean();
+  
   }
 }

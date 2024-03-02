@@ -19,7 +19,7 @@ public class ShooterRampUpCommand extends Command {
   private double speed = 0;
   private final LEDSubsystem m_leds;
 
-  public ShooterRampUpCommand(ShooterSubsystem shooter, LEDSubsystem leds, BooleanSupplier notePresent, double speed) {
+  public ShooterRampUpCommand(ShooterSubsystem shooter, LEDSubsystem leds, double speed, BooleanSupplier notePresent) {
     m_shooter = shooter;
     m_leds = leds;
     this.speed = speed;
@@ -50,7 +50,10 @@ public class ShooterRampUpCommand extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    //return false; //TODO Determine when shooter finished
-    return false;
+    if(notePresent == null){
+      return false;
+    }
+    return !notePresent.getAsBoolean();
   }
 }
+
