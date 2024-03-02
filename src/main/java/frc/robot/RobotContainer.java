@@ -58,7 +58,7 @@ public class RobotContainer {
                 s_Swerve, 
                 () -> driverController.getLeftY(), 
                 () -> driverController.getLeftX(), 
-                () -> driverController.getRightX(), 
+                () -> -driverController.getRightX(), 
                 () -> driverController.leftBumper().getAsBoolean()
             )
         );
@@ -87,7 +87,7 @@ public class RobotContainer {
         //driverController.a().onTrue(Commands.parallel(new WristMovementCommand(()->2, m_wrist), new ShooterRampUpCommand(m_shooter, m_leds, .7)));
         //driverController.x().onTrue(new InstantCommand(() -> m_Blinkin.set(-0.87)));
         driverController.b().onTrue(new IntakeCommand(m_intake, m_indexer, m_leds, IntakeConstants.intakeSpeed, IndexerConstants.indexSpeed,    () -> notePresent()));
-        driverController.a().whileTrue(new ClearIntakeCommand(m_intake, m_indexer, IntakeConstants.intakeSpeed, IndexerConstants.indexSpeed));
+        driverController.a().whileTrue(new ClearIntakeCmd(m_intake, m_indexer, IntakeConstants.intakeSpeed, IndexerConstants.indexSpeed));
 
 
         //operatorController.leftTrigger().whileTrue(m_indexer, IntakeConstants.intakeSpeed);
