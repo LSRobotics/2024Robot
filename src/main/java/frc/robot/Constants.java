@@ -138,7 +138,7 @@ public final class Constants {
         public static final int elevatorMotorID = 16;
         public static final int elevatorTopLimitChannel = 5;
         public static final int elevatorBottomLimitChannel = 6;
-        public static final double elevatorSpeed = .5;
+        public static final double elevatorSpeed = .3;
     }
 
     public static final class IndexerConstants { // TODO: Update Indexer CAN IDs and Channels

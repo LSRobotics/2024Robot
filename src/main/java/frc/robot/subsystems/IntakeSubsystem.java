@@ -12,18 +12,18 @@ import com.ctre.phoenix6.hardware.TalonFX;
 
 public class IntakeSubsystem extends SubsystemBase {
    public TalonFX intakeMotorOne;
-   public DigitalInput elevatorBottomLimit;
-   public DigitalInput elevatorTopLimit;
+   //private DigitalInput elevatorBottomLimit;
+   //private DigitalInput elevatorTopLimit;
 
   public IntakeSubsystem() {
     intakeMotorOne = new TalonFX(IntakeConstants.intakeMotorOneID);
-    elevatorBottomLimit = new DigitalInput(ElevatorConstants.elevatorBottomLimitChannel);
-    elevatorTopLimit = new DigitalInput(ElevatorConstants.elevatorTopLimitChannel);
+    //elevatorBottomLimit = new DigitalInput(ElevatorConstants.elevatorBottomLimitChannel);
+    //elevatorTopLimit = new DigitalInput(ElevatorConstants.elevatorTopLimitChannel);
   }
   
   public void runIntake(double speed) {
     intakeMotorOne.set(-speed);
-    System.out.println("This is the top limit "+elevatorBottomLimit.get());
-    System.out.println("This is bottom limit "+elevatorBottomLimit.get());
+    //System.out.println("This is the top limit "+elevatorBottomLimit.get());
+    //System.out.println("This is bottom limit "+elevatorTopLimit.get());
   }
 }

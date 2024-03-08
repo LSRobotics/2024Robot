@@ -12,6 +12,7 @@ import frc.robot.Constants.ElevatorConstants;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkLowLevel.MotorType;
 import com.playingwithfusion.*;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
 import com.ctre.phoenix.motorcontrol.can.*;
@@ -34,6 +35,12 @@ public class ElevatorSubsystem extends SubsystemBase {
  
   public void runElevator(double speed) {
     elevatorMotor.set(-speed);
+    System.out.println("This is the top limit "+elevatorBottomLimit.get());
+    System.out.println("This is bottom limit "+elevatorTopLimit.get());
+
+    SmartDashboard.getBoolean("Top limit", elevatorTopLimit.get());
+    SmartDashboard.getBoolean("Bottom limit", elevatorBottomLimit.get());
+
   }
 
   public int elevatorPosition() {
@@ -45,6 +52,9 @@ public class ElevatorSubsystem extends SubsystemBase {
       return -1;
     }
     else if (!elevatorTopLimit.get()){
+
+    
+
       return 1;
     } 
     else{

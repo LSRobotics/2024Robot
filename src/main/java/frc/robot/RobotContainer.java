@@ -64,7 +64,7 @@ public class RobotContainer {
         );
 
         NamedCommands.registerCommand("ShooterRampUp", new ShooterRampUpCommand(m_shooter, m_leds, ShooterConstants.distanceShotSpeed, () -> notePresent()));
-        NamedCommands.registerCommand("Intake", new IntakeCommand(m_intake, m_indexer, m_leds, IntakeConstants.intakeSpeed, IndexerConstants.indexSpeed, () -> notePresent()));
+        NamedCommands.registerCommand("Intake", new IntakeRunCommand(m_intake, m_indexer, m_leds, IntakeConstants.intakeSpeed, IndexerConstants.indexSpeed, () -> notePresent()));
         NamedCommands.registerCommand("PassToShooter", new PassToShooterCmd(m_indexer, IndexerConstants.indexSpeed, () -> notePresent()));
 
         autoChooser = AutoBuilder.buildAutoChooser();
@@ -86,7 +86,7 @@ public class RobotContainer {
         driverController.y().onTrue(new InstantCommand(() -> s_Swerve.zeroHeading()));
         //driverController.a().onTrue(Commands.parallel(new WristMovementCommand(()->2, m_wrist), new ShooterRampUpCommand(m_shooter, m_leds, .7)));
         //driverController.x().onTrue(new InstantCommand(() -> m_Blinkin.set(-0.87)));
-        driverController.b().onTrue(new IntakeCommand(m_intake, m_indexer, m_leds, IntakeConstants.intakeSpeed, IndexerConstants.indexSpeed,    () -> notePresent()));
+        driverController.b().onTrue(new IntakeRunCommand(m_intake, m_indexer, m_leds, IntakeConstants.intakeSpeed, IndexerConstants.indexSpeed,    () -> notePresent()));
         driverController.a().whileTrue(new ClearIntakeCmd(m_intake, m_indexer, IntakeConstants.intakeSpeed, IndexerConstants.indexSpeed));
 
 
