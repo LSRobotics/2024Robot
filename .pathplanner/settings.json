@@ -4,8 +4,9 @@
   "holonomicMode": true,
   "pathFolders": [
     "BL RR Two Note",
+    "BR RL Two Note",
     "Center Two Note",
-    "BR RL Two Note"
+    "4 Note Paths"
   ],
   "autoFolders": [
     "Mutual"

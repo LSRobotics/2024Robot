@@ -64,8 +64,11 @@ public class RobotContainer {
         );
 
         NamedCommands.registerCommand("ShooterRampUp", new ShooterRampUpCommand(m_shooter, m_leds, ShooterConstants.distanceShotSpeed, () -> notePresent()));
-        NamedCommands.registerCommand("Intake", new IntakeRunCommand(m_intake, m_indexer, m_leds, IntakeConstants.intakeSpeed, IndexerConstants.indexSpeed, () -> notePresent()));
+        NamedCommands.registerCommand("Intake", new IntakeRunCommand(m_intake, m_indexer, m_leds, 0.5, 0.19, () -> notePresent()));
         NamedCommands.registerCommand("PassToShooter", new PassToShooterCmd(m_indexer, IndexerConstants.indexSpeed, () -> notePresent()));
+        NamedCommands.registerCommand("IntakeStage", new IntakeRunCommand(m_intake, m_indexer, m_leds, IntakeConstants.intakeSpeed, 0.27, () -> notePresent()));
+        //NamedCommands.registerCommand("ShooterRampDown", new ShooterRampUpCommand(m_shooter, m_leds, -0.1, () -> !notePresent()));
+
 
         autoChooser = AutoBuilder.buildAutoChooser();
         SmartDashboard.putData("AutoChooser", autoChooser);
