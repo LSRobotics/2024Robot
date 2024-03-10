@@ -3,10 +3,11 @@
   "robotLength": 0.53,
   "holonomicMode": true,
   "pathFolders": [
+    "4 Note Paths",
     "BL RR Two Note",
     "BR RL Two Note",
     "Center Two Note",
-    "4 Note Paths"
+    "SidePaths"
   ],
   "autoFolders": [
     "Mutual"
