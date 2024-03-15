@@ -1,0 +1,51 @@
+{
+  "version": 1.0,
+  "startingPose": {
+    "position": {
+      "x": 0.7023114046228107,
+      "y": 6.512182255133741
+    },
+    "rotation": 59.74356283647067
+  },
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "ShooterRampUp"
+                }
+              },
+              {
+                "type": "sequential",
+                "data": {
+                  "commands": [
+                    {
+                      "type": "wait",
+                      "data": {
+                        "waitTime": 0.5
+                      }
+                    },
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "PassToShooter"
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "folder": "Mutual",
+  "choreoAuto": false
+}

@@ -1,0 +1,107 @@
+{
+  "version": 1.0,
+  "startingPose": {
+    "position": {
+      "x": 0.7220452902444284,
+      "y": 6.502315312322933
+    },
+    "rotation": 59.620873988631544
+  },
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "ShooterRampUp"
+                }
+              },
+              {
+                "type": "sequential",
+                "data": {
+                  "commands": [
+                    {
+                      "type": "wait",
+                      "data": {
+                        "waitTime": 0.5
+                      }
+                    },
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "PassToShooter"
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Left Close Note"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Left Close Note Back"
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "ShooterRampUp"
+                }
+              },
+              {
+                "type": "sequential",
+                "data": {
+                  "commands": [
+                    {
+                      "type": "wait",
+                      "data": {
+                        "waitTime": 0.5
+                      }
+                    },
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "PassToShooter"
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Left Far Note"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Left Far Note Back"
+          }
+        }
+      ]
+    }
+  },
+  "folder": "Blue",
+  "choreoAuto": false
+}

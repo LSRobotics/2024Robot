@@ -31,10 +31,10 @@ public class ElevatorToSetPointCmd extends Command {
   @Override
   public void initialize() {
     if(shouldGoToTop){
-      m_elevator.runElevator(this.speed);
+      m_elevator.runElevator(0.8);
     }
     else{
-      m_elevator.runElevator(-this.speed);
+      m_elevator.runElevator(-0.5);
     }
     m_leds.runLeds(LEDConstants.colorWhite);
   }

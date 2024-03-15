@@ -7,10 +7,14 @@
     "BL RR Two Note",
     "BR RL Two Note",
     "Center Two Note",
+    "Left Note",
+    "Red Four Note",
     "SidePaths"
   ],
   "autoFolders": [
-    "Mutual"
+    "Blue",
+    "Mutual",
+    "Red"
   ],
   "defaultMaxVel": 3.0,
   "defaultMaxAccel": 3.0,

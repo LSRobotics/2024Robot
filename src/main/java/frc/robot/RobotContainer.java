@@ -56,8 +56,8 @@ public class RobotContainer {
         s_Swerve.setDefaultCommand(
             new TeleopSwerve(
                 s_Swerve, 
-                () -> driverController.getLeftY(), 
-                () -> driverController.getLeftX(), 
+                () -> -driverController.getLeftY(), 
+                () -> -driverController.getLeftX(), 
                 () -> -driverController.getRightX(), 
                 () -> driverController.leftBumper().getAsBoolean()
             )
@@ -68,7 +68,8 @@ public class RobotContainer {
         NamedCommands.registerCommand("PassToShooter", new PassToShooterCmd(m_indexer, IndexerConstants.indexSpeed, () -> notePresent()));
         NamedCommands.registerCommand("IntakeStage", new IntakeRunCommand(m_intake, m_indexer, m_leds, IntakeConstants.intakeSpeed, 0.27, () -> notePresent()));
         //NamedCommands.registerCommand("ShooterRampDown", new ShooterRampUpCommand(m_shooter, m_leds, -0.1, () -> !notePresent()));
-
+        NamedCommands.registerCommand("IntakeFarNote", new IntakeRunCommand(m_intake, m_indexer, m_leds, 0.7, 0.3, () -> notePresent())); 
+        NamedCommands.registerCommand("IntakeRedStage", new IntakeRunCommand(m_intake, m_indexer, m_leds, 0.43, 0.14, () -> notePresent()));
 
         autoChooser = AutoBuilder.buildAutoChooser();
         SmartDashboard.putData("AutoChooser", autoChooser);
