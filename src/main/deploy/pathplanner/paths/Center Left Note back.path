@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 3.28,
-        "y": 7.08
+        "x": 2.95,
+        "y": 7.05
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.023993910713302,
-        "y": 7.08
+        "x": 1.6939939107133024,
+        "y": 7.05
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 1.17,
-        "y": 5.574822688106915
+        "x": 0.9861162090369815,
+        "y": 5.539225686154654
       },
       "prevControl": {
-        "x": 2.17,
-        "y": 5.574822688106915
+        "x": 1.9861162090369813,
+        "y": 5.539225686154654
       },
       "nextControl": null,
       "isLocked": false,
@@ -30,7 +30,25 @@
   ],
   "rotationTargets": [],
   "constraintZones": [],
-  "eventMarkers": [],
+  "eventMarkers": [
+    {
+      "name": "New Event Marker",
+      "waypointRelativePos": 0,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "IntakeFourNoteTest"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
   "globalConstraints": {
     "maxVelocity": 3.0,
     "maxAcceleration": 3.0,

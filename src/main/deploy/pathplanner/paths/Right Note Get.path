@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 0.78,
-        "y": 4.65
+        "x": 1.11,
+        "y": 4.6
       },
       "prevControl": null,
       "nextControl": {
-        "x": 0.6248394912174455,
-        "y": 3.9973093530802455
+        "x": 0.9548394912174456,
+        "y": 3.9473093530802448
       },
       "isLocked": false,
       "linkedName": null
@@ -57,7 +57,7 @@
             {
               "type": "named",
               "data": {
-                "name": "IntakeFarNote"
+                "name": "IntakeStageTest"
               }
             }
           ]

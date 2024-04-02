@@ -63,13 +63,26 @@ public class RobotContainer {
             )
         );
 
-        NamedCommands.registerCommand("ShooterRampUp", new ShooterRampUpCommand(m_shooter, m_leds, ShooterConstants.distanceShotSpeed, () -> notePresent()));
-        NamedCommands.registerCommand("Intake", new IntakeRunCommand(m_intake, m_indexer, m_leds, 0.5, 0.19, () -> notePresent()));
+        NamedCommands.registerCommand("ShooterRampUp", new ShooterRampUpCommand(m_shooter, m_leds, ShooterConstants.distanceShotSpeed, ShooterConstants.distanceShotSpeed, () -> notePresent()));
+        NamedCommands.registerCommand("Intake", new IntakeRunCommand(m_intake, m_indexer, m_leds, 0.53, 0.2, () -> notePresent()));
         NamedCommands.registerCommand("PassToShooter", new PassToShooterCmd(m_indexer, IndexerConstants.indexSpeed, () -> notePresent()));
-        NamedCommands.registerCommand("IntakeStage", new IntakeRunCommand(m_intake, m_indexer, m_leds, IntakeConstants.intakeSpeed, 0.27, () -> notePresent()));
+        NamedCommands.registerCommand("IntakeStage", new IntakeRunCommand(m_intake, m_indexer, m_leds, 0.65, 0.24, () -> notePresent()));
         //NamedCommands.registerCommand("ShooterRampDown", new ShooterRampUpCommand(m_shooter, m_leds, -0.1, () -> !notePresent()));
         NamedCommands.registerCommand("IntakeFarNote", new IntakeRunCommand(m_intake, m_indexer, m_leds, 0.7, 0.3, () -> notePresent())); 
         NamedCommands.registerCommand("IntakeRedStage", new IntakeRunCommand(m_intake, m_indexer, m_leds, 0.43, 0.14, () -> notePresent()));
+
+        NamedCommands.registerCommand("IntakeFourNote", new IntakeRunCommand(m_intake, m_indexer, m_leds, 0.5, 0.24, () -> notePresent()));
+        NamedCommands.registerCommand("IntakeFourNoteTest", new IntakeRunCommand(m_intake, m_indexer, m_leds, 0.53, 0.21, () -> notePresent()));
+
+
+        NamedCommands.registerCommand("ShooterRampDown", new ShooterRampUpCommand(m_shooter, m_leds, -0.3, - 0.3, () -> notePresent()));
+
+        NamedCommands.registerCommand("IntakeStageTest", new IntakeRunCommand(m_intake, m_indexer, m_leds, 0.6, 0.24, () -> notePresent())); 
+
+        NamedCommands.registerCommand("preLehighIntake", new IntakeRunCommand(m_intake, m_indexer, m_leds, 0.6, 0.2, () -> notePresent())); 
+                
+
+
 
         autoChooser = AutoBuilder.buildAutoChooser();
         SmartDashboard.putData("AutoChooser", autoChooser);
@@ -105,21 +118,34 @@ public class RobotContainer {
         //operatorController.b().onTrue(Commands.parallel(new ShooterRampUpCommand(m_shooter, m_indexer, m_leds, 0.6),
         //                                                //new ElevatorToSetPointCmd(m_elevator, m_leds, ElevatorConstants.elevatorSpeed, true),
             //                                            new WristMovementCommand(()-> WristConstants.distanceAngle, m_wrist)));
-        operatorController.a().whileTrue(Commands.parallel(new ShooterRampUpCommand(m_shooter, m_leds, ShooterConstants.distanceShotSpeed, null),
+        operatorController.a().whileTrue(Commands.parallel(new ShooterRampUpCommand(m_shooter, m_leds, ShooterConstants.distanceShotSpeed, ShooterConstants.distanceShotSpeed, null),
                                                         //new ElevatorToSetPointCmd(m_elevator, m_leds, ElevatorConstants.elevatorSpeed, true),
                                                         new WristMovementCommand(()-> WristConstants.distanceAngle, m_wrist)));
-                                                        
-        operatorController.b().whileTrue(Commands.parallel(new ShooterRampUpCommand(m_shooter, m_leds, 0.2, null),
+                                                                    
+        
+
+       // operatorController.b().whileTrue(Commands.parallel(new ShooterRampUpCommand(m_shooter, m_leds, 0.2, 0.2, null),
                                                         //new ElevatorToSetPointCmd(m_elevator, m_leds, ElevatorConstants.elevatorSpeed, true),
-                                                        new WristMovementCommand(()-> WristConstants.distanceAngle, m_wrist)));
-        operatorController.x().whileTrue(Commands.parallel(new ShooterRampUpCommand(m_shooter, m_leds, -0.1, null),
+        //                                                new WristMovementCommand(()-> WristConstants.distanceAngle, m_wrist)));
+        operatorController.x().whileTrue(Commands.parallel(new ShooterRampUpCommand(m_shooter, m_leds, -0.1, -0.1, null),
                                                         //new ElevatorToSetPointCmd(m_elevator, m_leds, ElevatorConstants.elevatorSpeed, true),
                                                         new WristMovementCommand(()-> WristConstants.distanceAngle, m_wrist)));
         //operatorController.rightTrigger().onTrue(new PassToShooterCmd(m_indexer, m_leds, 0.6));
-        
+         operatorController.y().whileTrue(Commands.parallel(new ShooterRampUpCommand(m_shooter, m_leds, ShooterConstants.distanceShotSpeed + 0.15, ShooterConstants.distanceShotSpeed + 0.15, null),
+                                                        //new ElevatorToSetPointCmd(m_elevator, m_leds, ElevatorConstants.elevatorSpeed,s true),
+                                                        new WristMovementCommand(()-> WristConstants.distanceAngle, m_wrist)));
+    
+        operatorController.b().whileTrue(Commands.parallel(new ShooterRampUpCommand(m_shooter, m_leds, 0.025, 0.265, null),
+                                                        //new ElevatorToSetPointCmd(m_elevator, m_leds, ElevatorConstants.elevatorSpeed,s true),
+                                                        new WristMovementCommand(()-> WristConstants.distanceAngle, m_wrist)));
+ /*        driverController.leftTrigger().whileTrue(Commands.parallel(new ShooterRampUpCommand(m_shooter, m_leds, 0.45, 0.19, null),
+    long shot                                           //new ElevatorToSetPointCmd(m_elevator, m_leds, ElevatorConstants.elevatorSpeed,s true),
+                                                        new WristMovementCommand(()-> WristConstants.distanceAngle, m_wrist)));         */                                       
+        //driverController.rightTrigger().whileTrue(new RunIndexCommand(m_indexer, IndexerConstants.indexSpeed));
+
 
     } // TODO connect to april tags
-
+ 
     public boolean notePresent() {
         System.out.println(" " + indexBeamBreak.getRange()); //TODO: delete after testing
         return indexBeamBreak.getRange() <= IndexerConstants.beamBreakRange;

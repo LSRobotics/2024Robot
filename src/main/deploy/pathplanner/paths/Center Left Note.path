@@ -8,32 +8,54 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.2,
-        "y": 5.59
+        "x": 1.8878506230621577,
+        "y": 5.913972455619661
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 3.277583478243881,
-        "y": 7.094331880971454
+        "x": 1.8995614596079393,
+        "y": 6.136478349989511
       },
       "prevControl": {
-        "x": 2.277583478243881,
-        "y": 7.094331880971454
+        "x": 1.6813666169415058,
+        "y": 5.894440716969879
+      },
+      "nextControl": {
+        "x": 2.1558288001801618,
+        "y": 6.420748774415442
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 2.9418259121824937,
+        "y": 7.049923600560469
+      },
+      "prevControl": {
+        "x": 2.356284084893418,
+        "y": 6.6751768310954605
       },
       "nextControl": null,
       "isLocked": false,
       "linkedName": null
     }
   ],
-  "rotationTargets": [],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 1,
+      "rotationDegrees": 43.781124764868665,
+      "rotateFast": false
+    }
+  ],
   "constraintZones": [],
   "eventMarkers": [
     {
       "name": "New Event Marker",
-      "waypointRelativePos": 0.45,
+      "waypointRelativePos": 1.1,
       "command": {
         "type": "parallel",
         "data": {
@@ -41,7 +63,7 @@
             {
               "type": "named",
               "data": {
-                "name": "Intake"
+                "name": "IntakeFourNoteTest"
               }
             }
           ]
