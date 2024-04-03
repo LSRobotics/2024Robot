@@ -66,9 +66,9 @@ public class RobotContainer {
         NamedCommands.registerCommand("ShooterRampUp", new ShooterRampUpCommand(m_shooter, m_leds, ShooterConstants.distanceShotSpeed, ShooterConstants.distanceShotSpeed, () -> notePresent()));
         NamedCommands.registerCommand("Intake", new IntakeRunCommand(m_intake, m_indexer, m_leds, 0.53, 0.2, () -> notePresent()));
         NamedCommands.registerCommand("PassToShooter", new PassToShooterCmd(m_indexer, IndexerConstants.indexSpeed, () -> notePresent()));
-        NamedCommands.registerCommand("IntakeStage", new IntakeRunCommand(m_intake, m_indexer, m_leds, 0.65, 0.24, () -> notePresent()));
+        NamedCommands.registerCommand("IntakeStage", new IntakeRunCommand(m_intake, m_indexer, m_leds, 0.65, 0.255, () -> notePresent()));
         //NamedCommands.registerCommand("ShooterRampDown", new ShooterRampUpCommand(m_shooter, m_leds, -0.1, () -> !notePresent()));
-        NamedCommands.registerCommand("IntakeFarNote", new IntakeRunCommand(m_intake, m_indexer, m_leds, 0.7, 0.3, () -> notePresent())); 
+        NamedCommands.registerCommand("IntakeFarNote", new IntakeRunCommand(m_intake, m_indexer, m_leds, 0.6, 0.24, () -> notePresent())); 
         NamedCommands.registerCommand("IntakeRedStage", new IntakeRunCommand(m_intake, m_indexer, m_leds, 0.43, 0.14, () -> notePresent()));
 
         NamedCommands.registerCommand("IntakeFourNote", new IntakeRunCommand(m_intake, m_indexer, m_leds, 0.5, 0.24, () -> notePresent()));
@@ -101,6 +101,7 @@ public class RobotContainer {
     private void configureButtonBindings() {
         /* Driver Buttons */
         driverController.y().onTrue(new InstantCommand(() -> s_Swerve.zeroHeading()));
+        driverController.povLeft().onTrue(new InstantCommand(() -> s_Swerve.zeroLeftRedAuton(180)));
         //driverController.a().onTrue(Commands.parallel(new WristMovementCommand(()->2, m_wrist), new ShooterRampUpCommand(m_shooter, m_leds, .7)));
         //driverController.x().onTrue(new InstantCommand(() -> m_Blinkin.set(-0.87)));
         driverController.b().onTrue(new IntakeRunCommand(m_intake, m_indexer, m_leds, IntakeConstants.intakeSpeed, IndexerConstants.indexSpeed,    () -> notePresent()));

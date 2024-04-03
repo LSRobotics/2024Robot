@@ -33,6 +33,20 @@ public class Swerve extends SubsystemBase {
         gyro.getConfigurator().apply(new Pigeon2Configuration());
         gyro.setYaw(0);
 
+       /* var alli = DriverStation.getAlliance();
+        if (alli.isPresent()) {
+            if(alli.get() == DriverStation.Alliance.Red){
+                gyro.setYaw(180);
+            }
+            else{
+                gyro.setYaw(0);
+            }
+        }
+        else{
+            gyro.setYaw(0);
+        }
+      */
+
         mSwerveMods = new SwerveModule[] {
             new SwerveModule(0, Constants.SwerveConstants.Mod0.constants),
             new SwerveModule(1, Constants.SwerveConstants.Mod1.constants),
@@ -138,6 +152,13 @@ public class Swerve extends SubsystemBase {
         swerveOdometry.resetPosition(getGyroYaw(), getModulePositions(), new Pose2d(getPose().getTranslation(), new Rotation2d()));
     }
 
+
+    public void zeroLeftRedAuton(double angle){
+        gyro.setYaw(angle);
+
+        System.out.println("RESET IS HAPPENING");
+    }
+
     public Rotation2d getGyroYaw() {
         return Rotation2d.fromDegrees(gyro.getYaw().getValue());
     }
@@ -152,6 +173,9 @@ public class Swerve extends SubsystemBase {
     public void resetOdometry(Pose2d pose) {
         swerveOdometry.resetPosition(getGyroYaw(), getModulePositions(), pose);
     }
+
+
+
 
     //Added for Autobuilder
     public ChassisSpeeds getRobotRelativeSpeeds(){
