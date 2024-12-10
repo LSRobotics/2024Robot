@@ -1,9 +1,9 @@
 package frc.robot;
 
-import com.ctre.phoenix.sensors.WPI_PigeonIMU;
-import com.pathplanner.lib.auto.AutoBuilder;
-import com.pathplanner.lib.auto.NamedCommands;
-import com.pathplanner.lib.commands.PathPlannerAuto;
+//import com.ctre.phoenix.sensors.WPI_PigeonIMU;
+//import com.pathplanner.lib.auto.AutoBuilder;
+//import com.pathplanner.lib.auto.NamedCommands;
+//import com.pathplanner.lib.commands.PathPlannerAuto;
 import com.playingwithfusion.TimeOfFlight;
 
 import edu.wpi.first.wpilibj.GenericHID;
@@ -42,6 +42,7 @@ public class RobotContainer {
     private final IndexerSubsystem m_indexer = new IndexerSubsystem();
     private final WristSubsystem m_wrist = new WristSubsystem();
     private final LEDSubsystem m_leds = new LEDSubsystem();
+    private final VisionSubsystem m_limelight = new VisionSubsystem();
     
     private TimeOfFlight indexBeamBreak = new TimeOfFlight(IndexerConstants.indexBeamBreakChannel);
 
@@ -63,12 +64,12 @@ public class RobotContainer {
             )
         );
 
-        NamedCommands.registerCommand("ShooterRampUp", new ShooterRampUpCommand(m_shooter, m_leds, ShooterConstants.distanceShotSpeed, () -> notePresent()));
-        NamedCommands.registerCommand("Intake", new IntakeCommand(m_intake, m_indexer, m_leds, IntakeConstants.intakeSpeed, IndexerConstants.indexSpeed, () -> notePresent()));
-        NamedCommands.registerCommand("PassToShooter", new PassToShooterCmd(m_indexer, IndexerConstants.indexSpeed, () -> notePresent()));
+        //NamedCommands.registerCommand("ShooterRampUp", new ShooterRampUpCommand(m_shooter, m_leds, ShooterConstants.distanceShotSpeed, () -> notePresent()));
+        //NamedCommands.registerCommand("Intake", new IntakeCommand(m_intake, m_indexer, m_leds, IntakeConstants.intakeSpeed, IndexerConstants.indexSpeed, () -> notePresent()));
+        // NamedCommands.registerCommand("PassToShooter", new PassToShooterCmd(m_indexer, IndexerConstants.indexSpeed, () -> notePresent()));
 
-        autoChooser = AutoBuilder.buildAutoChooser();
-        SmartDashboard.putData("AutoChooser", autoChooser);
+        // autoChooser = AutoBuilder.buildAutoChooser();
+        //SmartDashboard.putData("AutoChooser", autoChooser);
 
         configureButtonBindings();
     }
@@ -85,6 +86,7 @@ public class RobotContainer {
         /* Driver Buttons */
         driverController.y().onTrue(new InstantCommand(() -> s_Swerve.zeroHeading()));
         //driverController.a().onTrue(Commands.parallel(new WristMovementCommand(()->2, m_wrist), new ShooterRampUpCommand(m_shooter, m_leds, .7)));
+        
         //driverController.x().onTrue(new InstantCommand(() -> m_Blinkin.set(-0.87)));
         driverController.b().onTrue(new IntakeCommand(m_intake, m_indexer, m_leds, IntakeConstants.intakeSpeed, IndexerConstants.indexSpeed, null));
         driverController.a().whileTrue(new ClearIntakeCommand(m_intake, m_indexer, IntakeConstants.intakeSpeed, IndexerConstants.indexSpeed));
@@ -94,7 +96,7 @@ public class RobotContainer {
         operatorController.rightTrigger().whileTrue(new RunIndexCommand(m_indexer, IndexerConstants.indexSpeed));
         operatorController.leftTrigger().whileTrue(new RunIndexCommand(m_indexer, -IndexerConstants.indexSpeed));
         
-
+        
 
         //operatorController.povUp().onTrue(new ElevatorToSetPointCmd(m_elevator, m_leds, ElevatorConstants.elevatorSpeed, true));
         //operatorController.povDown().onTrue(new ElevatorToSetPointCmd(m_elevator, m_leds, ElevatorConstants.elevatorSpeed, false));
@@ -105,6 +107,8 @@ public class RobotContainer {
                                                         //new ElevatorToSetPointCmd(m_elevator, m_leds, ElevatorConstants.elevatorSpeed, true),
                                                         new WristMovementCommand(()-> WristConstants.distanceAngle, m_wrist)));
         //operatorController.rightTrigger().onTrue(new PassToShooterCmd(m_indexer, m_leds, 0.6));
+
+        operatorController.b().whileTrue(new SteerCommand(m_limelight, s_Swerve));
         
 
     } // TODO connect to april tags
@@ -112,6 +116,11 @@ public class RobotContainer {
     public boolean notePresent() {
         System.out.println(" " + indexBeamBreak.getRange()); //TODO: delete after testing
         return indexBeamBreak.getRange() <= IndexerConstants.beamBreakRange;
+      }
+    
+    public boolean noteSeen(){
+        LimelightHelpers.setPipelineIndex( "", 0);
+        return LimelightHelpers.getTV("");
       }
 
     public Command getAutonomousCommand() {
