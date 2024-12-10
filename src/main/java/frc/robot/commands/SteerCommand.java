@@ -38,7 +38,7 @@ public class SteerCommand extends Command {
   public void execute() {
     double[] vals = m_limelight.calculateLimelightSteering();
     Translation2d translation = new Translation2d(vals[0], 0.0);
-    boolean fieldRelative = false; //TODO - Check is it is field relative
+    boolean fieldRelative = false;// check if field relative
     boolean isOpenLoop = false;
 
     m_Swerve.drive(translation, vals[1], fieldRelative, isOpenLoop);

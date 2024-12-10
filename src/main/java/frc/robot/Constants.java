@@ -185,4 +185,9 @@ public final class Constants {
         public static final double colorGold = 0.67;
         public static final double twinklesColorOneAndTwo = 0.51;
     }
+
+    public static final class LimelightConstants{
+        public static final double limelightHeight=60.0; //inches
+        public static final double limelightAngle=25.0; //degrees from vertical 
+    }
 }

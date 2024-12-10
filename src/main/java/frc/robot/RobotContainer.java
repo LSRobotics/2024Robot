@@ -109,6 +109,7 @@ public class RobotContainer {
         //operatorController.rightTrigger().onTrue(new PassToShooterCmd(m_indexer, m_leds, 0.6));
 
         operatorController.b().whileTrue(new SteerCommand(m_limelight, s_Swerve));
+        operatorController.x().whileTrue(new mantainDistanceCommand(m_limelight, s_Swerve));
         
 
     } // TODO connect to april tags
