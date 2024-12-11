@@ -5,9 +5,11 @@ import edu.wpi.first.math.Vector;
 import edu.wpi.first.math.estimator.SwerveDrivePoseEstimator;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.kinematics.SwerveModulePosition;
+import edu.wpi.first.math.proto.System;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
+import edu.wpi.first.wpilibj2.command.PrintCommand;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 import frc.robot.LimelightHelpers;
@@ -41,22 +43,27 @@ public class VisionSubsystem extends SubsystemBase {
         return new double[] {xSpeed, rot};
     }
 
-    public double getDistance(int targetID){
-        double targetOffsetAngle_Vertical = LimelightHelpers.getTY("limelight");
+    public double getDistance(int[] targetIDs){
+        int x = (int)(LimelightHelpers.getCurrentPipelineIndex(""));
+        LimelightHelpers.setPipelineIndex("", 9);
+        double targetOffsetAngle_Vertical = LimelightHelpers.getTY("");
 
+        if (true){return LimelightHelpers.getTY("");}
+        
         double limelightMountAngleDegrees = Constants.LimelightConstants.limelightAngle;
 
         double limelightLensHeightInches = Constants.LimelightConstants.limelightHeight; 
 
-        double goalHeightInches = 60.0;  //TODO - Set up hashmap to define
+        double goalHeightInches = 10.0;
 
         double angleToGoalDegrees = limelightMountAngleDegrees + targetOffsetAngle_Vertical;
         double angleToGoalRadians = angleToGoalDegrees * (3.14159 / 180.0);
 
-        //calculate distance
-        double distanceFromLimelightToGoalInches = (goalHeightInches - limelightLensHeightInches) / Math.tan(angleToGoalRadians);
+        double goalDist = (goalHeightInches - limelightLensHeightInches) / Math.tan(angleToGoalRadians);
 
-        return distanceFromLimelightToGoalInches;
+        LimelightHelpers.setPipelineIndex("", x);
+
+        return goalDist;
     }
 
 }

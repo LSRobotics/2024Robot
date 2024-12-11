@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
+import edu.wpi.first.wpilibj2.command.PrintCommand;
 import edu.wpi.first.wpilibj.motorcontrol.Spark;
 import frc.lib.util.COTSTalonFXSwerveConstants.WCP.SwerveXStandard.driveRatios;
 import frc.robot.commands.*;
@@ -108,8 +109,7 @@ public class RobotContainer {
                                                         new WristMovementCommand(()-> WristConstants.distanceAngle, m_wrist)));
         //operatorController.rightTrigger().onTrue(new PassToShooterCmd(m_indexer, m_leds, 0.6));
 
-        operatorController.b().whileTrue(new SteerCommand(m_limelight, s_Swerve));
-        operatorController.x().whileTrue(new mantainDistanceCommand(m_limelight, s_Swerve));
+        operatorController.y().whileTrue(new PrintCommand(Double.toString(m_limelight.getDistance(new int[] {}))));
         
 
     } // TODO connect to april tags

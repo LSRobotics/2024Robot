@@ -187,7 +187,7 @@ public final class Constants {
     }
 
     public static final class LimelightConstants{
-        public static final double limelightHeight=60.0; //inches
-        public static final double limelightAngle=25.0; //degrees from vertical 
+        public static final double limelightHeight=15.0; //inches
+        public static final double limelightAngle=10.0; //degrees from vertical 
     }
 }
