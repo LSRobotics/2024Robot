@@ -24,47 +24,33 @@ public class VisionSubsystem extends SubsystemBase {
         return;
       }
 
-      public double[] calculateLimelightSteering() {
-        int x = (int)(LimelightHelpers.getCurrentPipelineIndex("limelight"));
-        LimelightHelpers.setPipelineIndex("limelight", 9);
-
-        //Fix consts
-        double kP_Aim = 0.035;  //rot
-        double kP_Range = 0.1;  // speed
-  
-        double tx = LimelightHelpers.getTX("limelight");
-        double ty = LimelightHelpers.getTY("limelight");
-  
-        double rot = -tx * kP_Aim * Constants.SwerveConstants.maxAngularVelocity;  
-        double xSpeed = -ty * kP_Range * Constants.SwerveConstants.maxSpeed;   // forward back speed
-
-        LimelightHelpers.setPipelineIndex("limelight", x);
-  
-        return new double[] {xSpeed, rot};
+    public double getDistance(int pipelineID){
+        LimelightHelpers.setPipelineIndex("",pipelineID);
+        double targetAngleOffset = LimelightHelpers.getTY("");
+    
+        double limelightMountAngle = 25.0; 
+    
+        double lensHeight = 20.0; //in 
+    
+        double goalHeight = 60.0; //in 
+    
+        double angleToGoalDegrees = targetAngleOffset + limelightMountAngle;
+        double angleToGoalRadians = angleToGoalDegrees * (Math.PI / 180.0);
+    
+        //calculate distance
+        double distance = (goalHeight - lensHeight) / Math.tan(angleToGoalRadians);
+        return distance;
     }
 
-    public double getDistance(int[] targetIDs){
-        int x = (int)(LimelightHelpers.getCurrentPipelineIndex(""));
-        LimelightHelpers.setPipelineIndex("", 9);
-        double targetOffsetAngle_Vertical = LimelightHelpers.getTY("");
-
-        if (true){return LimelightHelpers.getTY("");}
-        
-        double limelightMountAngleDegrees = Constants.LimelightConstants.limelightAngle;
-
-        double limelightLensHeightInches = Constants.LimelightConstants.limelightHeight; 
-
-        double goalHeightInches = 10.0;
-
-        double angleToGoalDegrees = limelightMountAngleDegrees + targetOffsetAngle_Vertical;
-        double angleToGoalRadians = angleToGoalDegrees * (3.14159 / 180.0);
-
-        double goalDist = (goalHeightInches - limelightLensHeightInches) / Math.tan(angleToGoalRadians);
-
-        LimelightHelpers.setPipelineIndex("", x);
-
-        return goalDist;
+    public double getTX(String limelightName){
+        return LimelightHelpers.getTX(limelightName);
     }
+
+    public double getTY(String limelightName){
+        return LimelightHelpers.getTY(limelightName);
+    }
+
+    
 
 }
 

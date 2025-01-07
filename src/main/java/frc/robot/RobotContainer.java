@@ -108,9 +108,7 @@ public class RobotContainer {
                                                         //new ElevatorToSetPointCmd(m_elevator, m_leds, ElevatorConstants.elevatorSpeed, true),
                                                         new WristMovementCommand(()-> WristConstants.distanceAngle, m_wrist)));
         //operatorController.rightTrigger().onTrue(new PassToShooterCmd(m_indexer, m_leds, 0.6));
-
-        operatorController.y().whileTrue(new PrintCommand(Double.toString(m_limelight.getDistance(new int[] {}))));
-        
+        operatorController.b().whileTrue(new AlignCommand(m_limelight, s_Swerve,2.0,0));        
 
     } // TODO connect to april tags
 
