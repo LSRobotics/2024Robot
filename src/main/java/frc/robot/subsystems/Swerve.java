@@ -33,19 +33,7 @@ public class Swerve extends SubsystemBase {
         gyro.getConfigurator().apply(new Pigeon2Configuration());
         gyro.setYaw(0);
 
-       /* var alli = DriverStation.getAlliance();
-        if (alli.isPresent()) {
-            if(alli.get() == DriverStation.Alliance.Red){
-                gyro.setYaw(180);
-            }
-            else{
-                gyro.setYaw(0);
-            }
-        }
-        else{
-            gyro.setYaw(0);
-        }
-      */
+       
 
         mSwerveMods = new SwerveModule[] {
             new SwerveModule(0, Constants.SwerveConstants.Mod0.constants),

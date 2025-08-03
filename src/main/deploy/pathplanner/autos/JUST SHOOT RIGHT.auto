@@ -2,8 +2,8 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.7121783474336195,
-      "y": 4.588128407026045
+      "x": 0.55,
+      "y": 4.67
     },
     "rotation": -59.42077312751097
   },
@@ -41,6 +41,12 @@
                 }
               }
             ]
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "resetGyroSide"
           }
         }
       ]

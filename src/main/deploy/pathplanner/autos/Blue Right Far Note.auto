@@ -130,6 +130,12 @@
               }
             ]
           }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "resetGyroSide"
+          }
         }
       ]
     }

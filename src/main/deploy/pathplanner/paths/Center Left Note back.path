@@ -16,12 +16,12 @@
     },
     {
       "anchor": {
-        "x": 0.9861162090369815,
-        "y": 5.539225686154654
+        "x": 1.1032245744947966,
+        "y": 5.28158728214746
       },
       "prevControl": {
-        "x": 1.9861162090369813,
-        "y": 5.539225686154654
+        "x": 2.1032245744947966,
+        "y": 5.28158728214746
       },
       "nextControl": null,
       "isLocked": false,
@@ -30,25 +30,7 @@
   ],
   "rotationTargets": [],
   "constraintZones": [],
-  "eventMarkers": [
-    {
-      "name": "New Event Marker",
-      "waypointRelativePos": 0,
-      "command": {
-        "type": "parallel",
-        "data": {
-          "commands": [
-            {
-              "type": "named",
-              "data": {
-                "name": "IntakeFourNoteTest"
-              }
-            }
-          ]
-        }
-      }
-    }
-  ],
+  "eventMarkers": [],
   "globalConstraints": {
     "maxVelocity": 3.0,
     "maxAcceleration": 3.0,

@@ -16,6 +16,7 @@ public final class Constants {
     public static final double stickDeadband = 0.1;
 
     public static final class SwerveConstants {
+        public static final double demoSpeed = 0.3;
         public static final int pigeonID = 1;
 
         public static final COTSTalonFXSwerveConstants chosenModule =  //TODO: This must be tuned to specific robot

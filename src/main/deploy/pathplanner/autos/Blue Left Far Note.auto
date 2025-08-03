@@ -98,6 +98,12 @@
           "data": {
             "pathName": "Left Far Note Back"
           }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "gyroOtherSide"
+          }
         }
       ]
     }
