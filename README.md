@@ -29,8 +29,21 @@
 - **White** = Elevator is running
 - **Blue and Gold Twinkling** = Elevator is done
 
-## TODO:
+## Demo Controls (`Demo` branch)
 
-- Limelight
-- Wrist
-- Distance Shot Auton
+### Driver:
+- **Distance Shot** = A button
+- **Short Shot** = Right Bumper
+- **Intake** = B Button
+- **Empty Intake** = Y Button
+- **Pass to Shooter** = Right Trigger
+- **Pass back to Indexer** = Left Trigger
+- **Amp Shot** = X Button
+
+### Operator
+- **Pass to Shooter** - A Button
+
+### Notes:
+- Swerve is 30% of normal speed.
+- Most controls unrelated to shooter and swerve removed
+- Almost all functionality has been transferred to driver (OP can only shoot)
