@@ -49,3 +49,4 @@
 - Swerve is 30% of normal speed.
 - Most controls unrelated to shooter and swerve removed
 - Almost all functionality has been transferred to driver (OP can only pass to shooter)
+- Most LED functionality removed
