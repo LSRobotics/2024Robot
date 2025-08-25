@@ -29,6 +29,8 @@
 - **White** = Elevator is running
 - **Blue and Gold Twinkling** = Elevator is done
 
+---
+
 ## Demo Controls (`Demo` branch)
 
 ### Driver:
