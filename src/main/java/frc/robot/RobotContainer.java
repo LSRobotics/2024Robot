@@ -1,6 +1,7 @@
 package frc.robot;
 
-import com.ctre.phoenix.sensors.WPI_PigeonIMU;
+import java.util.function.BooleanSupplier;
+
 import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.auto.NamedCommands;
 import com.pathplanner.lib.commands.PathPlannerAuto;
@@ -42,14 +43,12 @@ public class RobotContainer {
     private final IndexerSubsystem m_indexer = new IndexerSubsystem();
     private final WristSubsystem m_wrist = new WristSubsystem();
     private final LEDSubsystem m_leds = new LEDSubsystem();
+    private BooleanSupplier notePresent = ()-> notePresent();
 
-    private boolean speed = true;
     
     private TimeOfFlight indexBeamBreak = new TimeOfFlight(IndexerConstants.indexBeamBreakChannel);
 
     public static CTREConfigs ctreConfigs = new CTREConfigs();
-
-    public static SendableChooser<Command> autoChooser;
 
     /**
      * The container for the robot. Contains subsystems, OI devices, and commands.
@@ -58,13 +57,12 @@ public class RobotContainer {
         s_Swerve.setDefaultCommand(
             new TeleopSwerve(
                 s_Swerve, 
-                () -> SwerveConstants.demoSpeed*-driverController.getLeftY(), 
-                () -> SwerveConstants.demoSpeed*-driverController.getLeftX(), 
-                () -> SwerveConstants.demoSpeed*-driverController.getRightX(), 
+                () -> SwerveConstants.demoSpeed * -driverController.getLeftY(), 
+                () -> SwerveConstants.demoSpeed *  -driverController.getLeftX(), 
+                () -> 0.5 * -driverController.getRightX(), 
                 () -> driverController.leftBumper().getAsBoolean()
             )
-        );
-        
+        );        
        
         NamedCommands.registerCommand("ShooterRampUp", new ShooterRampUpCommand(m_shooter, m_leds, ShooterConstants.distanceShotSpeed, ShooterConstants.distanceShotSpeed, () -> notePresent()));
         NamedCommands.registerCommand("Intake", new IntakeRunCommand(m_intake, m_indexer, m_leds, 0.53, 0.2, () -> notePresent()));
@@ -86,10 +84,6 @@ public class RobotContainer {
                 
 
 
-
-        autoChooser = AutoBuilder.buildAutoChooser();
-        SmartDashboard.putData("AutoChooser", autoChooser);
-
         configureButtonBindings();
     }
 
@@ -109,7 +103,7 @@ public class RobotContainer {
         //driverController.a().onTrue(Commands.parallel(new WristMovementCommand(()->2, m_wrist), new ShooterRampUpCommand(m_shooter, m_leds, .7)));
         //driverController.x().onTrue(new InstantCommand(() -> m_Blinkin.set(-0.87)));
         driverController.b().onTrue(new IntakeRunCommand(m_intake, m_indexer, m_leds, IntakeConstants.intakeSpeed, IndexerConstants.indexSpeed,    () -> notePresent()));
-        driverController.y().whileTrue(new ClearIntakeCmd(m_intake, m_indexer, IntakeConstants.intakeSpeed, IndexerConstants.indexSpeed));
+        driverController.y().whileTrue(new ShooterRampUpCommand(m_shooter, m_leds, Constants.ShooterConstants.shortShotSpeed, Constants.ShooterConstants.shortShotSpeed, notePresent));
 
 
         //driverController.leftTrigger().whileTrue(m_indexer, IntakeConstants.intakeSpeed);
@@ -120,30 +114,12 @@ public class RobotContainer {
 
         // driverController.povUp().onTrue(new ElevatorToSetPointCmd(m_elevator, m_leds, ElevatorConstants.elevatorSpeed, true));
         // driverController.povDown().onTrue(new ElevatorToSetPointCmd(m_elevator, m_leds, ElevatorConstants.elevatorSpeed, false));
-        // //driverController.b().onTrue(Commands.parallel(new ShooterRampUpCommand(m_shooter, m_indexer, m_leds, 0.6),
-        //                                                //new ElevatorToSetPointCmd(m_elevator, m_leds, ElevatorConstants.elevatorSpeed, true),
-            //                                            new WristMovementCommand(()-> WristConstants.distanceAngle, m_wrist)));
-        driverController.a().whileTrue(Commands.parallel(new ShooterRampUpCommand(m_shooter, m_leds, ShooterConstants.distanceShotSpeed, ShooterConstants.distanceShotSpeed, null),
-                                                        //new ElevatorToSetPointCmd(m_elevator, m_leds, ElevatorConstants.elevatorSpeed, true),
-                                                        new WristMovementCommand(()-> WristConstants.distanceAngle, m_wrist)));
-                                                               
-        
- 
-        driverController.rightBumper().whileTrue(Commands.parallel(new ShooterRampUpCommand(m_shooter, m_leds, 0.2, 0.2, null),
-                                                        new ElevatorToSetPointCmd(m_elevator, m_leds, ElevatorConstants.elevatorSpeed, true),
-                                                       new WristMovementCommand(()-> WristConstants.distanceAngle, m_wrist)));
-        // driverController.x().whileTrue(Commands.parallel(new ShooterRampUpCommand(m_shooter, m_leds, -0.1, -0.1, null),
-        //                                                 //new ElevatorToSetPointCmd(m_elevator, m_leds, ElevatorConstants.elevatorSpeed, true),
-        //                                                 new WristMovementCommand(()-> WristConstants.distanceAngle, m_wrist)));
-        // //driverController.rightTrigger().onTrue(new PassToShooterCmd(m_indexer, m_leds, 0.6));
-        //  driverController.y().whileTrue(Commands.parallel(new ShooterRampUpCommand(m_shooter, m_leds, ShooterConstants.distanceShotSpeed + 0.15, ShooterConstants.distanceShotSpeed + 0.15, null),
-        //                                                 //new ElevatorToSetPointCmd(m_elevator, m_leds, ElevatorConstants.elevatorSpeed,s true),
-        //                                                 new WristMovementCommand(()-> WristConstants.distanceAngle, m_wrist)));
-    
-        driverController.x().whileTrue(Commands.parallel(new Amp(m_indexer, m_shooter, 0.23 , 0.027, 0.269, null),
-                                                        //new ElevatorToSetPointCmd(m_elevator, m_leds, ElevatorConstants.elevatorSpeed,s true),
-                                                        new WristMovementCommand(()-> WristConstants.distanceAngle, m_wrist)));
+     driverController.b().onTrue(new ShooterRampUpCommand(m_shooter, m_leds, 0.6, 0.6, notePresent));
 
+ 
+         driverController.x().whileTrue(Commands.parallel(new ShooterRampUpCommand(m_shooter, m_leds, -0.1, -0.1, notePresent)));
+        driverController.rightTrigger().onTrue(new PassToShooterCmd(m_indexer, 0.6, notePresent));
+        
         operatorController.a().whileTrue(new RunIndexCommand(m_indexer, IndexerConstants.indexSpeed));
 
  /*        driverController.leftTrigger().whileTrue(Commands.parallel(new ShooterRampUpCommand(m_shooter, m_leds, 0.45, 0.19, null),
@@ -160,6 +136,8 @@ public class RobotContainer {
       }
 
     public Command getAutonomousCommand() {
-        return autoChooser.getSelected();
+        return new Command() {
+            
+        };
     }
 }

@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.XboxController;
 
 import edu.wpi.first.wpilibj.GenericHID;
 
+import static edu.wpi.first.units.Units.RotationsPerSecond;
 
 import com.ctre.phoenix6.hardware.TalonFX;
 
@@ -44,13 +45,13 @@ public class ShooterSubsystem extends SubsystemBase{
 
 
     public double getMotorVelocity(){
-       return shooterMotorOne.getVelocity().getValue();
+       return shooterMotorOne.getVelocity().getValue().in(RotationsPerSecond);
     }
 
     public void rumble(boolean check){
         
         
-            if(shooterMotorOne.getVelocity().getValue() > 50 && check){
+            if(shooterMotorOne.getVelocity().getValue().in(RotationsPerSecond) > 50 && check){
                 operatorController.getHID().setRumble(RumbleType.kBothRumble, 0.2);
             }
             else{

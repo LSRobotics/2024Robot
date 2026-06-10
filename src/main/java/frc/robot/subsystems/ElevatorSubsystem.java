@@ -9,24 +9,22 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.ElevatorConstants;
 
-import com.revrobotics.CANSparkMax;
-import com.revrobotics.CANSparkLowLevel.MotorType;
+
+import com.revrobotics.spark.SparkMax;
+import com.revrobotics.spark.SparkLowLevel.MotorType;
 import com.playingwithfusion.*;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
-import com.ctre.phoenix.motorcontrol.can.*;
-import com.revrobotics.CANSparkLowLevel.MotorType;
-
 public class ElevatorSubsystem extends SubsystemBase {
   /** Creates a new ElevatorSubsystem. */
-  public CANSparkMax elevatorMotor;
+  public SparkMax elevatorMotor;
   public DigitalInput elevatorBottomLimit;
   public DigitalInput elevatorTopLimit;
 
 
   public ElevatorSubsystem() {
-    elevatorMotor = new CANSparkMax(ElevatorConstants.elevatorMotorID, MotorType.kBrushless);
+    elevatorMotor = new SparkMax(ElevatorConstants.elevatorMotorID, MotorType.kBrushless);
     
     elevatorBottomLimit = new DigitalInput(ElevatorConstants.elevatorBottomLimitChannel);
     elevatorTopLimit = new DigitalInput(ElevatorConstants.elevatorTopLimitChannel);
