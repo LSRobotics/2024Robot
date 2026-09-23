@@ -13,10 +13,7 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.Commands;
-import edu.wpi.first.wpilibj2.command.InstantCommand;
-import edu.wpi.first.wpilibj.motorcontrol.Spark;
-import frc.lib.util.COTSTalonFXSwerveConstants.WCP.SwerveXStandard.driveRatios;
+
 import frc.robot.commands.*;
 import frc.robot.subsystems.*;
 import frc.robot.Constants.*;
@@ -74,21 +71,16 @@ public class RobotContainer {
     private void configureButtonBindings() {
 
         driverController.b().onTrue(new IntakeRunCommand(m_intake, m_indexer, m_leds, IntakeConstants.intakeSpeed, IndexerConstants.indexSpeed, () -> notePresent()));
-        driverController.y().whileTrue(new ShooterRampUpCommand(m_shooter, m_leds, Constants.ShooterConstants.shortShotSpeed, Constants.ShooterConstants.shortShotSpeed, notePresent));
 
-        driverController.rightTrigger().whileTrue(new RunIndexCommand(m_indexer, IndexerConstants.indexSpeed));
-        driverController.leftTrigger().whileTrue(new RunIndexCommand(m_indexer, -IndexerConstants.indexSpeed));
+        driverController.y().whileTrue(
+            new ShooterRampUpCommand(m_shooter, m_leds, Constants.ShooterConstants.shortShotSpeed, Constants.ShooterConstants.shortShotSpeed, notePresent)
+        ).onFalse(new PassToShooterCmd(m_indexer, 0.6, notePresent));
 
-        driverController.b().onTrue(new ShooterRampUpCommand(m_shooter, m_leds, 0.6, 0.6, notePresent));
+        driverController.x().whileTrue(new ShooterRampUpCommand(m_shooter, m_leds, -0.1, -0.1, notePresent));
 
-        driverController.x()
-                .whileTrue(Commands.parallel(new ShooterRampUpCommand(m_shooter, m_leds, -0.1, -0.1, notePresent)));
-        driverController.rightTrigger().onTrue(new PassToShooterCmd(m_indexer, 0.6, notePresent));
-
-        operatorController.a().whileTrue(new RunIndexCommand(m_indexer, IndexerConstants.indexSpeed));
+        driverController.leftTrigger().whileTrue(new PassToShooterCmd(m_indexer, -0.6, notePresent));
 
     } 
-
     public boolean notePresent() {
         return indexBeamBreak.getRange() <= IndexerConstants.beamBreakRange;
     }
