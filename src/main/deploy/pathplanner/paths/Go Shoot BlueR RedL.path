@@ -1,0 +1,49 @@
+{
+  "version": 1.0,
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 2.79,
+        "y": 4.08
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 1.6719660112501051,
+        "y": 4.08
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 0.6423550524154875,
+        "y": 4.499996762033184
+      },
+      "prevControl": {
+        "x": 1.9588262744032656,
+        "y": 4.499996762033184
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": null
+    }
+  ],
+  "rotationTargets": [],
+  "constraintZones": [],
+  "eventMarkers": [],
+  "globalConstraints": {
+    "maxVelocity": 3.0,
+    "maxAcceleration": 3.0,
+    "maxAngularVelocity": 573.0,
+    "maxAngularAcceleration": 720.0
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": -60.0,
+    "rotateFast": false
+  },
+  "reversed": false,
+  "folder": "BR RL Two Note",
+  "previewStartingState": null,
+  "useDefaultConstraints": false
+}

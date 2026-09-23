@@ -10,14 +10,14 @@ import frc.robot.subsystems.LEDSubsystem;
 import frc.robot.Constants.LEDConstants;
 
 /** An example command that uses an example subsystem. */
-public class ElevatorToSetPointCmd extends Command {
+public class elevatorToSetPointCmd extends Command {
   private final ElevatorSubsystem m_elevator;
   private double speed = 0;
   private boolean shouldGoToTop = true;
   private final LEDSubsystem m_leds;
 
 
-  public ElevatorToSetPointCmd(ElevatorSubsystem elevator, LEDSubsystem leds, double speed, boolean shouldGoToTop) {
+  public elevatorToSetPointCmd(ElevatorSubsystem elevator, LEDSubsystem leds, double speed, boolean shouldGoToTop) {
     m_elevator = elevator;
     m_leds = leds;
     this.speed = speed;
@@ -31,10 +31,10 @@ public class ElevatorToSetPointCmd extends Command {
   @Override
   public void initialize() {
     if(shouldGoToTop){
-      m_elevator.runElevator(this.speed);
+      m_elevator.runElevator(0.8);
     }
     else{
-      m_elevator.runElevator(-this.speed);
+      m_elevator.runElevator(-0.5);
     }
     m_leds.runLeds(LEDConstants.colorWhite);
   }

@@ -16,6 +16,7 @@ public final class Constants {
     public static final double stickDeadband = 0.1;
 
     public static final class SwerveConstants {
+        public static final double demoSpeed = 0.3;
         public static final int pigeonID = 1;
 
         public static final COTSTalonFXSwerveConstants chosenModule =  //TODO: This must be tuned to specific robot
@@ -79,9 +80,9 @@ public final class Constants {
 
         /* Swerve Profiling Values */
         /** Meters per Second */
-        public static final double maxSpeed = 4.5; //TODO: This must be tuned to specific robot
+        public static final double maxSpeed = 0.01; //TODO: This must be tuned to specific robot
         /** Radians per Second */
-        public static final double maxAngularVelocity = 10.0; //TODO: This must be tuned to specific robot
+        public static final double maxAngularVelocity = 0.037; //TODO: This must be tuned to specific robot
 
         /* Neutral Modes */
         public static final NeutralModeValue angleNeutralMode = NeutralModeValue.Coast;
@@ -93,7 +94,7 @@ public final class Constants {
             public static final int driveMotorID = 11;
             public static final int angleMotorID = 10;
             public static final int canCoderID = 25;
-            public static final Rotation2d angleOffset = Rotation2d.fromDegrees(217.7); //-0.25 degrees
+            public static final Rotation2d angleOffset = Rotation2d.fromDegrees(214.36); //-0.25 degrees
             public static final SwerveModuleConstants constants = 
                 new SwerveModuleConstants(driveMotorID, angleMotorID, canCoderID, angleOffset);
         }
@@ -103,7 +104,7 @@ public final class Constants {
             public static final int driveMotorID = 5;
             public static final int angleMotorID = 4;
             public static final int canCoderID = 27;
-            public static final Rotation2d angleOffset = Rotation2d.fromDegrees(87.62); //0 degrees
+            public static final Rotation2d angleOffset = Rotation2d.fromDegrees(89.56); //0 degrees
             public static final SwerveModuleConstants constants = 
                 new SwerveModuleConstants(driveMotorID, angleMotorID, canCoderID, angleOffset);
         }
@@ -113,7 +114,7 @@ public final class Constants {
             public static final int driveMotorID = 19;
             public static final int angleMotorID = 18;
             public static final int canCoderID = 26;
-            public static final Rotation2d angleOffset = Rotation2d.fromDegrees(306.91); //0.36 degrees
+            public static final Rotation2d angleOffset = Rotation2d.fromDegrees(305.15); //0.36 degrees
             public static final SwerveModuleConstants constants = 
                 new SwerveModuleConstants(driveMotorID, angleMotorID, canCoderID, angleOffset);
         }
@@ -123,7 +124,7 @@ public final class Constants {
             public static final int driveMotorID = 3;
             public static final int angleMotorID = 2;
             public static final int canCoderID = 24;
-            public static final Rotation2d angleOffset = Rotation2d.fromDegrees(42.36); //0.02 degrees
+            public static final Rotation2d angleOffset = Rotation2d.fromDegrees(46.4); //0.02 degrees
             public static final SwerveModuleConstants constants = 
                 new SwerveModuleConstants(driveMotorID, angleMotorID, canCoderID, angleOffset);
         }
@@ -144,14 +145,14 @@ public final class Constants {
     public static final class IndexerConstants { // TODO: Update Indexer CAN IDs and Channels
         public static final int indexMotorID = 32;
         public static final int indexBeamBreakChannel = 61;
-        public static final double indexSpeed = 0.08;
+        public static final double indexSpeed = 0.23;
         public static final double beamBreakRange = 200;
     }
 
     public static final class ShooterConstants {
         public static final int shooterMotorOneID = 21;
         public static final int shooterMotorTwoID = 33;
-        public static final double distanceShotSpeed = 0.55;
+        public static final double distanceShotSpeed = 0.5;
         public static final double ampShotSpeed = .4;
         public static final double shortShotSpeed = .6;
     }

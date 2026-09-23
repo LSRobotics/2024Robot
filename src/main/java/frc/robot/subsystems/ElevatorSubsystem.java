@@ -9,23 +9,22 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.ElevatorConstants;
 
-import com.revrobotics.CANSparkMax;
-import com.revrobotics.CANSparkLowLevel.MotorType;
+
+import com.revrobotics.spark.SparkMax;
+import com.revrobotics.spark.SparkLowLevel.MotorType;
 import com.playingwithfusion.*;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-
-import com.ctre.phoenix.motorcontrol.can.*;
-import com.revrobotics.CANSparkLowLevel.MotorType;
 
 public class ElevatorSubsystem extends SubsystemBase {
   /** Creates a new ElevatorSubsystem. */
-  public CANSparkMax elevatorMotor;
+  public SparkMax elevatorMotor;
   public DigitalInput elevatorBottomLimit;
   public DigitalInput elevatorTopLimit;
 
 
   public ElevatorSubsystem() {
-    elevatorMotor = new CANSparkMax(ElevatorConstants.elevatorMotorID, MotorType.kBrushless);
+    elevatorMotor = new SparkMax(ElevatorConstants.elevatorMotorID, MotorType.kBrushless);
     
     elevatorBottomLimit = new DigitalInput(ElevatorConstants.elevatorBottomLimitChannel);
     elevatorTopLimit = new DigitalInput(ElevatorConstants.elevatorTopLimitChannel);
@@ -33,20 +32,29 @@ public class ElevatorSubsystem extends SubsystemBase {
   
  
   public void runElevator(double speed) {
-    elevatorMotor.set(speed);
+    elevatorMotor.set(-speed);
+    System.out.println("This is the top limit "+elevatorBottomLimit.get());
+    System.out.println("This is bottom limit "+elevatorTopLimit.get());
+
+    SmartDashboard.getBoolean("Top limit", elevatorTopLimit.get());
+    SmartDashboard.getBoolean("Bottom limit", elevatorBottomLimit.get());
+
   }
 
   public int elevatorPosition() {
      
-    if (elevatorTopLimit.get() && elevatorBottomLimit.get()){
+    if (!elevatorTopLimit.get() && !elevatorBottomLimit.get()){
       return 2;
     }
-    else if (elevatorBottomLimit.get()){
+    else if (!elevatorBottomLimit.get()){
       return -1;
     }
-    else if (elevatorTopLimit.get()){
+    else if (!elevatorTopLimit.get()){
+
+    
+
       return 1;
-    }
+    } 
     else{
       return 0;
     }
