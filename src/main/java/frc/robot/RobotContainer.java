@@ -19,7 +19,8 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
-
+import edu.wpi.first.wpilibj2.command.Commands;
+import edu.wpi.first.wpilibj2.command.Command.InterruptionBehavior;
 import frc.robot.commands.*;
 import frc.robot.generated.TunerConstants;
 import frc.robot.subsystems.*;
@@ -37,7 +38,6 @@ import frc.robot.Constants.*;
 public class RobotContainer {
     /* Controllers */
     private final CommandXboxController driverController = new CommandXboxController(0);
-    private final CommandXboxController operatorController = new CommandXboxController(1);
 
     /* Subsystems */
     private final CommandSwerveDrivetrain mSwerve = TunerConstants.createDrivetrain();
@@ -83,10 +83,12 @@ public class RobotContainer {
         driverController.b().onTrue(new IntakeRunCommand(m_intake, m_indexer, m_leds, IntakeConstants.intakeSpeed, IndexerConstants.indexSpeed, () -> notePresent()));
 
         driverController.y().whileTrue(
-            new ShooterRampUpCommand(m_shooter, m_leds, Constants.ShooterConstants.shortShotSpeed, Constants.ShooterConstants.shortShotSpeed, notePresent)
-        ).onFalse(new PassToShooterCmd(m_indexer, 0.6, notePresent));
+            new ShooterRampUpCommand(m_shooter, m_leds, Constants.ShooterConstants.shortShotSpeed, Constants.ShooterConstants.shortShotSpeed, notePresent).withInterruptBehavior(InterruptionBehavior.kCancelSelf)
+        ).onFalse(new PassToShooterCmd(m_indexer, 0.6, notePresent).withInterruptBehavior(InterruptionBehavior.kCancelSelf));
 
-        driverController.x().whileTrue(new ShooterRampUpCommand(m_shooter, m_leds, -0.1, -0.1, notePresent));
+        driverController.x().onTrue(Commands.idle(m_shooter, m_indexer).withInterruptBehavior(InterruptionBehavior.kCancelIncoming)); // Cancel driver y
+
+        driverController.a().whileTrue(new ShooterRampUpCommand(m_shooter, m_leds, -0.1, -0.1, notePresent));
 
         driverController.leftTrigger().whileTrue(new PassToShooterCmd(m_indexer, -0.6, notePresent));
 
